@@ -51,5 +51,16 @@ namespace LibreriaBoscoso.Services
             var response = await _httpClient.DeleteAsync($"{BaseUrl}/{id}");
             return response.IsSuccessStatusCode;
         }
+        // ✅ 6. Autenticación de usuario (POST a /login)
+        public async Task<User> AuthenticateUserAsync(string email, string password)
+        {
+            var loginData = new { Email = email, Password = password };
+            var response = await _httpClient.PostAsJsonAsync($"{BaseUrl}/login", loginData);
+
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadFromJsonAsync<User>();
+
+            return null;
+        }
     }
 }

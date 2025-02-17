@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Views;
+using LibreriaBoscoso.Views.Administrador;
 
 namespace LibreriaBoscoso
 {
@@ -16,7 +18,7 @@ namespace LibreriaBoscoso
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoadingScreen());
+            Application.Run(new Inicio());
         }
     }
 }

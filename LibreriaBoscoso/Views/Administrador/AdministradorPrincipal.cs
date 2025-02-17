@@ -58,8 +58,8 @@ namespace LibreriaBoscoso.Views.Administrador
 
         private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GestionTiendas gestionTiendas = new GestionTiendas();
-            gestionTiendas.Show();
+            GestionTiendas aws = new GestionTiendas();
+            aws.Show();
             this.Hide();
         }
 
@@ -68,6 +68,11 @@ namespace LibreriaBoscoso.Views.Administrador
             GestionCategorias gestionCategorias = new GestionCategorias();
             gestionCategorias.Show();
             this.Hide();
+        }
+
+        private void librosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

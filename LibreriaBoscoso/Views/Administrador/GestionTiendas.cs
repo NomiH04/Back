@@ -18,6 +18,11 @@ namespace LibreriaBoscoso.Views.Administrador
 {
     public partial class GestionTiendas : Form
     {
+        public GestionTiendas()
+        {
+            InitializeComponent();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 

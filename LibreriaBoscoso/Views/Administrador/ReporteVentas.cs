@@ -69,6 +69,7 @@ namespace LibreriaBoscoso.Views.Administrador
         {
             AdministradorPrincipal principal = new AdministradorPrincipal();
             principal.Show();
+            this.Close();
         }
     }
 }

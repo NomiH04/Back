@@ -79,6 +79,7 @@
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
             this.librosToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
             this.librosToolStripMenuItem.Text = "Reportes";
+            this.librosToolStripMenuItem.Click += new System.EventHandler(this.librosToolStripMenuItem_Click_1);
             // 
             // consultarLibrosToolStripMenuItem
             // 
