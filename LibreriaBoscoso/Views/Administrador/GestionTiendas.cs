@@ -18,32 +18,6 @@ namespace LibreriaBoscoso.Views.Administrador
 {
     public partial class GestionTiendas : Form
     {
-        private readonly StoreServices _storeService;
-        public GestionTiendas()
-        {
-            InitializeComponent();
-            _storeService = new StoreServices();
-        }
-
-        private async void GestionTiendas_Load(object sender, EventArgs e)
-        {
-            await CargarTiendas();
-        }
-
-        private async Task CargarTiendas()
-        {
-            List<Store> tiendas = await _storeService.GetStoresAsync();
-
-            if (tiendas.Count > 0)
-            {
-                dataGridView1.DataSource = tiendas;
-            }
-            else
-            {
-                MessageBox.Show("No se encontraron tiendas.");
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -99,6 +73,11 @@ namespace LibreriaBoscoso.Views.Administrador
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

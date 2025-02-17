@@ -12,16 +12,6 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.AxHost;
 using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Services;
-
-namespace LibreriaBoscoso.Services
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Net.Http.Json;
-    using System.Threading.Tasks;
-    using LibreriaBoscoso.Models;
-
     namespace LibreriaBoscoso.Services
     {
         public class StoreService
@@ -70,4 +60,3 @@ namespace LibreriaBoscoso.Services
             }
         }
     }
-}
