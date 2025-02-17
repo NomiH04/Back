@@ -39,7 +39,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +54,7 @@
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +87,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(713, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 24);
             this.button1.TabIndex = 57;
@@ -145,7 +145,7 @@
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Location = new System.Drawing.Point(692, 355);
-            this.button6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button6.Margin = new System.Windows.Forms.Padding(1);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(86, 34);
             this.button6.TabIndex = 85;
@@ -158,7 +158,7 @@
             this.button4.BackColor = System.Drawing.Color.Gray;
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(284, 104);
-            this.button4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button4.Margin = new System.Windows.Forms.Padding(1);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(71, 34);
             this.button4.TabIndex = 81;
@@ -169,26 +169,26 @@
             // 
             this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(22, 112);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(1);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(247, 29);
             this.textBox6.TabIndex = 80;
             this.textBox6.Text = "Buscar";
             // 
-            // dataGridView1
+            // dataGridViewOrders
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Cantidad,
             this.Estado});
-            this.dataGridView1.Location = new System.Drawing.Point(22, 148);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 102;
-            this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(754, 188);
-            this.dataGridView1.TabIndex = 79;
+            this.dataGridViewOrders.Location = new System.Drawing.Point(22, 148);
+            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(1);
+            this.dataGridViewOrders.Name = "dataGridViewOrders";
+            this.dataGridViewOrders.RowHeadersWidth = 102;
+            this.dataGridViewOrders.RowTemplate.Height = 40;
+            this.dataGridViewOrders.Size = new System.Drawing.Size(754, 188);
+            this.dataGridViewOrders.TabIndex = 79;
             // 
             // ID
             // 
@@ -228,7 +228,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(369, 104);
-            this.button3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 34);
             this.button3.TabIndex = 89;
@@ -242,7 +242,7 @@
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 92;
@@ -254,7 +254,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(516, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 25);
             this.textBox1.TabIndex = 91;
@@ -337,20 +337,20 @@
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "HistorialPedidos";
             this.Text = "HistorialPedidos";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.HistorialPedidos_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -371,7 +371,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewOrders;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;

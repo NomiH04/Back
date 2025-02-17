@@ -1,28 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Services;   // Asegúrate de incluir el namespace del servicio
+using LibreriaBoscoso.Models;     // Y el namespace de los modelos
 using LibreriaBoscoso.Views.InicioLogin;
 
 namespace LibreriaBoscoso.Views.Proveedor
 {
     public partial class HistorialPedidos : Form
     {
+        private OrderService _orderService;
+
         public HistorialPedidos()
         {
             InitializeComponent();
+            _orderService = new OrderService();  // Instanciamos el servicio para consumir la API
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        // Renombramos el evento para mayor claridad (asegúrate de actualizar el diseñador si es necesario)
+        private async void HistorialPedidos_Load(object sender, EventArgs e)
         {
+            try
+            {
+                // Consumir la API para obtener la lista de pedidos
+                List<Order> orders = await _orderService.GetOrdersAsync();
 
+                // Asignar los datos al DataGridView (asegúrate de tener uno en el formulario llamado dataGridViewOrders)
+                dataGridViewOrders.DataSource = orders;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los pedidos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Los siguientes métodos se encargan de la navegación entre formularios
         private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HistorialPedidos historialPedidos = new HistorialPedidos();
@@ -39,7 +51,7 @@ namespace LibreriaBoscoso.Views.Proveedor
 
         private void catalogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Catalogo catalogo   = new Catalogo();
+            Catalogo catalogo = new Catalogo();
             catalogo.Show();
             this.Hide();
         }
@@ -59,3 +71,4 @@ namespace LibreriaBoscoso.Views.Proveedor
         }
     }
 }
+
