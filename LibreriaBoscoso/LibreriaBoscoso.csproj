@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74CDEFDA-6176-49F3-8FE8-01B9EA26F0D4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LibreriaBoscoso</RootNamespace>
+    <AssemblyName>LibreriaBoscoso</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.9.0.2\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.Json.9.0.2\lib\net462\System.Net.Http.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.9.0.2\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.9.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LoadingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingScreen.Designer.cs">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\SaleDetail.cs" />
+    <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\OrderDetailService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\SaleDetailService.cs" />
+    <Compile Include="Services\SaleService.cs" />
+    <Compile Include="Services\StoreServices.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Views\Administrador\AdministradorPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\AdministradorPrincipal.Designer.cs">
+      <DependentUpon>AdministradorPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\ReporteInventarioGlobal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\ReporteInventarioGlobal.Designer.cs">
+      <DependentUpon>ReporteInventarioGlobal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\ReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\ReporteVentas.Designer.cs">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GestionCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GestionCategorias.Designer.cs">
+      <DependentUpon>GestionCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GestionTiendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GestionTiendas.Designer.cs">
+      <DependentUpon>GestionTiendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\GestionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\GestionUsuarios.Designer.cs">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuloConfirmacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ModuloConfirmacion.Designer.cs">
+      <DependentUpon>ModuloConfirmacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\AgregarNuevoLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\AgregarNuevoLibro.Designer.cs">
+      <DependentUpon>AgregarNuevoLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\EditarLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\EditarLibro.Designer.cs">
+      <DependentUpon>EditarLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\ConsultarLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\ConsultarLibro.Designer.cs">
+      <DependentUpon>ConsultarLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\ConsultarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\ConsultarVentas.Designer.cs">
+      <DependentUpon>ConsultarVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\ConsultarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\ConsultarPedido.Designer.cs">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\VerPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\VerPedido.Designer.cs">
+      <DependentUpon>VerPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\VerVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\VerVenta.Designer.cs">
+      <DependentUpon>VerVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\VerLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\VerLibro.Designer.cs">
+      <DependentUpon>VerLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerente\GerentePrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerente\GerentePrincipal.Designer.cs">
+      <DependentUpon>GerentePrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InicioLogin\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\InicioLogin\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Proveedor\Catalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Proveedor\Catalogo.Designer.cs">
+      <DependentUpon>Catalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Proveedor\HistorialPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Proveedor\HistorialPedidos.Designer.cs">
+      <DependentUpon>HistorialPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Proveedor\ProveedorPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Proveedor\ProveedorPedidos.Designer.cs">
+      <DependentUpon>ProveedorPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Proveedor\ProveedorPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Proveedor\ProveedorPrincipal.Designer.cs">
+      <DependentUpon>ProveedorPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vendedor\AgregarLibroFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\AgregarLibroFactura.Designer.cs">
+      <DependentUpon>AgregarLibroFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vendedor\ConsultarStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\ConsultarStock.Designer.cs">
+      <DependentUpon>ConsultarStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vendedor\RealizarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\RealizarPedido.Designer.cs">
+      <DependentUpon>RealizarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vendedor\RealizarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\RealizarVenta.Designer.cs">
+      <DependentUpon>RealizarVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vendedor\VendedorPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\VendedorPrincipal.Designer.cs">
+      <DependentUpon>VendedorPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InicioLogin\Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\InicioLogin\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LoadingScreen.resx">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\Administrador\AdministradorPrincipal.resx">
+      <DependentUpon>AdministradorPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\ReporteInventarioGlobal.resx">
+      <DependentUpon>ReporteInventarioGlobal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\ReporteVentas.resx">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GestionCategorias.resx">
+      <DependentUpon>GestionCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GestionTiendas.resx">
+      <DependentUpon>GestionTiendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administrador\GestionUsuarios.resx">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModuloConfirmacion.resx">
+      <DependentUpon>ModuloConfirmacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\AgregarNuevoLibro.resx">
+      <DependentUpon>AgregarNuevoLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\EditarLibro.resx">
+      <DependentUpon>EditarLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\ConsultarLibro.resx">
+      <DependentUpon>ConsultarLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\ConsultarVentas.resx">
+      <DependentUpon>ConsultarVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\ConsultarPedido.resx">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\VerPedido.resx">
+      <DependentUpon>VerPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\VerVenta.resx">
+      <DependentUpon>VerVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\VerLibro.resx">
+      <DependentUpon>VerLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerente\GerentePrincipal.resx">
+      <DependentUpon>GerentePrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\InicioLogin\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Proveedor\Catalogo.resx">
+      <DependentUpon>Catalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Proveedor\HistorialPedidos.resx">
+      <DependentUpon>HistorialPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Proveedor\ProveedorPedidos.resx">
+      <DependentUpon>ProveedorPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Proveedor\ProveedorPrincipal.resx">
+      <DependentUpon>ProveedorPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\AgregarLibroFactura.resx">
+      <DependentUpon>AgregarLibroFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\ConsultarStock.resx">
+      <DependentUpon>ConsultarStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\RealizarPedido.resx">
+      <DependentUpon>RealizarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\RealizarVenta.resx">
+      <DependentUpon>RealizarVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\VendedorPrincipal.resx">
+      <DependentUpon>VendedorPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\InicioLogin\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\logo1.2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\Boscoso2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\LogoG1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\logoH1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\logoventana2B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\logolibros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\logoHumanito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\5305154_fb_facebook_facebook logo_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\104501_twitter_bird_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\5279112_camera_instagram_social media_instagram logo_icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
