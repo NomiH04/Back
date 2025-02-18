@@ -23,7 +23,7 @@ namespace LibreriaBoscoso.Views.InicioLogin
         public Login()
         {
             InitializeComponent();
-            _httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:7021/api/User/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://mi-api-boscoso.somee.com/api/User/login") };
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -33,11 +33,11 @@ namespace LibreriaBoscoso.Views.InicioLogin
             this.Hide();
         }
 
-        private void AbrirVentanaPorRol(string role)
+        private void AbrirVentanaPorRol(User user)
         {
             Form ventana = null;
 
-            switch (role.ToLower()) // Convertimos a minúsculas para evitar errores de comparación
+            switch (user.Role) 
             {
                 case "Seller":
                     ventana = new VendedorPrincipal();
@@ -97,7 +97,7 @@ namespace LibreriaBoscoso.Views.InicioLogin
                     MessageBox.Show($"Bienvenido {user.Name}", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Abrir la ventana según el rol del usuario
-                    AbrirVentanaPorRol(user.Role);
+                    AbrirVentanaPorRol(user);
                 }
                 else
                 {
@@ -108,6 +108,20 @@ namespace LibreriaBoscoso.Views.InicioLogin
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al conectar con la API: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void guestbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync("login");
+                string resultado = await response.Content.ReadAsStringAsync();
+                MessageBox.Show($"Respuesta del servidor: {response.StatusCode}\n{resultado}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al conectar con la API: {ex.Message}");
             }
         }
     }

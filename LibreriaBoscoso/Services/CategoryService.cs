@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LibreriaBoscoso.Models;
 
@@ -10,46 +12,89 @@ namespace LibreriaBoscoso.Services
     public class CategoryService
     {
         private readonly HttpClient _httpClient;
-
-        // URL base de la API para las categorías (ajusta la URL según tu API)
-        private const string BaseUrl = "https://localhost:7021/api/Category"; // Cambia esta URL según tu API
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Category"; // Ajustada la URL pública de la API
 
         public CategoryService()
         {
             _httpClient = new HttpClient();
         }
 
-        // Obtener todas las categorías
+        // Obtener todas las categorías con manejo de errores
         public async Task<List<Category>> GetCategoriesAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Category>>(BaseUrl);
+            try
+            {
+                // Hacer la solicitud GET
+                var response = await _httpClient.GetAsync(BaseUrl);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                // Obtener el JSON en formato string
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                // Imprimir JSON recibido para depuración
+                Console.WriteLine("JSON recibido desde la API:\n" + jsonString);
+
+                // Intentar deserializar como una lista de categorías directamente
+                try
+                {
+                    var categorias = JsonSerializer.Deserialize<List<Category>>(jsonString, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (categorias != null && categorias.Count > 0)
+                    {
+                        return categorias;
+                    }
+                }
+                catch (JsonException)
+                {
+                    Console.WriteLine("El JSON no es una lista directa de categorías.");
+                }
+
+                // Si no funcionó, intentar deserializar como objeto con una propiedad raíz
+                try
+                {
+                    var categoryResponse = JsonSerializer.Deserialize<CategoryResponse>(jsonString, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (categoryResponse?.Categories != null && categoryResponse.Categories.Count > 0)
+                    {
+                        return categoryResponse.Categories;
+                    }
+                }
+                catch (JsonException)
+                {
+                    Console.WriteLine("El JSON tampoco coincide con un objeto raíz esperado.");
+                }
+
+                throw new Exception("No se encontraron categorías o el formato del JSON es incorrecto.");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de solicitud HTTP: " + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Error al procesar JSON: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener las categorías: " + ex.Message);
+            }
         }
 
-        // Obtener una categoría por ID
-        public async Task<Category> GetCategoryByIdAsync(int categoryId)
+        // Clase para manejar respuestas con un objeto raíz
+        public class CategoryResponse
         {
-            return await _httpClient.GetFromJsonAsync<Category>($"{BaseUrl}/{categoryId}");
-        }
-
-        // Crear una nueva categoría
-        public async Task<bool> CreateCategoryAsync(Category category)
-        {
-            var response = await _httpClient.PostAsJsonAsync(BaseUrl, category);
-            return response.IsSuccessStatusCode;
-        }
-
-        // Actualizar una categoría
-        public async Task<bool> UpdateCategoryAsync(int categoryId, Category category)
-        {
-            var response = await _httpClient.PatchAsJsonAsync($"{BaseUrl}/{categoryId}", category);
-            return response.IsSuccessStatusCode;
-        }
-
-        // Eliminar una categoría
-        public async Task<bool> DeleteCategoryAsync(int categoryId)
-        {
-            var response = await _httpClient.DeleteAsync($"{BaseUrl}/{categoryId}");
-            return response.IsSuccessStatusCode;
+            [JsonPropertyName("categories")]
+            public List<Category> Categories { get; set; }
         }
     }
 }

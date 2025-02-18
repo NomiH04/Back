@@ -40,8 +40,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Rolelb = new System.Windows.Forms.Label();
+            this.Userlb = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -190,27 +190,30 @@
             this.button1.Text = "Accesibilidad";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // Rolelb
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(763, 51);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Rol";
+            this.Rolelb.AutoSize = true;
+            this.Rolelb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rolelb.Location = new System.Drawing.Point(763, 51);
+            this.Rolelb.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.Rolelb.Name = "Rolelb";
+            this.Rolelb.Size = new System.Drawing.Size(29, 15);
+            this.Rolelb.TabIndex = 15;
+            this.Rolelb.Text = "Rol";
+            this.Rolelb.Click += new System.EventHandler(this.Rolelb_Click);
             // 
-            // label1
+            // Userlb
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(699, 51);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Usuario";
+            this.Userlb.AutoSize = true;
+            this.Userlb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Userlb.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Userlb.Location = new System.Drawing.Point(699, 51);
+            this.Userlb.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.Userlb.Name = "Userlb";
+            this.Userlb.Size = new System.Drawing.Size(57, 15);
+            this.Userlb.TabIndex = 14;
+            this.Userlb.Text = "Usuario";
+            this.Userlb.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -222,6 +225,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button2
             // 
@@ -290,8 +294,8 @@
             this.ClientSize = new System.Drawing.Size(803, 455);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Rolelb);
+            this.Controls.Add(this.Userlb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.textBox1);
@@ -325,8 +329,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Rolelb;
+        private System.Windows.Forms.Label Userlb;
         private System.Windows.Forms.ToolStripMenuItem reportesInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarCategoriasLibrosToolStripMenuItem;
         private System.Windows.Forms.Button button2;
