@@ -56,7 +56,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Hide();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             ProveedorPrincipal proveedorPrincipal = new ProveedorPrincipal();
             proveedorPrincipal.Show();
@@ -69,6 +70,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             login.Show();
             this.Hide();
         }
+
+        
     }
 }
 
