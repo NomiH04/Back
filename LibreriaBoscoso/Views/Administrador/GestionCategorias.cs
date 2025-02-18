@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
@@ -15,6 +18,7 @@ namespace LibreriaBoscoso.Views.Administrador
     public partial class GestionCategorias : Form
     {
         private readonly CategoryService _categoryService;
+
         public GestionCategorias()
         {
             InitializeComponent();
@@ -86,13 +90,48 @@ namespace LibreriaBoscoso.Views.Administrador
 
                 // Puedes realizar alguna acción con el ID, como mostrar detalles de la categoría
                 MessageBox.Show($"ID de la categoría seleccionada: {categoryId}");
+
+                // Desplazar el scroll hacia la fila seleccionada
+                dataGridView1.FirstDisplayedScrollingRowIndex = e.RowIndex;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            // Obtener el nombre de la categoría desde el TextBox
+            string categoriaNombre = txt_Nombre_Categoria.Text.Trim();
 
+            // Verificar que el nombre no esté vacío
+            if (!string.IsNullOrEmpty(categoriaNombre))
+            {
+                // Crear el objeto de categoría para enviarlo al servicio
+                var nuevaCategoria = new Category { Name = categoriaNombre };
+
+                try
+                {
+                    // Llamar al servicio para agregar la nueva categoría
+                    await _categoryService.AddCategoryAsync(nuevaCategoria);
+
+                    // Limpiar el TextBox después de agregar la categoría
+                    txt_Nombre_Categoria.Clear();
+
+                    // Volver a cargar las categorías después de agregar
+                    await CargarCategorias();
+
+                    // Mostrar mensaje de éxito
+                    MessageBox.Show("Categoría agregada correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al agregar la categoría: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un nombre para la categoría.");
+            }
         }
+
 
         private async Task CargarCategorias()
         {
@@ -116,10 +155,6 @@ namespace LibreriaBoscoso.Views.Administrador
                     // Personalizar el encabezado de las columnas
                     dataGridView1.Columns["CategoryId"].HeaderText = "ID";
                     dataGridView1.Columns["Name"].HeaderText = "Nombre";
-
-                    // Si deseas ocultar la columna CategoryId (opcional)
-                    // dataGridView1.Columns["CategoryId"].Visible = false;
-
                 }
                 else
                 {
@@ -133,9 +168,45 @@ namespace LibreriaBoscoso.Views.Administrador
             }
         }
 
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        // Eliminar la lógica del evento TextChanged aquí
+
+        // Método que se ejecuta cuando se hace clic en el botón para agregar la categoría
+        private async void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            string categoriaNombre = txt_Nombre_Categoria.Text;
+
+            if (!string.IsNullOrEmpty(categoriaNombre))
+            {
+                var newCategory = new Category
+                {
+                    Name = categoriaNombre // Asumiendo que la clase Category tiene una propiedad Name
+                };
+
+                try
+                {
+                    // Llamamos al servicio para agregar la nueva categoría
+                    await _categoryService.AddCategoryAsync(newCategory);
+                    MessageBox.Show("Categoría agregada correctamente.");
+
+                    // Volver a cargar las categorías después de agregar una nueva
+                    await CargarCategorias();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al agregar la categoría: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingresa un nombre para la categoría.");
+            }
+        }
+
+        private void txt_Nombre_Categoria_TextChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 }
+

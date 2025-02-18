@@ -12,7 +12,7 @@ namespace LibreriaBoscoso.Services
     public class CategoryService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Category"; // Ajustada la URL pública de la API
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Category"; // URL pública de la API
 
         public CategoryService()
         {
@@ -87,6 +87,41 @@ namespace LibreriaBoscoso.Services
             catch (Exception ex)
             {
                 throw new Exception("Error al obtener las categorías: " + ex.Message);
+            }
+        }
+
+        // Agregar una nueva categoría
+        public async Task AddCategoryAsync(Category category)
+        {
+            try
+            {
+                // Serializamos el objeto category a JSON
+                var jsonContent = JsonSerializer.Serialize(category);
+                var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+
+                // Enviar solicitud POST a la API para agregar la categoría
+                var response = await _httpClient.PostAsync(BaseUrl, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error al agregar categoría: {response.StatusCode}");
+                }
+
+                // Si la categoría se agrega correctamente, puedes manejar la respuesta si es necesario
+                var jsonString = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Categoría agregada:\n" + jsonString);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de solicitud HTTP: " + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Error al procesar JSON: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar la categoría: " + ex.Message);
             }
         }
 

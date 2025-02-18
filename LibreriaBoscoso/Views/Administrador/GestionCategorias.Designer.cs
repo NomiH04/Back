@@ -48,10 +48,10 @@
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Agregar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Nombre_Categoria = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -233,7 +233,6 @@
             this.menuStrip2.Size = new System.Drawing.Size(800, 46);
             this.menuStrip2.TabIndex = 54;
             this.menuStrip2.Text = "menuStrip2";
-            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -277,18 +276,18 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btn_Agregar
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(104, 180);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 33);
-            this.button2.TabIndex = 64;
-            this.button2.Text = "Confirmar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_Agregar.ForeColor = System.Drawing.Color.White;
+            this.btn_Agregar.Location = new System.Drawing.Point(104, 180);
+            this.btn_Agregar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Agregar.Name = "btn_Agregar";
+            this.btn_Agregar.Size = new System.Drawing.Size(71, 33);
+            this.btn_Agregar.TabIndex = 64;
+            this.btn_Agregar.Text = "Agregar";
+            this.btn_Agregar.UseVisualStyleBackColor = false;
+            this.btn_Agregar.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
@@ -312,14 +311,15 @@
             this.textBox6.TabIndex = 61;
             this.textBox6.Text = "Buscar";
             // 
-            // textBox2
+            // txt_Nombre_Categoria
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(104, 135);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 26);
-            this.textBox2.TabIndex = 59;
+            this.txt_Nombre_Categoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Nombre_Categoria.Location = new System.Drawing.Point(104, 135);
+            this.txt_Nombre_Categoria.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Nombre_Categoria.Name = "txt_Nombre_Categoria";
+            this.txt_Nombre_Categoria.Size = new System.Drawing.Size(215, 26);
+            this.txt_Nombre_Categoria.TabIndex = 59;
+            this.txt_Nombre_Categoria.TextChanged += new System.EventHandler(this.txt_Nombre_Categoria_TextChanged);
             // 
             // label4
             // 
@@ -363,10 +363,10 @@
             this.ClientSize = new System.Drawing.Size(800, 458);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txt_Nombre_Categoria);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
@@ -413,10 +413,10 @@
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Agregar;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_Nombre_Categoria;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
