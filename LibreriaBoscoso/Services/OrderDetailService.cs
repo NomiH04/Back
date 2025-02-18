@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LibreriaBoscoso.Models;
 
@@ -10,39 +12,89 @@ namespace LibreriaBoscoso.Services
     public class OrderDetailService
     {
         private readonly HttpClient _httpClient;
-
-        // URL base de la API para los detalles de la orden (ajusta la URL según tu API)
-        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/OrderDetail"; // Cambia esta URL según tu API
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/OrderDetail"; // Ajusta la URL según tu API
 
         public OrderDetailService()
         {
             _httpClient = new HttpClient();
         }
 
-        // Obtener todos los detalles de las órdenes
+        // Obtener todos los detalles de las órdenes con manejo de errores
         public async Task<List<OrderDetail>> GetOrderDetailsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<OrderDetail>>(BaseUrl);
+            try
+            {
+                // Hacer la solicitud GET
+                var response = await _httpClient.GetAsync(BaseUrl);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                // Obtener el JSON en formato string
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                // Imprimir JSON recibido para depuración
+                Console.WriteLine("JSON recibido desde la API:\n" + jsonString);
+
+                // Intentar deserializar como una lista de detalles de órdenes directamente
+                try
+                {
+                    var orderDetails = JsonSerializer.Deserialize<List<OrderDetail>>(jsonString, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (orderDetails != null && orderDetails.Count > 0)
+                    {
+                        return orderDetails;
+                    }
+                }
+                catch (JsonException)
+                {
+                    Console.WriteLine("El JSON no es una lista directa de detalles de órdenes.");
+                }
+
+                // Si no funcionó, intentar deserializar como objeto con una propiedad raíz
+                try
+                {
+                    var orderDetailResponse = JsonSerializer.Deserialize<OrderDetailResponse>(jsonString, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (orderDetailResponse?.OrderDetails != null && orderDetailResponse.OrderDetails.Count > 0)
+                    {
+                        return orderDetailResponse.OrderDetails;
+                    }
+                }
+                catch (JsonException)
+                {
+                    Console.WriteLine("El JSON tampoco coincide con un objeto raíz esperado.");
+                }
+
+                throw new Exception("No se encontraron detalles de órdenes o el formato del JSON es incorrecto.");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de solicitud HTTP: " + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Error al procesar JSON: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los detalles de las órdenes: " + ex.Message);
+            }
         }
 
-        // Obtener los detalles de una orden específica
-        public async Task<List<OrderDetail>> GetOrderDetailsByOrderIdAsync(int orderId)
+        // Clase para manejar respuestas con un objeto raíz
+        public class OrderDetailResponse
         {
-            return await _httpClient.GetFromJsonAsync<List<OrderDetail>>($"{BaseUrl}/{orderId}");
-        }
-
-        // Crear un nuevo detalle de orden
-        public async Task<bool> CreateOrderDetailAsync(OrderDetail orderDetail)
-        {
-            var response = await _httpClient.PostAsJsonAsync(BaseUrl, orderDetail);
-            return response.IsSuccessStatusCode;
-        }
-
-        // Eliminar un detalle de orden
-        public async Task<bool> DeleteOrderDetailAsync(int orderId, int bookId)
-        {
-            var response = await _httpClient.DeleteAsync($"{BaseUrl}/{orderId}/{bookId}");
-            return response.IsSuccessStatusCode;
+            [JsonPropertyName("orderDetails")]
+            public List<OrderDetail> OrderDetails { get; set; }
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LibreriaBoscoso.Models;
 
@@ -10,46 +11,74 @@ namespace LibreriaBoscoso.Services
     public class InventoryService
     {
         private readonly HttpClient _httpClient;
-
-        // URL base de la API para el inventario (ajusta la URL según tu API)
-        private const string BaseUrl = "https://localhost:7021/api/Inventory"; // Cambia esta URL según tu API
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Inventory"; // Ajusta la URL de tu API
 
         public InventoryService()
         {
             _httpClient = new HttpClient();
         }
 
-        // Obtener todo el inventario
+        // Obtener todo el inventario con manejo de errores
         public async Task<List<Inventory>> GetInventoryAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Inventory>>(BaseUrl);
+            try
+            {
+                // Hacer la solicitud GET
+                var response = await _httpClient.GetAsync(BaseUrl);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                // Obtener el JSON en formato string
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                // Imprimir JSON recibido para depuración
+                Console.WriteLine("JSON recibido desde la API:\n" + jsonString);
+
+                // Intentar deserializar como un objeto raíz que contiene la lista de inventarios
+                try
+                {
+                    var inventoryResponse = JsonSerializer.Deserialize<JsonElement>(jsonString);
+                    var inventoryArray = inventoryResponse.GetProperty("inventory");
+
+                    var inventories = JsonSerializer.Deserialize<List<Inventory>>(inventoryArray.ToString(), new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (inventories != null && inventories.Count > 0)
+                    {
+                        return inventories;
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    Console.WriteLine("Error al deserializar el JSON: " + ex.Message);
+                }
+
+                throw new Exception("No se encontraron inventarios o el formato del JSON es incorrecto.");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de solicitud HTTP: " + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Error al procesar JSON: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el inventario: " + ex.Message);
+            }
         }
 
-        // Obtener el inventario de una tienda específica
-        public async Task<List<Inventory>> GetInventoryByStoreIdAsync(int storeId)
+        // Clase para manejar respuestas con un objeto raíz
+        public class InventoryResponse
         {
-            return await _httpClient.GetFromJsonAsync<List<Inventory>>($"{BaseUrl}/store/{storeId}");
-        }
-
-        // Crear o actualizar el inventario de un libro en una tienda
-        public async Task<bool> CreateOrUpdateInventoryAsync(Inventory inventory)
-        {
-            var response = await _httpClient.PostAsJsonAsync(BaseUrl, inventory);
-            return response.IsSuccessStatusCode;
-        }
-
-        // **Método para actualizar el inventario** (PUT)
-        public async Task<bool> UpdateInventoryAsync(int storeId, int bookId, Inventory inventory)
-        {
-            var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{storeId}/{bookId}", inventory); // Usamos PUT para actualizar el inventario
-            return response.IsSuccessStatusCode;
-        }
-
-        // Eliminar un inventario de una tienda para un libro específico
-        public async Task<bool> DeleteInventoryAsync(int storeId, int bookId)
-        {
-            var response = await _httpClient.DeleteAsync($"{BaseUrl}/{storeId}/{bookId}");
-            return response.IsSuccessStatusCode;
+            [JsonPropertyName("inventory")]
+            public List<Inventory> Inventories { get; set; }
         }
     }
 }

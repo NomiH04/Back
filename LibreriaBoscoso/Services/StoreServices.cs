@@ -19,9 +19,9 @@ using LibreriaBoscoso.Services;
             private readonly HttpClient _httpClient;
 
             // URL base de la API (ajusta la URL según tu API)
-            private const string BaseUrl = "https://localhost:7021/api/Store"; // Ajusta la URL según la de tu API
+            private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Category"; // Ajusta la URL según la de tu API
 
-            public StoreService()
+        public StoreService()
             {
                 _httpClient = new HttpClient();
             }

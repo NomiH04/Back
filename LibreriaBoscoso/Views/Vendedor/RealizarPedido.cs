@@ -7,65 +7,145 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Models;
+using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
 namespace LibreriaBoscoso.Views.Vendedor
 {
     public partial class RealizarPedido : Form
     {
+        private readonly OrderDetailService _orderDetailService;
+        private List<OrderDetail> _orderDetails;
+
         public RealizarPedido()
         {
             InitializeComponent();
+            _orderDetailService = new OrderDetailService();
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void RealizarPedido_Load(object sender, EventArgs e)
         {
-
+            CargarDetallesPedido();
         }
 
-        private void consultarStockToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void CargarDetallesPedido()
         {
-            ConsultarStock consultarStock = new ConsultarStock();
-            consultarStock.Show();
-            this.Hide();
+            try
+            {
+                // Obtener los detalles de los pedidos desde el servicio
+                _orderDetails = await _orderDetailService.GetOrderDetailsAsync();
+
+                // Configurar las columnas del DataGridView
+                dgv_Libros.Columns.Clear();  // Limpiar cualquier columna anterior si existe
+
+                // Crear y agregar columnas manualmente
+                dgv_Libros.Columns.Add("OrderId", "Order ID");
+                dgv_Libros.Columns.Add("BookId", "Book ID");
+                dgv_Libros.Columns.Add("Quantity", "Quantity");
+
+                // Establecer propiedades opcionales para la visualización
+                dgv_Libros.Columns["OrderId"].Width = 100;
+                dgv_Libros.Columns["BookId"].Width = 100;
+                dgv_Libros.Columns["Quantity"].Width = 80;
+
+                // Mostrar los detalles en el DataGridView
+                dgv_Libros.DataSource = _orderDetails;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los detalles del pedido: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FiltrarDetallesPedido(string filtro)
+        {
+            if (string.IsNullOrWhiteSpace(filtro))
+            {
+                dgv_Libros.DataSource = _orderDetails;
+            }
+            else
+            {
+                // Filtrar por OrderId (ajusta según lo que desees buscar)
+                var resultadosFiltrados = _orderDetails.Where(od => od.OrderId.ToString().Contains(filtro)).ToList();
+
+                dgv_Libros.DataSource = resultadosFiltrados;
+            }
+        }
+
+        private void realizar_Venta_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RealizarVenta realizarVenta = new RealizarVenta();
             realizarVenta.Show();
             this.Hide();
         }
 
-        private void realziarPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void realizar_Pedido_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RealizarPedido realizarPedido = new RealizarPedido();
-            realizarPedido.Show();
+            RealizarVenta realizarVenta = new RealizarVenta();
+            realizarVenta.Show();
             this.Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             VendedorPrincipal vendedor = new VendedorPrincipal();
             vendedor.Show();
             this.Hide();
         }
 
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            string filtro = txt_Buscador.Text.Trim();
+            FiltrarDetallesPedido(filtro);
+        }
+        // Limpia el TextBox cuando entra (si tiene el valor por defecto)
+        private void txt_Buscador_Enter(object sender, EventArgs e)
+        {
+            if (txt_Buscador.Text == "Buscar")
+            {
+                txt_Buscador.Clear();
+            }
+        }
+
+        // Vuelve a poner el texto "Buscar" cuando se sale del TextBox y está vacío
+        private void txt_Buscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Buscador.Text))
+            {
+                txt_Buscador.Text = "Buscar";
+            }
+        }
+
+        private void btn_Cerrar_Sesion_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.Show();
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void txt_Buscar_Enter(object sender, EventArgs e)
         {
-
+            if (txt_Buscar.Text == "Buscar")
+            {
+                txt_Buscar.Clear();
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void txt_Buscar_Leave(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txt_Buscar.Text))
+            {
+                txt_Buscar.Text = "Buscar";
+            }
+        }
 
+        private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarStock consultarStock = new ConsultarStock();
+            consultarStock.Show();
+            this.Hide();
         }
     }
 }

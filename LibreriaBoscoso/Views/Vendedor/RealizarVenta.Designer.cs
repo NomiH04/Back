@@ -1,4 +1,6 @@
-﻿namespace LibreriaBoscoso.Views.Vendedor
+﻿using System.Windows.Forms;
+
+namespace LibreriaBoscoso.Views.Vendedor
 {
     partial class RealizarVenta
     {
@@ -28,16 +30,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Rol = new System.Windows.Forms.Label();
+            this.label_Usuario = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultar_Stock_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.realziarPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.realizar_Venta_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.realizar_Pedido_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,46 +47,42 @@
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label_Num_Venta = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dgv_Libros = new System.Windows.Forms.DataGridView();
+            this.btn_Agregar_Libro = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.label_Numero_de_Venta = new System.Windows.Forms.Label();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
+            this.btn_Buscar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Libros)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // label_Rol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(749, 54);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Rol";
+            this.label_Rol.AutoSize = true;
+            this.label_Rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Rol.Location = new System.Drawing.Point(749, 54);
+            this.label_Rol.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Rol.Name = "label_Rol";
+            this.label_Rol.Size = new System.Drawing.Size(29, 15);
+            this.label_Rol.TabIndex = 11;
+            this.label_Rol.Text = "Rol";
             // 
-            // label1
+            // label_Usuario
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(684, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Usuario";
+            this.label_Usuario.AutoSize = true;
+            this.label_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Usuario.Location = new System.Drawing.Point(684, 54);
+            this.label_Usuario.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Usuario.Name = "label_Usuario";
+            this.label_Usuario.Size = new System.Drawing.Size(57, 15);
+            this.label_Usuario.TabIndex = 10;
+            this.label_Usuario.Text = "Usuario";
             // 
             // btnCerrarSesion
             // 
@@ -93,7 +91,7 @@
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 9;
@@ -101,15 +99,17 @@
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
-            // textBox1
+            // txt_Buscar
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(454, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 25);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Buscar";
+            this.txt_Buscar.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscar.Location = new System.Drawing.Point(454, 8);
+            this.txt_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscar.Name = "txt_Buscar";
+            this.txt_Buscar.Size = new System.Drawing.Size(190, 25);
+            this.txt_Buscar.TabIndex = 8;
+            this.txt_Buscar.Text = "Buscar";
+            this.txt_Buscar.Enter += new System.EventHandler(this.txt_Buscar_Enter);
+            this.txt_Buscar.Leave += new System.EventHandler(this.txt_Buscar_Leave);
             // 
             // menuStrip1
             // 
@@ -129,53 +129,53 @@
             // librosToolStripMenuItem
             // 
             this.librosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultarStockToolStripMenuItem});
+            this.consultar_Stock_ToolStripMenuItem});
             this.librosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.librosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
             this.librosToolStripMenuItem.Size = new System.Drawing.Size(91, 36);
             this.librosToolStripMenuItem.Text = "Libros";
             // 
-            // consultarStockToolStripMenuItem
+            // consultar_Stock_ToolStripMenuItem
             // 
-            this.consultarStockToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.consultarStockToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.consultarStockToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.consultarStockToolStripMenuItem.Name = "consultarStockToolStripMenuItem";
-            this.consultarStockToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
-            this.consultarStockToolStripMenuItem.Text = "Consultar Stock";
-            this.consultarStockToolStripMenuItem.Click += new System.EventHandler(this.consultarStockToolStripMenuItem_Click);
+            this.consultar_Stock_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.consultar_Stock_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.consultar_Stock_ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.consultar_Stock_ToolStripMenuItem.Name = "consultar_Stock_ToolStripMenuItem";
+            this.consultar_Stock_ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.consultar_Stock_ToolStripMenuItem.Text = "Consultar Stock";
+            this.consultar_Stock_ToolStripMenuItem.Click += new System.EventHandler(this.consultar_Stock_ToolStripMenuItem_Click);
             // 
             // ventaToolStripMenuItem
             // 
             this.ventaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.realizarVentaToolStripMenuItem,
-            this.realziarPedidoToolStripMenuItem});
+            this.realizar_Venta_ToolStripMenuItem,
+            this.realizar_Pedido_ToolStripMenuItem});
             this.ventaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
             this.ventaToolStripMenuItem.Size = new System.Drawing.Size(88, 36);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
-            // realizarVentaToolStripMenuItem
+            // realizar_Venta_ToolStripMenuItem
             // 
-            this.realizarVentaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.realizarVentaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.realizarVentaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.realizarVentaToolStripMenuItem.Name = "realizarVentaToolStripMenuItem";
-            this.realizarVentaToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.realizarVentaToolStripMenuItem.Text = "Realizar Venta";
-            this.realizarVentaToolStripMenuItem.Click += new System.EventHandler(this.realizarVentaToolStripMenuItem_Click);
+            this.realizar_Venta_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.realizar_Venta_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.realizar_Venta_ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.realizar_Venta_ToolStripMenuItem.Name = "realizar_Venta_ToolStripMenuItem";
+            this.realizar_Venta_ToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.realizar_Venta_ToolStripMenuItem.Text = "Realizar Venta";
+            this.realizar_Venta_ToolStripMenuItem.Click += new System.EventHandler(this.realizar_Venta_ToolStripMenuItem_Click);
             // 
-            // realziarPedidoToolStripMenuItem
+            // realizar_Pedido_ToolStripMenuItem
             // 
-            this.realziarPedidoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.realziarPedidoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.realziarPedidoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.realziarPedidoToolStripMenuItem.Name = "realziarPedidoToolStripMenuItem";
-            this.realziarPedidoToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.realziarPedidoToolStripMenuItem.Text = "Realizar Pedido";
-            this.realziarPedidoToolStripMenuItem.Click += new System.EventHandler(this.realziarPedidoToolStripMenuItem_Click);
+            this.realizar_Pedido_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.realizar_Pedido_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.realizar_Pedido_ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.realizar_Pedido_ToolStripMenuItem.Name = "realizar_Pedido_ToolStripMenuItem";
+            this.realizar_Pedido_ToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.realizar_Pedido_ToolStripMenuItem.Text = "Realizar Pedido";
+            this.realizar_Pedido_ToolStripMenuItem.Click += new System.EventHandler(this.realizar_Pedido_ToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -183,7 +183,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(697, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 24);
             this.button1.TabIndex = 57;
@@ -247,16 +247,16 @@
             this.label3.TabIndex = 58;
             this.label3.Text = "Num de Venta:";
             // 
-            // label4
+            // label_Num_Venta
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(182, 98);
-            this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 25);
-            this.label4.TabIndex = 59;
-            this.label4.Text = "####";
+            this.label_Num_Venta.AutoSize = true;
+            this.label_Num_Venta.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Num_Venta.Location = new System.Drawing.Point(182, 98);
+            this.label_Num_Venta.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Num_Venta.Name = "label_Num_Venta";
+            this.label_Num_Venta.Size = new System.Drawing.Size(56, 25);
+            this.label_Num_Venta.TabIndex = 59;
+            this.label_Num_Venta.Text = "####";
             // 
             // label5
             // 
@@ -269,92 +269,58 @@
             this.label5.TabIndex = 60;
             this.label5.Text = "Libros Agregados";
             // 
-            // dataGridView1
+            // dgv_Libros
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Titulo,
-            this.Autor,
-            this.Precio,
-            this.Cantidad});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(46, 169);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 102;
-            this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(701, 138);
-            this.dataGridView1.TabIndex = 61;
+            this.dgv_Libros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Libros.Enabled = false;
+            this.dgv_Libros.Location = new System.Drawing.Point(46, 169);
+            this.dgv_Libros.Margin = new System.Windows.Forms.Padding(1);
+            this.dgv_Libros.Name = "dgv_Libros";
+            this.dgv_Libros.ReadOnly = true;
+            this.dgv_Libros.RowHeadersWidth = 102;
+            this.dgv_Libros.RowTemplate.Height = 40;
+            this.dgv_Libros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgv_Libros.Size = new System.Drawing.Size(701, 138);
+            this.dgv_Libros.TabIndex = 61;
+            this.dgv_Libros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Libros_CellClick);
             // 
-            // Titulo
+            // btn_Agregar_Libro
             // 
-            this.Titulo.Frozen = true;
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.MinimumWidth = 12;
-            this.Titulo.Name = "Titulo";
-            this.Titulo.Width = 250;
-            // 
-            // Autor
-            // 
-            this.Autor.Frozen = true;
-            this.Autor.HeaderText = "Autor";
-            this.Autor.MinimumWidth = 12;
-            this.Autor.Name = "Autor";
-            this.Autor.Width = 250;
-            // 
-            // Precio
-            // 
-            this.Precio.Frozen = true;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 12;
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 250;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.Frozen = true;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 12;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 250;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(46, 318);
-            this.button2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 34);
-            this.button2.TabIndex = 62;
-            this.button2.Text = "Agregar Libro";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Agregar_Libro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_Agregar_Libro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_Agregar_Libro.Location = new System.Drawing.Point(46, 318);
+            this.btn_Agregar_Libro.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Agregar_Libro.Name = "btn_Agregar_Libro";
+            this.btn_Agregar_Libro.Size = new System.Drawing.Size(87, 34);
+            this.btn_Agregar_Libro.TabIndex = 62;
+            this.btn_Agregar_Libro.Text = "Agregar Libro";
+            this.btn_Agregar_Libro.UseVisualStyleBackColor = false;
+            this.btn_Agregar_Libro.Click += new System.EventHandler(this.btn_Agregar_Libro_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.RoyalBlue;
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(543, 352);
-            this.button3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 34);
             this.button3.TabIndex = 63;
             this.button3.Text = "Finalizar Venta";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btn_Cancelar
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(661, 352);
-            this.button4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 34);
-            this.button4.TabIndex = 64;
-            this.button4.Text = "Cancelar";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_Cancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_Cancelar.ForeColor = System.Drawing.Color.White;
+            this.btn_Cancelar.Location = new System.Drawing.Point(661, 352);
+            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(87, 34);
+            this.btn_Cancelar.TabIndex = 64;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = false;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // label6
             // 
@@ -367,72 +333,76 @@
             this.label6.TabIndex = 65;
             this.label6.Text = "Num de Venta:";
             // 
-            // label7
+            // label_Numero_de_Venta
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(653, 318);
-            this.label7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 25);
-            this.label7.TabIndex = 66;
-            this.label7.Text = "########";
+            this.label_Numero_de_Venta.AutoSize = true;
+            this.label_Numero_de_Venta.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Numero_de_Venta.Location = new System.Drawing.Point(653, 318);
+            this.label_Numero_de_Venta.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Numero_de_Venta.Name = "label_Numero_de_Venta";
+            this.label_Numero_de_Venta.Size = new System.Drawing.Size(100, 25);
+            this.label_Numero_de_Venta.TabIndex = 66;
+            this.label_Numero_de_Venta.Text = "########";
             // 
-            // textBox2
+            // txt_Buscador
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(467, 138);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 25);
-            this.textBox2.TabIndex = 67;
-            this.textBox2.Text = "Buscar";
+            this.txt_Buscador.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscador.Location = new System.Drawing.Point(467, 138);
+            this.txt_Buscador.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(190, 25);
+            this.txt_Buscador.TabIndex = 67;
+            this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
-            // button5
+            // btn_Buscar
             // 
-            this.button5.BackColor = System.Drawing.Color.Gray;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(681, 133);
-            this.button5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(66, 26);
-            this.button5.TabIndex = 68;
-            this.button5.Text = "Buscar";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_Buscar.BackColor = System.Drawing.Color.Gray;
+            this.btn_Buscar.ForeColor = System.Drawing.Color.White;
+            this.btn_Buscar.Location = new System.Drawing.Point(681, 133);
+            this.btn_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(66, 26);
+            this.btn_Buscar.TabIndex = 68;
+            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.UseVisualStyleBackColor = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // RealizarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 457);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btn_Buscar);
+            this.Controls.Add(this.txt_Buscador);
+            this.Controls.Add(this.label_Numero_de_Venta);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btn_Agregar_Libro);
+            this.Controls.Add(this.dgv_Libros);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label_Num_Venta);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_Rol);
+            this.Controls.Add(this.label_Usuario);
             this.Controls.Add(this.btnCerrarSesion);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "RealizarVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RealizarVenta";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Realizar_Venta_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Libros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,16 +410,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Rol;
+        private System.Windows.Forms.Label label_Usuario;
         private System.Windows.Forms.Button btnCerrarSesion;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_Buscar;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem librosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultarStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultar_Stock_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem realizarVentaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem realziarPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem realizar_Venta_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem realizar_Pedido_ToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
@@ -457,19 +427,15 @@
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_Num_Venta;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dgv_Libros;
+        private System.Windows.Forms.Button btn_Agregar_Libro;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label_Numero_de_Venta;
+        private System.Windows.Forms.TextBox txt_Buscador;
+        private System.Windows.Forms.Button btn_Buscar;
     }
 }

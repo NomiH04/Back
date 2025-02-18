@@ -21,46 +21,56 @@ namespace LibreriaBoscoso.Views
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.ActiveControl = label_Usuario;
         }
 
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-        }
-
-        private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RealizarVenta realizarVenta = new RealizarVenta();
-            realizarVenta.Show();
-            this.Hide();
-        }
-
-        private void textBox1_Enter(object sender, EventArgs e)
-        {
-            textBox1.Clear();
-        }
-
-        private void textBox1_Leave(object sender, EventArgs e)
-        {
-            string text = "Buscar";
-            textBox1.Text = text;
-        }
-
-        private void consultarStockToolStripMenuItem_Click(object sender, EventArgs e)
+        private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsultarStock consultarStock = new ConsultarStock();
             consultarStock.Show();
             this.Hide();
         }
 
-        private void realziarPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void realizar_Venta_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RealizarVenta realizarVenta = new RealizarVenta();
+            realizarVenta.Show();
+            this.Hide();
+        }
+
+        private void realizar_Pedido_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RealizarPedido realizarPedido = new RealizarPedido();
             realizarPedido.Show();
             this.Hide();
+        }
+
+        private void btn_Cerrar_Sesion_Click(object sender, EventArgs e)
+        {
+            var confirmacion = MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
+        }
+
+        private void txt_Buscar_Enter(object sender, EventArgs e)
+        {
+            if (txt_Buscar.Text == "Buscar")
+            {
+                txt_Buscar.Clear();
+            }
+        }
+
+        private void txt_Buscar_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Buscar.Text))
+            {
+                txt_Buscar.Text = "Buscar";
+            }
         }
     }
 }

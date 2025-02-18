@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LibreriaBoscoso.Models;
 
@@ -10,46 +11,74 @@ namespace LibreriaBoscoso.Services
     public class SaleService
     {
         private readonly HttpClient _httpClient;
-
-        // URL base de la API (ajustada a la nueva URL)
-        private const string BaseUrl = "https://localhost:7021/api/Sale"; // Aquí ajustamos la URL
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Sale"; // Ajusta la URL pública de la API
 
         public SaleService()
         {
             _httpClient = new HttpClient();
         }
 
-        // ✅ 1. Obtener todas las ventas (GET)
+        // Obtener todas las ventas con manejo de errores
         public async Task<List<Sale>> GetSalesAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Sale>>(BaseUrl);
+            try
+            {
+                // Hacer la solicitud GET
+                var response = await _httpClient.GetAsync(BaseUrl);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                // Obtener el JSON en formato string
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                // Imprimir JSON recibido para depuración
+                Console.WriteLine("JSON recibido desde la API:\n" + jsonString);
+
+                // Intentar deserializar como un objeto raíz que contiene la lista de ventas
+                try
+                {
+                    var saleResponse = JsonSerializer.Deserialize<JsonElement>(jsonString);
+                    var salesArray = saleResponse.GetProperty("sale");
+
+                    var sales = JsonSerializer.Deserialize<List<Sale>>(salesArray.ToString(), new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (sales != null && sales.Count > 0)
+                    {
+                        return sales;
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    Console.WriteLine("Error al deserializar el JSON: " + ex.Message);
+                }
+
+                throw new Exception("No se encontraron ventas o el formato del JSON es incorrecto.");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de solicitud HTTP: " + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Error al procesar JSON: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener las ventas: " + ex.Message);
+            }
         }
 
-        // ✅ 2. Obtener una venta por ID (GET)
-        public async Task<Sale> GetSaleByIdAsync(int id)
+        // Clase para manejar respuestas con un objeto raíz
+        public class SaleResponse
         {
-            return await _httpClient.GetFromJsonAsync<Sale>($"{BaseUrl}/{id}");
-        }
-
-        // ✅ 3. Crear una nueva venta (POST)
-        public async Task<bool> CreateSaleAsync(Sale sale)
-        {
-            var response = await _httpClient.PostAsJsonAsync(BaseUrl, sale);
-            return response.IsSuccessStatusCode;
-        }
-
-        // ✅ 4. Actualizar una venta parcialmente (PATCH)
-        public async Task<bool> UpdateSaleAsync(int id, Sale sale)
-        {
-            var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{id}", sale);
-            return response.IsSuccessStatusCode;
-        }
-
-        // ✅ 5. Eliminar una venta (DELETE)
-        public async Task<bool> DeleteSaleAsync(int id)
-        {
-            var response = await _httpClient.DeleteAsync($"{BaseUrl}/{id}");
-            return response.IsSuccessStatusCode;
+            [JsonPropertyName("sale")]
+            public List<Sale> Sales { get; set; }
         }
     }
 }

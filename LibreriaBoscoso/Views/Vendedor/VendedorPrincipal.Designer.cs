@@ -1,4 +1,6 @@
-﻿namespace LibreriaBoscoso.Views
+﻿using System.Windows.Forms;
+
+namespace LibreriaBoscoso.Views
 {
     partial class VendedorPrincipal
     {
@@ -30,14 +32,14 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultar_Stock_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.realziarPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.realizar_Venta_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.realizar_Pedido_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txt_Buscar = new System.Windows.Forms.TextBox();
+            this.btn_Cerrar_Sesion = new System.Windows.Forms.Button();
+            this.label_Usuario = new System.Windows.Forms.Label();
+            this.label_Rol = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -68,108 +70,108 @@
             // librosToolStripMenuItem
             // 
             this.librosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultarStockToolStripMenuItem});
+            this.consultar_Stock_ToolStripMenuItem});
             this.librosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.librosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
             this.librosToolStripMenuItem.Size = new System.Drawing.Size(91, 36);
             this.librosToolStripMenuItem.Text = "Libros";
             // 
-            // consultarStockToolStripMenuItem
+            // consultar_Stock_ToolStripMenuItem
             // 
-            this.consultarStockToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.consultarStockToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.consultarStockToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.consultarStockToolStripMenuItem.Name = "consultarStockToolStripMenuItem";
-            this.consultarStockToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
-            this.consultarStockToolStripMenuItem.Text = "Consultar Stock";
-            this.consultarStockToolStripMenuItem.Click += new System.EventHandler(this.consultarStockToolStripMenuItem_Click);
+            this.consultar_Stock_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.consultar_Stock_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.consultar_Stock_ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.consultar_Stock_ToolStripMenuItem.Name = "consultar_Stock_ToolStripMenuItem";
+            this.consultar_Stock_ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.consultar_Stock_ToolStripMenuItem.Text = "Consultar Stock";
+            this.consultar_Stock_ToolStripMenuItem.Click += new System.EventHandler(this.consultar_Stock_ToolStripMenuItem_Click);
             // 
             // ventaToolStripMenuItem
             // 
             this.ventaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.realizarVentaToolStripMenuItem,
-            this.realziarPedidoToolStripMenuItem});
+            this.realizar_Venta_ToolStripMenuItem,
+            this.realizar_Pedido_ToolStripMenuItem});
             this.ventaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
             this.ventaToolStripMenuItem.Size = new System.Drawing.Size(88, 36);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
-            // realizarVentaToolStripMenuItem
+            // realizar_Venta_ToolStripMenuItem
             // 
-            this.realizarVentaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.realizarVentaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.realizarVentaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.realizarVentaToolStripMenuItem.Name = "realizarVentaToolStripMenuItem";
-            this.realizarVentaToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.realizarVentaToolStripMenuItem.Text = "Realizar Venta";
-            this.realizarVentaToolStripMenuItem.Click += new System.EventHandler(this.realizarVentaToolStripMenuItem_Click);
+            this.realizar_Venta_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.realizar_Venta_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.realizar_Venta_ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.realizar_Venta_ToolStripMenuItem.Name = "realizar_Venta_ToolStripMenuItem";
+            this.realizar_Venta_ToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.realizar_Venta_ToolStripMenuItem.Text = "Realizar Venta";
+            this.realizar_Venta_ToolStripMenuItem.Click += new System.EventHandler(this.realizar_Venta_ToolStripMenuItem_Click);
             // 
-            // realziarPedidoToolStripMenuItem
+            // realizar_Pedido_ToolStripMenuItem
             // 
-            this.realziarPedidoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.realziarPedidoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.realziarPedidoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.realziarPedidoToolStripMenuItem.Name = "realziarPedidoToolStripMenuItem";
-            this.realziarPedidoToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.realziarPedidoToolStripMenuItem.Text = "Realziar Pedido";
-            this.realziarPedidoToolStripMenuItem.Click += new System.EventHandler(this.realziarPedidoToolStripMenuItem_Click);
+            this.realizar_Pedido_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.realizar_Pedido_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.realizar_Pedido_ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.realizar_Pedido_ToolStripMenuItem.Name = "realizar_Pedido_ToolStripMenuItem";
+            this.realizar_Pedido_ToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.realizar_Pedido_ToolStripMenuItem.Text = "Realizar Pedido";
+            this.realizar_Pedido_ToolStripMenuItem.Click += new System.EventHandler(this.realizar_Pedido_ToolStripMenuItem_Click);
             // 
-            // textBox1
+            // txt_Buscar
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(454, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 25);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Buscar";
-            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.txt_Buscar.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscar.Location = new System.Drawing.Point(454, 8);
+            this.txt_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscar.Name = "txt_Buscar";
+            this.txt_Buscar.Size = new System.Drawing.Size(190, 25);
+            this.txt_Buscar.TabIndex = 1;
+            this.txt_Buscar.Text = "Buscar";
+            this.txt_Buscar.Enter += new System.EventHandler(this.txt_Buscar_Enter);
+            this.txt_Buscar.Leave += new System.EventHandler(this.txt_Buscar_Leave);
             // 
-            // btnCerrarSesion
+            // btn_Cerrar_Sesion
             // 
-            this.btnCerrarSesion.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
-            this.btnCerrarSesion.TabIndex = 2;
-            this.btnCerrarSesion.Text = "Cerrar Sesion";
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            this.btn_Cerrar_Sesion.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_Cerrar_Sesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Cerrar_Sesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cerrar_Sesion.ForeColor = System.Drawing.Color.White;
+            this.btn_Cerrar_Sesion.Location = new System.Drawing.Point(678, 0);
+            this.btn_Cerrar_Sesion.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Cerrar_Sesion.Name = "btn_Cerrar_Sesion";
+            this.btn_Cerrar_Sesion.Size = new System.Drawing.Size(122, 37);
+            this.btn_Cerrar_Sesion.TabIndex = 2;
+            this.btn_Cerrar_Sesion.Text = "Cerrar Sesion";
+            this.btn_Cerrar_Sesion.UseVisualStyleBackColor = false;
+            this.btn_Cerrar_Sesion.Click += new System.EventHandler(this.btn_Cerrar_Sesion_Click);
             // 
-            // label1
+            // label_Usuario
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(684, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Usuario";
+            this.label_Usuario.AutoSize = true;
+            this.label_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Usuario.Location = new System.Drawing.Point(684, 54);
+            this.label_Usuario.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Usuario.Name = "label_Usuario";
+            this.label_Usuario.Size = new System.Drawing.Size(57, 15);
+            this.label_Usuario.TabIndex = 5;
+            this.label_Usuario.Text = "Usuario";
             // 
-            // label2
+            // label_Rol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(749, 54);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Rol";
+            this.label_Rol.AutoSize = true;
+            this.label_Rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Rol.Location = new System.Drawing.Point(749, 54);
+            this.label_Rol.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Rol.Name = "label_Rol";
+            this.label_Rol.Size = new System.Drawing.Size(29, 15);
+            this.label_Rol.TabIndex = 6;
+            this.label_Rol.Text = "Rol";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibreriaBoscoso.Properties.Resources.LogoG1;
             this.pictureBox1.Location = new System.Drawing.Point(289, 124);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(210, 197);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -182,7 +184,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(711, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 24);
             this.button1.TabIndex = 55;
@@ -242,17 +244,18 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(805, 463);
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCerrarSesion);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label_Rol);
+            this.Controls.Add(this.label_Usuario);
+            this.Controls.Add(this.btn_Cerrar_Sesion);
+            this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "VendedorPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VendedorPrincipal";
@@ -272,13 +275,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem librosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultarStockToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem realizarVentaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem realziarPedidoToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnCerrarSesion;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem consultar_Stock_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem realizar_Venta_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem realizar_Pedido_ToolStripMenuItem;
+        private System.Windows.Forms.TextBox txt_Buscar;
+        private System.Windows.Forms.Button btn_Cerrar_Sesion;
+        private System.Windows.Forms.Label label_Usuario;
+        private System.Windows.Forms.Label label_Rol;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip2;
