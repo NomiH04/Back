@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Views;
 using LibreriaBoscoso.Views.Administrador;
+using LibreriaBoscoso.Views.InicioLogin;
 using LibreriaBoscoso.Views.Proveedor;
 
 namespace LibreriaBoscoso
@@ -19,7 +20,7 @@ namespace LibreriaBoscoso
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Catalogo());
+            Application.Run(new Login());
         }
     }
 }
