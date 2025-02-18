@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using LibreriaBoscoso.Services;   // Asegúrate de que este sea el namespace de tu servicio
 using LibreriaBoscoso.Models;     // Y el namespace de tu modelo Order
 using LibreriaBoscoso.Views.InicioLogin;
+using System.Linq;
 
 namespace LibreriaBoscoso.Views.Proveedor
 {
@@ -33,7 +34,7 @@ namespace LibreriaBoscoso.Views.Proveedor
                 List<Order> allOrders = await _orderService.GetOrdersAsync();
 
                 // Filtra los pedidos que tengan el estado "Received"
-                var receivedOrders = allOrders.FindAll(o => o.Status == "Received");
+                var receivedOrders = allOrders.Where(o => o.Status == "Received").ToList();
 
                 // Cambia el estado de "Received" a "Entregado" antes de asignarlos al DataGridView
                 foreach (var order in receivedOrders)
@@ -68,6 +69,37 @@ namespace LibreriaBoscoso.Views.Proveedor
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar los pedidos: {ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Método para filtrar los pedidos "Received" según el filtro proporcionado
+        private async Task Filtrar(string filtro)
+        {
+            try
+            {
+                // Obtener todos los pedidos desde el servicio de manera asíncrona
+                List<Order> allOrders = await _orderService.GetOrdersAsync();
+
+                // Filtrar los pedidos que tienen el estado "Received"
+                var receivedOrders = allOrders
+                    .Where(o => o.Status == "Received")
+                    .ToList();
+
+                // Si se proporcionó un filtro, se filtra por OrderId o StoreId
+                if (!string.IsNullOrWhiteSpace(filtro))
+                {
+                    receivedOrders = receivedOrders
+                        .Where(o => o.OrderId.ToString().Contains(filtro) || o.StoreId.ToString().Contains(filtro))
+                        .ToList();
+                }
+
+                // Asignar los resultados filtrados al DataGridView
+                dataGridViewOrders.DataSource = receivedOrders;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al filtrar los pedidos: {ex.Message}",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -109,5 +141,32 @@ namespace LibreriaBoscoso.Views.Proveedor
             catalogo.Show();
             this.Hide();
         }
+
+        // Evento del botón de buscar
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            string filtro = txt_Buscador.Text.Trim(); // Obtener el texto del buscador
+            Filtrar(filtro); // Llamar al método para filtrar los pedidos
+        }
+
+        // Limpia el TextBox cuando entra (si tiene el valor por defecto)
+        private void txt_Buscador_Enter(object sender, EventArgs e)
+        {
+            if (txt_Buscador.Text == "Buscar")
+            {
+                txt_Buscador.Clear(); // Limpiar el texto por defecto
+            }
+        }
+
+        // Vuelve a poner el texto "Buscar" cuando se sale del TextBox y está vacío
+        private void txt_Buscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Buscador.Text))
+            {
+                txt_Buscador.Text = "Buscar"; // Volver a poner "Buscar" si está vacío
+            }
+        }
+
+        
     }
 }

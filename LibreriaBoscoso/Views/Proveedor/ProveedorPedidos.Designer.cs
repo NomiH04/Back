@@ -47,8 +47,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btn_Buscar = new System.Windows.Forms.Button();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -233,7 +233,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             // 
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(692, 355);
+            this.btnSalir.Location = new System.Drawing.Point(684, 355);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(1);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(86, 34);
@@ -242,33 +242,34 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // button4
+            // btn_Buscar
             // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(284, 104);
-            this.button4.Margin = new System.Windows.Forms.Padding(1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(71, 34);
-            this.button4.TabIndex = 81;
-            this.button4.Text = "Buscar";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_Buscar.BackColor = System.Drawing.Color.Gray;
+            this.btn_Buscar.ForeColor = System.Drawing.Color.White;
+            this.btn_Buscar.Location = new System.Drawing.Point(282, 102);
+            this.btn_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(71, 34);
+            this.btn_Buscar.TabIndex = 81;
+            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.UseVisualStyleBackColor = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
-            // textBox6
+            // txt_Buscador
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(22, 112);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(247, 29);
-            this.textBox6.TabIndex = 80;
-            this.textBox6.Text = "Buscar";
+            this.txt_Buscador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscador.Location = new System.Drawing.Point(16, 104);
+            this.txt_Buscador.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(247, 29);
+            this.txt_Buscador.TabIndex = 80;
+            this.txt_Buscador.Text = "Buscar";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(28, 60);
+            this.label3.Location = new System.Drawing.Point(10, 52);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(236, 32);
@@ -277,7 +278,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(451, 104);
+            this.button2.Location = new System.Drawing.Point(449, 102);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 34);
@@ -287,7 +288,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(370, 104);
+            this.button3.Location = new System.Drawing.Point(368, 102);
             this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 34);
@@ -298,7 +299,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             // dataGridViewPedidos
             // 
             this.dataGridViewPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPedidos.Location = new System.Drawing.Point(24, 156);
+            this.dataGridViewPedidos.Location = new System.Drawing.Point(16, 156);
             this.dataGridViewPedidos.Name = "dataGridViewPedidos";
             this.dataGridViewPedidos.Size = new System.Drawing.Size(754, 195);
             this.dataGridViewPedidos.TabIndex = 88;
@@ -312,8 +313,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.btn_Buscar);
+            this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
@@ -355,8 +356,8 @@ namespace LibreriaBoscoso.Views.Proveedor
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button btn_Buscar;
+        private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
