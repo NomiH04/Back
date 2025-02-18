@@ -132,5 +132,10 @@ namespace LibreriaBoscoso.Views.Administrador
                 MessageBox.Show($"Error al cargar las categorías: {ex.Message}");
             }
         }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

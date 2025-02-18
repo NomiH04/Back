@@ -20,7 +20,7 @@ namespace LibreriaBoscoso.Views
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,6 +28,11 @@ namespace LibreriaBoscoso.Views
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
