@@ -139,9 +139,14 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btn_Cerrar_Sesion_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
+            var confirmacion = MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
@@ -177,5 +182,9 @@ namespace LibreriaBoscoso.Views.Vendedor
             }
         }
 
+        private void btn_Regresar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

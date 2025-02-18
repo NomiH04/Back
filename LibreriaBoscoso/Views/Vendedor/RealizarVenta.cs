@@ -72,9 +72,14 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
+            var confirmacion = MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+                this.Close();
+            }
         }
 
         private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)
