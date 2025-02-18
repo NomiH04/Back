@@ -354,6 +354,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Name = "ConsultarStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarStock";
+            this.Load += new System.EventHandler(this.ConsultarStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Stock_Libros)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -81,5 +81,19 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("book")]
             public List<Book> Books { get; set; }
         }
+
+        // 🔹 Obtener un libro por ID para extraer su título
+        public async Task<string> GetBookTitleByIdAsync(int bookId)
+        {
+            try
+            {
+                var book = await _httpClient.GetFromJsonAsync<Book>($"{BaseUrl}/{bookId}");
+                return book?.Title ?? "Desconocido"; // Si no encuentra el libro
+            }
+            catch (Exception)
+            {
+                return "Desconocido"; // En caso de error
+            }
+        }
     }
 }
