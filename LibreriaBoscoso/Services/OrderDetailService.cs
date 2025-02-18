@@ -12,7 +12,7 @@ namespace LibreriaBoscoso.Services
         private readonly HttpClient _httpClient;
 
         // URL base de la API para los detalles de la orden (ajusta la URL según tu API)
-        private const string BaseUrl = "https://localhost:7021/api/OrderDetail"; // Cambia esta URL según tu API
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/OrderDetail"; // Cambia esta URL según tu API
 
         public OrderDetailService()
         {

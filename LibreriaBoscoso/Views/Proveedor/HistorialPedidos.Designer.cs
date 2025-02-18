@@ -41,10 +41,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.btnSalir = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
@@ -57,9 +53,10 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.catalogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -108,10 +105,10 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.facebookToolStripMenuItem,
             this.twitterToolStripMenuItem,
             this.instagramToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 410);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 415);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(803, 46);
+            this.menuStrip2.Size = new System.Drawing.Size(804, 46);
             this.menuStrip2.TabIndex = 56;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -179,45 +176,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.textBox6.TabIndex = 80;
             this.textBox6.Text = "Buscar";
             // 
-            // dataGridViewOrders
-            // 
-            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Cantidad,
-            this.Estado});
-            this.dataGridViewOrders.Location = new System.Drawing.Point(22, 148);
-            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(1);
-            this.dataGridViewOrders.Name = "dataGridViewOrders";
-            this.dataGridViewOrders.RowHeadersWidth = 102;
-            this.dataGridViewOrders.RowTemplate.Height = 40;
-            this.dataGridViewOrders.Size = new System.Drawing.Size(754, 188);
-            this.dataGridViewOrders.TabIndex = 79;
-            // 
-            // ID
-            // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 12;
-            this.ID.Name = "ID";
-            this.ID.Width = 250;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.Frozen = true;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 12;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 250;
-            // 
-            // Estado
-            // 
-            this.Estado.Frozen = true;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.MinimumWidth = 12;
-            this.Estado.Name = "Estado";
-            this.Estado.Width = 250;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -275,7 +233,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(803, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(804, 38);
             this.menuStrip1.TabIndex = 90;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -326,7 +284,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.catalogoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.catalogoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.catalogoToolStripMenuItem.Name = "catalogoToolStripMenuItem";
-            this.catalogoToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.catalogoToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.catalogoToolStripMenuItem.Text = "Catalogo";
             this.catalogoToolStripMenuItem.Click += new System.EventHandler(this.catalogoToolStripMenuItem_Click);
             // 
@@ -345,12 +303,20 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.catalogoToolStripMenuItem1.Text = "Catalogo";
             this.catalogoToolStripMenuItem1.Click += new System.EventHandler(this.catalogoToolStripMenuItem_Click);
             // 
+            // dataGridViewOrders
+            // 
+            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrders.Location = new System.Drawing.Point(22, 146);
+            this.dataGridViewOrders.Name = "dataGridViewOrders";
+            this.dataGridViewOrders.Size = new System.Drawing.Size(754, 225);
+            this.dataGridViewOrders.TabIndex = 93;
+            // 
             // HistorialPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 461);
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -358,7 +324,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
@@ -367,13 +332,14 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "HistorialPedidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistorialPedidos";
             this.Load += new System.EventHandler(this.HistorialPedidos_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,11 +358,7 @@ namespace LibreriaBoscoso.Views.Proveedor
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.DataGridView dataGridViewOrders;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.TextBox textBox1;
@@ -408,5 +370,6 @@ namespace LibreriaBoscoso.Views.Proveedor
         private System.Windows.Forms.ToolStripMenuItem catalogoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem librosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem catalogoToolStripMenuItem1;
+        private DataGridView dataGridViewOrders;
     }
 }

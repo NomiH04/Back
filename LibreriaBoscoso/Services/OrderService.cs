@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LibreriaBoscoso.Models;
 
@@ -10,46 +12,89 @@ namespace LibreriaBoscoso.Services
     public class OrderService
     {
         private readonly HttpClient _httpClient;
-
-        // URL base de la API para las órdenes (ajusta la URL según tu API)
-        private const string BaseUrl = "https://localhost:7021/api/Order"; // Cambia la URL según la de tu API
+        private const string BaseUrl = "http://mi-api-boscoso.somee.com/api/Order"; // Ajusta esta URL según tu API
 
         public OrderService()
         {
             _httpClient = new HttpClient();
         }
 
-        // Obtener todas las órdenes
+        // Obtener todos los pedidos con manejo de errores
         public async Task<List<Order>> GetOrdersAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Order>>(BaseUrl);
+            try
+            {
+                // Hacer la solicitud GET
+                var response = await _httpClient.GetAsync(BaseUrl);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                // Obtener el JSON en formato string
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                // Imprimir JSON recibido para depuración
+                Console.WriteLine("JSON recibido desde la API:\n" + jsonString);
+
+                // Intentar deserializar como una lista de pedidos directamente
+                try
+                {
+                    var orders = JsonSerializer.Deserialize<List<Order>>(jsonString, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (orders != null && orders.Count > 0)
+                    {
+                        return orders;
+                    }
+                }
+                catch (JsonException)
+                {
+                    Console.WriteLine("El JSON no es una lista directa de pedidos.");
+                }
+
+                // Si no funcionó, intentar deserializar como objeto con una propiedad raíz
+                try
+                {
+                    var orderResponse = JsonSerializer.Deserialize<OrderResponse>(jsonString, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (orderResponse?.Orders != null && orderResponse.Orders.Count > 0)
+                    {
+                        return orderResponse.Orders;
+                    }
+                }
+                catch (JsonException)
+                {
+                    Console.WriteLine("El JSON tampoco coincide con un objeto raíz esperado.");
+                }
+
+                throw new Exception("No se encontraron pedidos o el formato del JSON es incorrecto.");
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de solicitud HTTP: " + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception("Error al procesar JSON: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los pedidos: " + ex.Message);
+            }
         }
 
-        // Obtener una orden por ID
-        public async Task<Order> GetOrderByIdAsync(int orderId)
+        // Clase para manejar respuestas con un objeto raíz
+        public class OrderResponse
         {
-            return await _httpClient.GetFromJsonAsync<Order>($"{BaseUrl}/{orderId}");
-        }
-
-        // Crear una nueva orden (POST)
-        public async Task<bool> CreateOrderAsync(Order order)
-        {
-            var response = await _httpClient.PostAsJsonAsync(BaseUrl, order);
-            return response.IsSuccessStatusCode;
-        }
-
-        // Actualizar una orden (PUT)
-        public async Task<bool> UpdateOrderAsync(int orderId, Order order)
-        {
-            var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{orderId}", order);  // Usamos PUT para reemplazar la orden
-            return response.IsSuccessStatusCode;
-        }
-
-        // Eliminar una orden (DELETE)
-        public async Task<bool> DeleteOrderAsync(int orderId)
-        {
-            var response = await _httpClient.DeleteAsync($"{BaseUrl}/{orderId}");
-            return response.IsSuccessStatusCode;
+            [JsonPropertyName("orders")]
+            public List<Order> Orders { get; set; }
         }
     }
 }
