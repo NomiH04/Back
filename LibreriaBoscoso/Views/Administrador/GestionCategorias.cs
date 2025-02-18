@@ -118,17 +118,30 @@ namespace LibreriaBoscoso.Views.Administrador
                     // Volver a cargar las categorías después de agregar
                     await CargarCategorias();
 
-                    // Mostrar mensaje de éxito
-                    MessageBox.Show("Categoría agregada correctamente.");
+                    // Mostrar mensaje de éxito con un estilo más amigable
+                    MessageBox.Show("¡Categoría agregada correctamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al agregar la categoría: {ex.Message}");
+                    // Aquí es donde puedes verificar si el error se debe a que la categoría ya existe
+                    if (ex.Message.Contains("duplicate key") || ex.Message.Contains("ya existe"))
+                    {
+                        MessageBox.Show("Lo siento, ya existe una categoría con este nombre. Por favor, ingresa un nombre diferente.",
+                                        "Categoría Existente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        // En caso de otros errores, se muestra un mensaje general
+                        MessageBox.Show($"Hubo un error al agregar la categoría: {ex.Message}",
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese un nombre para la categoría.");
+                // Mensaje para cuando el campo está vacío
+                MessageBox.Show("Por favor, ingrese un nombre para la categoría.",
+                                "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
