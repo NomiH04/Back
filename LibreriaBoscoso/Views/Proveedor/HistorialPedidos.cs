@@ -48,6 +48,11 @@ namespace LibreriaBoscoso.Views.Proveedor
                 // Configura las columnas del DataGridView para mayor control
                 dataGridViewOrders.AutoGenerateColumns = true;
 
+                if (dataGridViewOrders.Columns.Contains("supplierId"))
+                {
+                    dataGridViewOrders.Columns["supplierId"].Visible = false;
+                }
+
                 // Si quieres configurar las columnas manualmente
                 if (dataGridViewOrders.Columns["OrderId"] != null)
                     dataGridViewOrders.Columns["OrderId"].HeaderText = "ID de Orden";
