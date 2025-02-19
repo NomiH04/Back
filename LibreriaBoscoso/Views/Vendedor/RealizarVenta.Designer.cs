@@ -54,7 +54,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.button3 = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label_Numero_de_Venta = new System.Windows.Forms.Label();
+            this.label_Total = new System.Windows.Forms.Label();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -326,23 +326,23 @@ namespace LibreriaBoscoso.Views.Vendedor
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(497, 318);
+            this.label6.Location = new System.Drawing.Point(584, 318);
             this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 25);
+            this.label6.Size = new System.Drawing.Size(60, 25);
             this.label6.TabIndex = 65;
-            this.label6.Text = "Num de Venta:";
+            this.label6.Text = "Total:";
             // 
-            // label_Numero_de_Venta
+            // label_Total
             // 
-            this.label_Numero_de_Venta.AutoSize = true;
-            this.label_Numero_de_Venta.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Numero_de_Venta.Location = new System.Drawing.Point(653, 318);
-            this.label_Numero_de_Venta.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Numero_de_Venta.Name = "label_Numero_de_Venta";
-            this.label_Numero_de_Venta.Size = new System.Drawing.Size(100, 25);
-            this.label_Numero_de_Venta.TabIndex = 66;
-            this.label_Numero_de_Venta.Text = "########";
+            this.label_Total.AutoSize = true;
+            this.label_Total.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Total.Location = new System.Drawing.Point(653, 318);
+            this.label_Total.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Total.Name = "label_Total";
+            this.label_Total.Size = new System.Drawing.Size(100, 25);
+            this.label_Total.TabIndex = 66;
+            this.label_Total.Text = "########";
             // 
             // txt_Buscador
             // 
@@ -376,7 +376,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.ClientSize = new System.Drawing.Size(802, 457);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.txt_Buscador);
-            this.Controls.Add(this.label_Numero_de_Venta);
+            this.Controls.Add(this.label_Total);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.button3);
@@ -434,7 +434,7 @@ namespace LibreriaBoscoso.Views.Vendedor
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label_Numero_de_Venta;
+        private System.Windows.Forms.Label label_Total;
         private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.Button btn_Buscar;
     }

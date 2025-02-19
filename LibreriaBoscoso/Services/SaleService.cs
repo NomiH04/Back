@@ -106,5 +106,36 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("sale")]
             public List<Sale> Sales { get; set; }
         }
+
+        // Método para añadir una venta
+        public async Task<bool> RegistrarVentaAsync(Sale venta)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.PostAsJsonAsync(BaseUrl, venta);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Venta registrada exitosamente
+                }
+                else
+                {
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error en la API al registrar venta: {errorMessage}");
+                    return false; // Error en la API
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                Console.WriteLine($"Error de red al registrar la venta: {httpEx.Message}");
+                return false; // Error de conexión o servidor no disponible
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado al registrar la venta: {ex.Message}");
+                return false; // Cualquier otro error
+            }
+        }
+
     }
 }

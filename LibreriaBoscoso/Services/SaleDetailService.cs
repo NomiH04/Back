@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -95,5 +96,37 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("saleDetails")]
             public List<SaleDetail> SaleDetails { get; set; }
         }
+
+        // Registrar detalle venta
+        public async Task<bool> RegistrarDetalleVentaAsync(SaleDetail libroVendido)
+        {
+            try
+            {
+
+                HttpResponseMessage response = await _httpClient.PostAsJsonAsync(BaseUrl, libroVendido);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Venta registrada exitosamente
+                }
+                else
+                {
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error en la API al registrar venta: {errorMessage}");
+                    return false; // Error en la API
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                Console.WriteLine($"Error de red al registrar la venta: {httpEx.Message}");
+                return false; // Error de conexión o servidor no disponible
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado al registrar la venta: {ex.Message}");
+                return false; // Cualquier otro error
+            }
+        }
+
     }
 }

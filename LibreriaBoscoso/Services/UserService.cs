@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -61,5 +62,22 @@ namespace LibreriaBoscoso.Services
 
             return null;
         }
+        // ✅ 7. Obtener el ID de un usuario por su nombre
+        public async Task<int> GetUserIdByUsernameAsync(string username)
+        {
+            try
+            {
+                // Llamar a la API para obtener el ID del usuario por nombre
+                int? userId = await _httpClient.GetFromJsonAsync<int?>($"{BaseUrl}/GetUserId/{username}");
+
+                return userId ?? -1; // Si no encuentra el usuario, retorna -1
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener el ID del usuario: {ex.Message}");
+                return -1; // Retorna -1 si hay error
+            }
+        }
+
     }
 }
