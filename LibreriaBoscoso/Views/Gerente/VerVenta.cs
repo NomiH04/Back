@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
 namespace LibreriaBoscoso.Views.Gerente
 {
     public partial class VerVenta : Form
     {
-        public VerVenta()
+        int id;
+        private readonly SaleService _saleService = new SaleService();
+        public VerVenta(int id)
         {
             InitializeComponent();
+            this.id = id;
+            this.CargarDatos();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -56,6 +54,17 @@ namespace LibreriaBoscoso.Views.Gerente
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private async void CargarDatos()
+        {
+            var sale = await _saleService.GetSaleByIdAsync(id);
+
+            lbNumVenta.Text = sale.SaleId.ToString();
+            lbFecha.Text = sale.SaleDate.ToString();
+            txtVendedor.Text = sale.UserId.ToString();
+            txtTienda.Text = sale.StoreId.ToString();
+            txtMonto.Text = sale.Total.ToString();
         }
     }
 }

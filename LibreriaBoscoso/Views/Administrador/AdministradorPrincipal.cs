@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Views.InicioLogin;
 
@@ -18,7 +11,7 @@ namespace LibreriaBoscoso.Views.Administrador
             InitializeComponent();
             Rolelb.Text = "Admin";
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -40,7 +33,7 @@ namespace LibreriaBoscoso.Views.Administrador
         {
             GestionUsuarios gestionUsuarios = new GestionUsuarios();
             gestionUsuarios.Show();
-            this.Hide();    
+            this.Hide();
         }
 
         private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)

@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Views.InicioLogin;
-
-
-using LibreriaBoscoso.Models;
-using LibreriaBoscoso.Services;
-using System.Windows.Forms.Design;
 
 namespace LibreriaBoscoso.Views.Administrador
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LibreriaBoscoso.Models
+﻿namespace LibreriaBoscoso.Models
 {
     public class OrderDetail  // Hacer la clase pública
     {

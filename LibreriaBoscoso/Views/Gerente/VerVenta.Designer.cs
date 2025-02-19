@@ -30,18 +30,18 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbFecha = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbNumVenta = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.txtTienda = new System.Windows.Forms.TextBox();
+            this.txtVendedor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(173, 80);
-            this.panel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(490, 307);
             this.panel1.TabIndex = 64;
@@ -79,35 +79,35 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.lbFecha);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.lbNumVenta);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.richTextBox1);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtMonto);
+            this.panel2.Controls.Add(this.txtTienda);
+            this.panel2.Controls.Add(this.txtVendedor);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(21, 18);
-            this.panel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(448, 272);
             this.panel2.TabIndex = 59;
             // 
-            // label10
+            // lbFecha
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(281, 44);
-            this.label10.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 21);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "dd/mm/aaaa";
+            this.lbFecha.AutoSize = true;
+            this.lbFecha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFecha.Location = new System.Drawing.Point(281, 44);
+            this.lbFecha.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lbFecha.Name = "lbFecha";
+            this.lbFecha.Size = new System.Drawing.Size(100, 21);
+            this.lbFecha.TabIndex = 16;
+            this.lbFecha.Text = "dd/mm/aaaa";
             // 
             // label9
             // 
@@ -120,16 +120,16 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "Fecha";
             // 
-            // label8
+            // lbNumVenta
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(132, 44);
-            this.label8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 21);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "####";
+            this.lbNumVenta.AutoSize = true;
+            this.lbNumVenta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumVenta.Location = new System.Drawing.Point(132, 44);
+            this.lbNumVenta.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lbNumVenta.Name = "lbNumVenta";
+            this.lbNumVenta.Size = new System.Drawing.Size(46, 21);
+            this.lbNumVenta.TabIndex = 14;
+            this.lbNumVenta.Text = "####";
             // 
             // label7
             // 
@@ -160,9 +160,9 @@
             this.label5.Location = new System.Drawing.Point(38, 90);
             this.label5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 21);
+            this.label5.Size = new System.Drawing.Size(59, 21);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Cliente";
+            this.label5.Text = "Tienda";
             // 
             // label4
             // 
@@ -180,7 +180,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(349, 231);
-            this.button3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(84, 30);
             this.button3.TabIndex = 9;
@@ -192,41 +192,41 @@
             // 
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(42, 183);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(1);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(294, 80);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "Descripcion";
             // 
-            // textBox4
+            // txtMonto
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(129, 153);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(207, 25);
-            this.textBox4.TabIndex = 3;
+            this.txtMonto.Enabled = false;
+            this.txtMonto.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.Location = new System.Drawing.Point(129, 153);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(1);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(207, 25);
+            this.txtMonto.TabIndex = 3;
             // 
-            // textBox3
+            // txtTienda
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(129, 92);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(207, 25);
-            this.textBox3.TabIndex = 2;
+            this.txtTienda.Enabled = false;
+            this.txtTienda.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTienda.Location = new System.Drawing.Point(129, 92);
+            this.txtTienda.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTienda.Name = "txtTienda";
+            this.txtTienda.Size = new System.Drawing.Size(207, 25);
+            this.txtTienda.TabIndex = 2;
             // 
-            // textBox2
+            // txtVendedor
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(129, 124);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 25);
-            this.textBox2.TabIndex = 1;
+            this.txtVendedor.Enabled = false;
+            this.txtVendedor.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendedor.Location = new System.Drawing.Point(129, 124);
+            this.txtVendedor.Margin = new System.Windows.Forms.Padding(1);
+            this.txtVendedor.Name = "txtVendedor";
+            this.txtVendedor.Size = new System.Drawing.Size(207, 25);
+            this.txtVendedor.TabIndex = 1;
             // 
             // label3
             // 
@@ -268,7 +268,7 @@
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 61;
@@ -280,7 +280,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(516, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 25);
             this.textBox1.TabIndex = 60;
@@ -367,7 +367,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(699, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 24);
             this.button1.TabIndex = 66;
@@ -434,7 +434,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "VerVenta";
             this.Text = "VerVenta";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -456,9 +456,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.TextBox txtTienda;
+        private System.Windows.Forms.TextBox txtVendedor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -477,9 +477,9 @@
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbNumVenta;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

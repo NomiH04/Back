@@ -81,5 +81,58 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("book")]
             public List<Book> Books { get; set; }
         }
+
+
+        // Obtener un libro por ID
+        public async Task<Book> GetBookByIdAsync(int bookId)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{BaseUrl}/{bookId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadFromJsonAsync<Book>();
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return null; // Retorna null si la API devuelve 404
+                }
+                else
+                {
+                    throw new Exception($"Error en la API: {response.StatusCode}");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de conexión con la API.", ex);
+            }
+        }
+
+        /*public async Task<bool> CreateBookAsync(Book book)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync(BaseUrl, book);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Error al agregar el libro: {response.StatusCode} - {errorMessage}");
+                }
+
+                return true;
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de conexión con la API.", ex);
+            }
+        }*/
+
+        public async Task<bool> CreateBookAsync(Book book)
+        {
+            var response = await _httpClient.PostAsJsonAsync(BaseUrl, book);
+            return response.IsSuccessStatusCode;
+        }
     }
 }

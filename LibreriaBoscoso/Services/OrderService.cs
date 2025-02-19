@@ -90,6 +90,32 @@ namespace LibreriaBoscoso.Services
             }
         }
 
+        public async Task<Order> GetOrderByIdAsync(int orderId)
+        {
+            try
+            {
+                //extrae el pedido por su id
+                var response = await _httpClient.GetAsync($"{BaseUrl}/{orderId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadFromJsonAsync<Order>();
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return null; // Retorna null si la API devuelve 404
+                }
+                else
+                {
+                    throw new Exception($"Error en la API: {response.StatusCode}");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de conexión con la API.", ex);
+            }
+        }
+
         // Clase para manejar respuestas con un objeto raíz
         public class OrderResponse
         {

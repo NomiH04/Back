@@ -47,14 +47,16 @@
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtFecha = new System.Windows.Forms.TextBox();
+            this.txtPublishier = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtDescripcion = new System.Windows.Forms.RichTextBox();
+            this.boxCategoria = new System.Windows.Forms.ComboBox();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtAutor = new System.Windows.Forms.TextBox();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -66,18 +68,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(761, 52);
+            this.label2.Location = new System.Drawing.Point(740, 51);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Rol";
+            this.label2.Text = "Gerente";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(696, 52);
+            this.label1.Location = new System.Drawing.Point(675, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 15);
@@ -91,7 +93,7 @@
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 13;
@@ -103,7 +105,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(516, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 25);
             this.textBox1.TabIndex = 12;
@@ -190,7 +192,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(699, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 24);
             this.button1.TabIndex = 57;
@@ -247,120 +249,142 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(173, 80);
-            this.panel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel1.Location = new System.Drawing.Point(94, 78);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 307);
-            this.panel1.TabIndex = 58;
+            this.panel1.Size = new System.Drawing.Size(616, 307);
+            this.panel1.TabIndex = 59;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.richTextBox1);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtFecha);
+            this.panel2.Controls.Add(this.txtPublishier);
+            this.panel2.Controls.Add(this.btnCancelar);
+            this.panel2.Controls.Add(this.btnAgregar);
+            this.panel2.Controls.Add(this.txtDescripcion);
+            this.panel2.Controls.Add(this.boxCategoria);
+            this.panel2.Controls.Add(this.txtStock);
+            this.panel2.Controls.Add(this.txtPrecio);
+            this.panel2.Controls.Add(this.txtAutor);
+            this.panel2.Controls.Add(this.txtTitulo);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(21, 18);
-            this.panel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(448, 272);
+            this.panel2.Size = new System.Drawing.Size(571, 272);
             this.panel2.TabIndex = 59;
             // 
-            // button3
+            // txtFecha
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(324, 208);
-            this.button3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 30);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.txtFecha.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFecha.Location = new System.Drawing.Point(227, 83);
+            this.txtFecha.Margin = new System.Windows.Forms.Padding(1);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(181, 25);
+            this.txtFecha.TabIndex = 12;
+            this.txtFecha.Text = "yyyy-mm-dd";
             // 
-            // button2
+            // txtPublishier
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(227, 208);
-            this.button2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 30);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Agregar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.txtPublishier.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPublishier.Location = new System.Drawing.Point(227, 43);
+            this.txtPublishier.Margin = new System.Windows.Forms.Padding(1);
+            this.txtPublishier.Name = "txtPublishier";
+            this.txtPublishier.Size = new System.Drawing.Size(181, 25);
+            this.txtPublishier.TabIndex = 10;
+            this.txtPublishier.Text = "Publishier";
             // 
-            // richTextBox1
+            // btnCancelar
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(227, 43);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(181, 148);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "Descripcion";
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(472, 206);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(84, 30);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // btnAgregar
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(42, 211);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(172, 25);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "Categoria";
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Location = new System.Drawing.Point(375, 206);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(84, 30);
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // textBox5
+            // txtDescripcion
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(42, 167);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(172, 25);
-            this.textBox5.TabIndex = 4;
-            this.textBox5.Text = "Stock";
+            this.txtDescripcion.Location = new System.Drawing.Point(425, 43);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(1);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(131, 149);
+            this.txtDescripcion.TabIndex = 7;
+            this.txtDescripcion.Text = "Descripcion";
             // 
-            // textBox4
+            // boxCategoria
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(42, 124);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(172, 25);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "Precio";
+            this.boxCategoria.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxCategoria.FormattingEnabled = true;
+            this.boxCategoria.Location = new System.Drawing.Point(227, 124);
+            this.boxCategoria.Margin = new System.Windows.Forms.Padding(1);
+            this.boxCategoria.Name = "boxCategoria";
+            this.boxCategoria.Size = new System.Drawing.Size(181, 25);
+            this.boxCategoria.TabIndex = 5;
+            this.boxCategoria.Text = "Categoria";
             // 
-            // textBox3
+            // txtStock
             // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(42, 83);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(172, 25);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "Autor";
+            this.txtStock.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStock.Location = new System.Drawing.Point(42, 167);
+            this.txtStock.Margin = new System.Windows.Forms.Padding(1);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(172, 25);
+            this.txtStock.TabIndex = 4;
+            this.txtStock.Text = "Stock";
             // 
-            // textBox2
+            // txtPrecio
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(42, 43);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 25);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Titulo";
+            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecio.Location = new System.Drawing.Point(42, 124);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(1);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(172, 25);
+            this.txtPrecio.TabIndex = 3;
+            this.txtPrecio.Text = "Precio";
+            // 
+            // txtAutor
+            // 
+            this.txtAutor.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutor.Location = new System.Drawing.Point(42, 83);
+            this.txtAutor.Margin = new System.Windows.Forms.Padding(1);
+            this.txtAutor.Name = "txtAutor";
+            this.txtAutor.Size = new System.Drawing.Size(172, 25);
+            this.txtAutor.TabIndex = 2;
+            this.txtAutor.Text = "Autor";
+            // 
+            // txtTitulo
+            // 
+            this.txtTitulo.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitulo.Location = new System.Drawing.Point(42, 43);
+            this.txtTitulo.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(172, 25);
+            this.txtTitulo.TabIndex = 1;
+            this.txtTitulo.Text = "Titulo";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(177, 7);
+            this.label3.Location = new System.Drawing.Point(223, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 21);
@@ -381,7 +405,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "AgregarNuevoLibro";
             this.Text = "AgregarNuevoLibro";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -418,14 +442,16 @@
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.TextBox txtPublishier;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.RichTextBox txtDescripcion;
+        private System.Windows.Forms.ComboBox boxCategoria;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtAutor;
+        private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

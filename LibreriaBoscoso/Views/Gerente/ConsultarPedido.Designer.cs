@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NumeroPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button7 = new System.Windows.Forms.Button();
+            this.dataPedidos = new System.Windows.Forms.DataGridView();
+            this.btnVer = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,68 +51,41 @@
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataPedidos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NumeroPedido,
-            this.NombreVendedor,
-            this.Cantidad});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(38, 138);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 102;
-            this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(752, 185);
-            this.dataGridView1.TabIndex = 102;
+            this.dataPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataPedidos.Enabled = false;
+            this.dataPedidos.Location = new System.Drawing.Point(38, 138);
+            this.dataPedidos.Margin = new System.Windows.Forms.Padding(1);
+            this.dataPedidos.Name = "dataPedidos";
+            this.dataPedidos.RowHeadersWidth = 102;
+            this.dataPedidos.RowTemplate.Height = 40;
+            this.dataPedidos.Size = new System.Drawing.Size(696, 185);
+            this.dataPedidos.TabIndex = 102;
             // 
-            // NumeroPedido
+            // btnVer
             // 
-            this.NumeroPedido.Frozen = true;
-            this.NumeroPedido.HeaderText = "Numero Pedido";
-            this.NumeroPedido.MinimumWidth = 12;
-            this.NumeroPedido.Name = "NumeroPedido";
-            this.NumeroPedido.Width = 250;
-            // 
-            // NombreVendedor
-            // 
-            this.NombreVendedor.Frozen = true;
-            this.NombreVendedor.HeaderText = "Nombre Vendedor";
-            this.NombreVendedor.MinimumWidth = 12;
-            this.NombreVendedor.Name = "NombreVendedor";
-            this.NombreVendedor.Width = 250;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.Frozen = true;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 12;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 250;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(426, 100);
-            this.button7.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(73, 29);
-            this.button7.TabIndex = 101;
-            this.button7.Text = "Ver";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnVer.Location = new System.Drawing.Point(426, 100);
+            this.btnVer.Margin = new System.Windows.Forms.Padding(1);
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Size = new System.Drawing.Size(73, 27);
+            this.btnVer.TabIndex = 101;
+            this.btnVer.Text = "Ver";
+            this.btnVer.UseVisualStyleBackColor = true;
+            this.btnVer.Click += new System.EventHandler(this.button7_Click);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(717, 325);
-            this.button4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button4.Location = new System.Drawing.Point(661, 325);
+            this.button4.Margin = new System.Windows.Forms.Padding(1);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(73, 29);
             this.button4.TabIndex = 100;
@@ -123,27 +93,27 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button2
+            // btnBuscar
             // 
-            this.button2.BackColor = System.Drawing.Color.Gray;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(335, 100);
-            this.button2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(73, 29);
-            this.button2.TabIndex = 99;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnBuscar.BackColor = System.Drawing.Color.Gray;
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(335, 100);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(73, 29);
+            this.btnBuscar.TabIndex = 99;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // txtBuscar
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(38, 102);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(276, 25);
-            this.textBox2.TabIndex = 98;
-            this.textBox2.Text = "Buscar";
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(38, 102);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(1);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(276, 25);
+            this.txtBuscar.TabIndex = 98;
             // 
             // label3
             // 
@@ -160,18 +130,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(761, 52);
+            this.label2.Location = new System.Drawing.Point(676, 52);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 96;
-            this.label2.Text = "Rol";
+            this.label2.Text = "Gerente";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(696, 52);
+            this.label1.Location = new System.Drawing.Point(611, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 15);
@@ -184,8 +154,8 @@
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(636, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 94;
@@ -196,8 +166,8 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(516, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBox1.Location = new System.Drawing.Point(450, 8);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 25);
             this.textBox1.TabIndex = 93;
@@ -214,7 +184,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(809, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(758, 38);
             this.menuStrip1.TabIndex = 92;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -283,10 +253,10 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(722, 376);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Location = new System.Drawing.Point(660, 376);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 24);
+            this.button1.Size = new System.Drawing.Size(92, 24);
             this.button1.TabIndex = 104;
             this.button1.Text = "Accesibilidad";
             this.button1.UseVisualStyleBackColor = false;
@@ -304,7 +274,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 367);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(809, 46);
+            this.menuStrip2.Size = new System.Drawing.Size(758, 46);
             this.menuStrip2.TabIndex = 103;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -337,18 +307,30 @@
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(517, 100);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(73, 27);
+            this.btnLimpiar.TabIndex = 105;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // ConsultarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 413);
+            this.ClientSize = new System.Drawing.Size(758, 413);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.dataPedidos);
+            this.Controls.Add(this.btnVer);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -356,11 +338,11 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "ConsultarPedido";
             this.Text = "ConsultarPedido";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPedidos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
@@ -372,11 +354,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dataPedidos;
+        private System.Windows.Forms.Button btnVer;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -395,8 +377,6 @@
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreVendedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

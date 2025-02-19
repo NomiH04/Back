@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
@@ -22,7 +14,7 @@ namespace LibreriaBoscoso.Views.Vendedor
         {
             InitializeComponent();
         }
-        
+
 
         private void realizar_Venta_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -87,7 +79,7 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)

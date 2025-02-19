@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibreriaBoscoso.Services;   // Asegúrate de que este sea el namespace de tu servicio
 using LibreriaBoscoso.Models;     // Y el namespace de tu modelo Order
+using LibreriaBoscoso.Services;   // Asegúrate de que este sea el namespace de tu servicio
 using LibreriaBoscoso.Views.InicioLogin;
-using System.Linq;
 
 namespace LibreriaBoscoso.Views.Proveedor
 {
@@ -172,6 +172,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             }
         }
 
-        
+
     }
 }

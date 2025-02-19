@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibreriaBoscoso.Views;
-using LibreriaBoscoso.Views.Administrador;
-using LibreriaBoscoso.Views.InicioLogin;
-using LibreriaBoscoso.Views.Proveedor;
+using LibreriaBoscoso.Views.Gerente;
 
 namespace LibreriaBoscoso
 {
@@ -21,7 +14,7 @@ namespace LibreriaBoscoso
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Catalogo());
+            Application.Run(new ConsultarLibro());
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LibreriaBoscoso.Models
+﻿namespace LibreriaBoscoso.Models
 {
     public class Store  // Cambié 'class' por 'public class'
     {

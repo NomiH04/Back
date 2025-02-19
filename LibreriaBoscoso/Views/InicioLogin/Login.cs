@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Views.Administrador;
@@ -37,7 +30,7 @@ namespace LibreriaBoscoso.Views.InicioLogin
         {
             Form ventana = null;
 
-            switch (user.Role) 
+            switch (user.Role)
             {
                 case "Seller":
                     ventana = new VendedorPrincipal();

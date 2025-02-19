@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Views.InicioLogin;
 
@@ -31,7 +24,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Hide();
         }
 
-        
+
         private void consultarVentasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             HistorialPedidos historialPedidos = new HistorialPedidos();

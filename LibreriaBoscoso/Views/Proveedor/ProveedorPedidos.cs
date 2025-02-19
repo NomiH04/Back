@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibreriaBoscoso.Services;  // Asegúrate de que este sea el namespace de tu servicio
 using LibreriaBoscoso.Models;    // Y el de tu modelo Order
+using LibreriaBoscoso.Services;  // Asegúrate de que este sea el namespace de tu servicio
 using LibreriaBoscoso.Views.InicioLogin;
 
 namespace LibreriaBoscoso.Views.Proveedor
@@ -171,6 +171,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Hide();
         }
 
-        
+
     }
 }

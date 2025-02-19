@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -71,6 +72,31 @@ namespace LibreriaBoscoso.Services
             catch (Exception ex)
             {
                 throw new Exception("Error al obtener las ventas: " + ex.Message);
+            }
+        }
+
+        public async Task<Sale> GetSaleByIdAsync(int id)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{BaseUrl}/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadFromJsonAsync<Sale>();
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return null; // Retorna null si la API devuelve 404
+                }
+                else
+                {
+                    throw new Exception($"Error en la API: {response.StatusCode}");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("Error de conexión con la API.", ex);
             }
         }
 

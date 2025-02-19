@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
 namespace LibreriaBoscoso.Views.Gerente
 {
     public partial class VerPedido : Form
     {
-        public VerPedido()
+        int id;
+        private readonly OrderService _orderService = new OrderService();
+        public VerPedido(int id)
         {
             InitializeComponent();
+            this.id = id;
+            this.CargarDatos();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -56,6 +54,17 @@ namespace LibreriaBoscoso.Views.Gerente
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private async void CargarDatos()
+        {
+            var order = await _orderService.GetOrderByIdAsync(id);
+
+            lbVenta.Text = id.ToString();
+            lbFecha.Text = order.OrderDate?.ToString("dd/MM/yyyy") ?? "Sin fecha";
+            txtVendedor.Text = order.UserId.ToString();
+            txtStatus.Text = order.Status.ToString();
+
         }
     }
 }
