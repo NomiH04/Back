@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace LibreriaBoscoso.Views.Vendedor
 {
@@ -33,7 +34,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.btn_Cancelar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_FinalizarPedido = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dgv_Libros = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,7 +56,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmb_Proveedor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Libros)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -99,17 +100,17 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.btn_Cancelar.UseVisualStyleBackColor = false;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
-            // button3
+            // btn_FinalizarPedido
             // 
-            this.button3.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(556, 318);
-            this.button3.Margin = new System.Windows.Forms.Padding(1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 34);
-            this.button3.TabIndex = 79;
-            this.button3.Text = "Finalizar Venta";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_FinalizarPedido.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_FinalizarPedido.ForeColor = System.Drawing.Color.White;
+            this.btn_FinalizarPedido.Location = new System.Drawing.Point(533, 318);
+            this.btn_FinalizarPedido.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_FinalizarPedido.Name = "btn_FinalizarPedido";
+            this.btn_FinalizarPedido.Size = new System.Drawing.Size(110, 34);
+            this.btn_FinalizarPedido.TabIndex = 79;
+            this.btn_FinalizarPedido.Text = "Finalizar Pedido";
+            this.btn_FinalizarPedido.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -341,29 +342,29 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
-            // comboBox1
+            // cmb_Proveedor
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(46, 102);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 29);
-            this.comboBox1.TabIndex = 89;
-            this.comboBox1.Text = "Proveedor";
+            this.cmb_Proveedor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_Proveedor.FormattingEnabled = true;
+            this.cmb_Proveedor.Location = new System.Drawing.Point(46, 102);
+            this.cmb_Proveedor.Margin = new System.Windows.Forms.Padding(1);
+            this.cmb_Proveedor.Name = "cmb_Proveedor";
+            this.cmb_Proveedor.Size = new System.Drawing.Size(141, 29);
+            this.cmb_Proveedor.TabIndex = 89;
+            this.cmb_Proveedor.Text = "Proveedor";
             // 
             // RealizarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 462);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmb_Proveedor);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.btn_Cancelar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_FinalizarPedido);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dgv_Libros);
             this.Controls.Add(this.label5);
@@ -395,7 +396,7 @@ namespace LibreriaBoscoso.Views.Vendedor
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.Button btn_Cancelar;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_FinalizarPedido;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgv_Libros;
         private System.Windows.Forms.Label label5;
@@ -416,7 +417,8 @@ namespace LibreriaBoscoso.Views.Vendedor
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmb_Proveedor;
         private System.Windows.Forms.ToolStripMenuItem realizar_Pedido_ToolStripMenuItem;
+        private readonly EventHandler btn_FinalizarPedido_Click;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -76,6 +77,25 @@ namespace LibreriaBoscoso.Services
             {
                 Console.WriteLine($"Error al obtener el ID del usuario: {ex.Message}");
                 return -1; // Retorna -1 si hay error
+            }
+        }
+
+        // ✅ . Obtener los usuarios que son proveedores
+        public async Task<List<User>> GetProvidersAsync()
+        {
+            try
+            {
+                List<User> allUsers = await GetUsersAsync();
+
+                // 🔹 Filtrar solo los usuarios con rol "Proveedor"
+                var proveedores = allUsers.Where(user => user.Role == "Proveedor").ToList();
+
+                return proveedores;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener proveedores: {ex.Message}");
+                return new List<User>(); // 🔹 Devolver lista vacía en caso de error
             }
         }
 

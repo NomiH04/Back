@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -94,6 +95,30 @@ namespace LibreriaBoscoso.Services
         {
             [JsonPropertyName("orderDetails")]
             public List<OrderDetail> OrderDetails { get; set; }
+        }
+
+        //Metodo para registrar detalle de pedidos
+        public async Task<bool> RegistrarDetallePedidoAsync(OrderDetail detallePedido)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.PostAsJsonAsync(BaseUrl, detallePedido);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Éxito en la operación
+                }
+                else
+                {
+                    Console.WriteLine($"Error al registrar detalle del pedido: {response.ReasonPhrase}");
+                    return false; // Fallo en la operación
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado en RegistrarDetallePedidoAsync: {ex.Message}");
+                return false;
+            }
         }
     }
 }

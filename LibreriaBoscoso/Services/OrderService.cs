@@ -122,5 +122,31 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("orders")]
             public List<Order> Orders { get; set; }
         }
+
+        //Metodo para registrar un pedido
+        public async Task<int> RegistrarPedidoAsync(Order nuevoPedido)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.PostAsJsonAsync(BaseUrl, nuevoPedido);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Leer la respuesta (el ID del pedido creado)
+                    int orderId = await response.Content.ReadFromJsonAsync<int>();
+                    return orderId;
+                }
+                else
+                {
+                    Console.WriteLine($"Error al registrar pedido: {response.ReasonPhrase}");
+                    return -1; // Devuelve -1 si hay un error
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado en RegistrarPedidoAsync: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }
