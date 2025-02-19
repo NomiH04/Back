@@ -81,9 +81,6 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("book")]
             public List<Book> Books { get; set; }
         }
-
-<<<<<<< HEAD
-
         // Obtener un libro por ID
         public async Task<Book> GetBookByIdAsync(int bookId)
         {
@@ -135,7 +132,6 @@ namespace LibreriaBoscoso.Services
             var response = await _httpClient.PostAsJsonAsync(BaseUrl, book);
             return response.IsSuccessStatusCode;
         }
-=======
         // 🔹 Obtener un libro por ID para extraer su título
         public async Task<string> GetBookTitleByIdAsync(int bookId)
         {
@@ -149,6 +145,5 @@ namespace LibreriaBoscoso.Services
                 return "Desconocido"; // En caso de error
             }
         }
->>>>>>> beb6ed0898577fe3f9e5808a52b2df446d6ada52
     }
 }
