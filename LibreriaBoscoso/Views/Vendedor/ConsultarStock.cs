@@ -1,5 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
@@ -9,12 +17,74 @@ namespace LibreriaBoscoso.Views.Vendedor
     {
         private readonly InventoryService _inventoryService;
         private readonly BookService _bookService;
+        private List<Inventory> _inventoryList;
+        List<dynamic> stockWithNames;
 
         public ConsultarStock()
         {
             InitializeComponent();
+            _inventoryService = new InventoryService();
+            _bookService = new BookService();
+            stockWithNames = new List<dynamic>();
         }
 
+        private async void ConsultarStock_Load(object sender, EventArgs e)
+        {
+            await CargarStock();
+        }
+
+        private async Task CargarStock()
+        {
+            try
+            {
+                _inventoryList = await _inventoryService.GetInventoryAsync();
+
+                if (_inventoryList != null && _inventoryList.Count > 0)
+                {
+
+                    foreach (var item in _inventoryList)
+                    {
+                        string title = await _bookService.GetBookTitleByIdAsync(item.BookId);
+
+                        stockWithNames.Add(new
+                        {
+                            Código = item.BookId,
+                            Título = title,
+                            Cantidad = item.Quantity
+                        });
+
+                    }
+
+                    dgv_Stock_Libros.DataSource = stockWithNames;
+                }
+                else
+                {
+                    MessageBox.Show("No hay libros en inventario.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el inventario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            FiltrarStock(txt_Buscador.Text);
+        }
+
+        private void FiltrarStock(string filtro)
+        {
+            if (stockWithNames == null || stockWithNames.Count == 0)
+                return;
+
+            // Filtrar la lista de libros por título
+            var librosFiltrados = stockWithNames
+                .Where(book => book.Título != null && book.Título.IndexOf(filtro, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+
+            dgv_Stock_Libros.DataSource = librosFiltrados;
+        }
 
         private void realizar_Venta_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -77,11 +147,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             }
         }
 
-        private void btn_Buscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Salir_Click(object sender, EventArgs e)
         {
             VendedorPrincipal vendedorPrincipal = new VendedorPrincipal();
@@ -95,5 +160,16 @@ namespace LibreriaBoscoso.Views.Vendedor
             consultarStock.Show();
             this.Hide();
         }
+
+        private void dgv_Stock_Libros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ConsultarStock_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
