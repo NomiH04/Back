@@ -39,7 +39,7 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btn_Agregar_Libro_Click(object sender, EventArgs e)
         {
-            AgregarLibroFactura agregarLibroFactura = new AgregarLibroFactura();
+            AgregarLibroFactura agregarLibroFactura = new AgregarLibroFactura(this);
             agregarLibroFactura.Show();
         }
 
