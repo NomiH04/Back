@@ -14,11 +14,13 @@ namespace LibreriaBoscoso.Views.Vendedor
     {
         private BookService _bookService;
         private List<Book> allBooks;
+        private RealizarVenta _realizarVenta;
 
-        public AgregarLibroFactura()
+        public AgregarLibroFactura(RealizarVenta realizarVenta)
         {
             InitializeComponent();
             _bookService = new BookService();
+            _realizarVenta = realizarVenta;
         }
 
         private async void AgregarLibroFactura_Load(object sender, EventArgs e)
@@ -30,52 +32,94 @@ namespace LibreriaBoscoso.Views.Vendedor
         {
             try
             {
-                // Obtener todos los libros desde el servicio
-                allBooks = await _bookService.GetBooksAsync(); // Guardamos los libros
-
-                // Asignar la lista de libros al DataGridView
+                allBooks = await _bookService.GetBooksAsync();
                 dgv_Libros_Disponibles.DataSource = allBooks;
-
-                // Configurar las columnas del DataGridView
                 dgv_Libros_Disponibles.AutoGenerateColumns = true;
 
-                // Configurar los encabezados de las columnas
-                if (dgv_Libros_Disponibles.Columns["BookId"] != null)
-                    dgv_Libros_Disponibles.Columns["BookId"].HeaderText = "ID";
-                if (dgv_Libros_Disponibles.Columns["Title"] != null)
-                    dgv_Libros_Disponibles.Columns["Title"].HeaderText = "Título";
-                if (dgv_Libros_Disponibles.Columns["Author"] != null)
-                    dgv_Libros_Disponibles.Columns["Author"].HeaderText = "Autor";
-                if (dgv_Libros_Disponibles.Columns["Price"] != null)
-                    dgv_Libros_Disponibles.Columns["Price"].HeaderText = "Precio";
-                if (dgv_Libros_Disponibles.Columns["Description"] != null)
-                    dgv_Libros_Disponibles.Columns["Description"].HeaderText = "Descripción";
-                if (dgv_Libros_Disponibles.Columns["PublicationDate"] != null)
-                    dgv_Libros_Disponibles.Columns["PublicationDate"].HeaderText = "Fecha de Publicación";
-                if (dgv_Libros_Disponibles.Columns["Publisher"] != null)
-                    dgv_Libros_Disponibles.Columns["Publisher"].HeaderText = "Editorial";
+                // 🔹 Diccionario con los nombres originales y sus encabezados
+                Dictionary<string, string> headers = new Dictionary<string, string>
+                {
+                    { "BookId", "ID" },
+                    { "Title", "Título" },
+                    { "Author", "Autor" },
+                    { "Price", "Precio" },
+          
+                };
 
-                // Ajustar el ancho de las columnas correctamente para permitir el scroll
+                // 🔹 Iterar por cada columna y asignar el encabezado si está en el diccionario
                 foreach (DataGridViewColumn column in dgv_Libros_Disponibles.Columns)
                 {
-                    if (column.Frozen)
+                    if (headers.ContainsKey(column.Name))
                     {
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        column.HeaderText = headers[column.Name];
                     }
-                    else
-                    {
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // No usa Fill para evitar errores y permitir el scroll
-                    }
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Ajustar tamaño
                 }
 
-                // Habilitar scroll si hay más datos de los que caben en la pantalla
-                dgv_Libros_Disponibles.ScrollBars = ScrollBars.Both;
+                dgv_Libros_Disponibles.ScrollBars = ScrollBars.Both; // Habilitar scroll si es necesario
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar los libros: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btn_Agregar_Libro_Click(object sender, EventArgs e)
+        {
+            bool continuar = true; // Bandera para controlar el ciclo
+
+            while (continuar)
+            {
+                try
+                {
+                    if (dgv_Libros_Disponibles.SelectedRows.Count == 0)
+                    {
+                        MessageBox.Show("Seleccione un libro para agregar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    int selectedIndex = dgv_Libros_Disponibles.SelectedRows[0].Index;
+
+                    if (selectedIndex < 0 || selectedIndex >= allBooks.Count)
+                    {
+                        MessageBox.Show("Error al seleccionar el libro. Inténtelo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    Book libroSeleccionado = allBooks[selectedIndex];
+
+                    if (!int.TryParse(txt_Cantidad.Text, out int cantidad) || cantidad <= 0)
+                    {
+                        MessageBox.Show("Ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    SaleDetail detalleVenta = new SaleDetail
+                    {
+                        BookId = libroSeleccionado.BookId,
+                        Quantity = cantidad,
+                        UnitPrice = libroSeleccionado.Price
+                    };
+
+                    _realizarVenta.AgregarLibroAVenta(detalleVenta);
+
+                    DialogResult resultado = MessageBox.Show("¿Desea agregar otro libro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (resultado == DialogResult.No)
+                    {
+                        continuar = false; // Salir del bucle
+                        this.Close(); // Cerrar la ventana inmediatamente
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine($"Error en btn_Agregar_Libro_Click: {ex.Message}");
+                    continuar = false;
+                }
+            }
+        }
+
 
         private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -155,9 +199,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             {
                 // Filtrar los datos en base a Título, Autor o Publisher
                 var filteredData = allBooks.Where(x =>
-                    x.Title.ToLower().Contains(searchValue) ||
-                    x.Author.ToLower().Contains(searchValue) ||
-                    x.Publisher.ToLower().Contains(searchValue)
+                    x.Title.ToLower().Contains(searchValue)
                 ).ToList();
 
                 if (filteredData.Any())
@@ -181,7 +223,8 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btn_Regresar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
+        
     }
 }

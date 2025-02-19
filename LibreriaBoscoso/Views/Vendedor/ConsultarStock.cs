@@ -41,7 +41,7 @@ namespace LibreriaBoscoso.Views.Vendedor
 
                 if (_inventoryList != null && _inventoryList.Count > 0)
                 {
-
+                    
                     foreach (var item in _inventoryList)
                     {
                         string title = await _bookService.GetBookTitleByIdAsync(item.BookId);
@@ -77,7 +77,10 @@ namespace LibreriaBoscoso.Views.Vendedor
         {
             if (stockWithNames == null || stockWithNames.Count == 0)
                 return;
-
+            if (string.IsNullOrWhiteSpace(filtro))
+            {
+                dgv_Stock_Libros.DataSource = _inventoryList;
+            }
             // Filtrar la lista de libros por título
             var librosFiltrados = stockWithNames
                 .Where(book => book.Título != null && book.Título.IndexOf(filtro, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -172,4 +175,3 @@ namespace LibreriaBoscoso.Views.Vendedor
         }
     }
 }
-

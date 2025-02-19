@@ -108,6 +108,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.btn_Agregar_Libro.TabIndex = 78;
             this.btn_Agregar_Libro.Text = "Agregar Libro";
             this.btn_Agregar_Libro.UseVisualStyleBackColor = false;
+            this.btn_Agregar_Libro.Click += new System.EventHandler(this.btn_Agregar_Libro_Click);
             // 
             // dgv_Libros_Disponibles
             // 
