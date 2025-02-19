@@ -106,7 +106,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Titulo,
             this.Precio,
             this.Stock});
-            this.dgv_Stock_Libros.Enabled = false;
             this.dgv_Stock_Libros.Location = new System.Drawing.Point(46, 129);
             this.dgv_Stock_Libros.Margin = new System.Windows.Forms.Padding(1);
             this.dgv_Stock_Libros.Name = "dgv_Stock_Libros";
@@ -121,7 +120,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Codigo.HeaderText = "Codigo";
             this.Codigo.MinimumWidth = 12;
             this.Codigo.Name = "Codigo";
-            this.Codigo.Width = 250;
+            this.Codigo.Width = 65;
             // 
             // Titulo
             // 
@@ -129,7 +128,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Titulo.HeaderText = "Titulo";
             this.Titulo.MinimumWidth = 12;
             this.Titulo.Name = "Titulo";
-            this.Titulo.Width = 250;
+            this.Titulo.Width = 58;
             // 
             // Precio
             // 
@@ -137,7 +136,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Precio.HeaderText = "Precio";
             this.Precio.MinimumWidth = 12;
             this.Precio.Name = "Precio";
-            this.Precio.Width = 250;
+            this.Precio.Width = 62;
             // 
             // Stock
             // 
@@ -145,7 +144,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Stock.HeaderText = "Stock";
             this.Stock.MinimumWidth = 12;
             this.Stock.Name = "Stock";
-            this.Stock.Width = 250;
+            this.Stock.Width = 60;
             // 
             // label3
             // 

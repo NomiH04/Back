@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Models;
@@ -18,14 +16,14 @@ namespace LibreriaBoscoso.Views.Vendedor
         private readonly InventoryService _inventoryService;
         private readonly BookService _bookService;
         private List<Inventory> _inventoryList;
-        List<dynamic> stockWithNames;
+        List<StockItem> stockWithNames;
 
         public ConsultarStock()
         {
             InitializeComponent();
             _inventoryService = new InventoryService();
             _bookService = new BookService();
-            stockWithNames = new List<dynamic>();
+            stockWithNames = new List<StockItem>();
         }
 
         private async void ConsultarStock_Load(object sender, EventArgs e)
@@ -38,24 +36,43 @@ namespace LibreriaBoscoso.Views.Vendedor
             try
             {
                 _inventoryList = await _inventoryService.GetInventoryAsync();
+                stockWithNames.Clear(); // Limpiar lista antes de llenarla
 
                 if (_inventoryList != null && _inventoryList.Count > 0)
                 {
-                    
                     foreach (var item in _inventoryList)
                     {
-                        string title = await _bookService.GetBookTitleByIdAsync(item.BookId);
+                        var book = await _bookService.GetBookByIdAsync(item.BookId); // Obtener libro completo
 
-                        stockWithNames.Add(new
+                        if (book != null)
                         {
-                            Código = item.BookId,
-                            Título = title,
-                            Cantidad = item.Quantity
-                        });
-
+                            stockWithNames.Add(new StockItem
+                            {
+                                Codigo = item.BookId,
+                                Titulo = book.Title,
+                                Precio = book.Price,
+                                Cantidad = item.Quantity
+                            });
+                        }
+                        else
+                        {
+                            stockWithNames.Add(new StockItem
+                            {
+                                Codigo = item.BookId,
+                                Titulo = "Desconocido",
+                                Precio = 0,
+                                Cantidad = item.Quantity
+                            });
+                        }
                     }
 
+                    //Limpiar columnas antes de asignar el DataSource
+                    dgv_Stock_Libros.DataSource = null;
+                    dgv_Stock_Libros.Columns.Clear(); // <- Esto evita que las columnas se dupliquen
+                    dgv_Stock_Libros.AutoGenerateColumns = true;
                     dgv_Stock_Libros.DataSource = stockWithNames;
+                    dgv_Stock_Libros.Refresh();
+
                 }
                 else
                 {
@@ -68,26 +85,36 @@ namespace LibreriaBoscoso.Views.Vendedor
             }
         }
 
+
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            FiltrarStock(txt_Buscador.Text);
+            FiltrarStockAsync(txt_Buscador.Text);
+
         }
 
-        private void FiltrarStock(string filtro)
+        private async Task FiltrarStockAsync(string filtro)
         {
-            if (stockWithNames == null || stockWithNames.Count == 0)
-                return;
+            // Si el filtro está vacío, mostramos toda la lista original
             if (string.IsNullOrWhiteSpace(filtro))
             {
-                dgv_Stock_Libros.DataSource = _inventoryList;
+                await CargarStock();
             }
-            // Filtrar la lista de libros por título
-            var librosFiltrados = stockWithNames
-                .Where(book => book.Título != null && book.Título.IndexOf(filtro, StringComparison.OrdinalIgnoreCase) >= 0)
-                .ToList();
+            else
+            {
+                // Filtrar la lista de libros por título
+                var librosFiltrados = stockWithNames
+                    .Where(book => book.Titulo != null && book.Titulo.IndexOf(filtro, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .ToList();
 
-            dgv_Stock_Libros.DataSource = librosFiltrados;
+                // Asignar los datos filtrados al DataGridView con BindingList
+                dgv_Stock_Libros.DataSource = new BindingList<StockItem>(librosFiltrados);
+
+            }
+
+            
         }
+
+
 
         private void realizar_Venta_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -174,4 +201,12 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         }
     }
+    public class StockItem
+    {
+        public int Codigo { get; set; }
+        public string Titulo { get; set; }
+        public decimal Precio { get; set; }
+        public int Cantidad { get; set; }
+    }
+
 }

@@ -86,26 +86,32 @@ namespace LibreriaBoscoso.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"{BaseUrl}/{bookId}");
+                var book = await _httpClient.GetFromJsonAsync<Book>($"{BaseUrl}/{bookId}");
 
-                if (response.IsSuccessStatusCode)
+                if (book != null)
                 {
-                    return await response.Content.ReadFromJsonAsync<Book>();
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    return null; // Retorna null si la API devuelve 404
+                    Console.WriteLine($"Libro encontrado: ID={book.BookId}, Título={book.Title}, Precio={book.Price}");
+                    return book;
                 }
                 else
                 {
-                    throw new Exception($"Error en la API: {response.StatusCode}");
+                    Console.WriteLine($"No se encontró el libro con ID {bookId}.");
+                    return null;
                 }
             }
             catch (HttpRequestException ex)
             {
-                throw new Exception("Error de conexión con la API.", ex);
+                Console.WriteLine($"Error en la solicitud HTTP: {ex.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado: {ex.Message}");
+                return null;
             }
         }
+
+
 
         /*public async Task<bool> CreateBookAsync(Book book)
         {
