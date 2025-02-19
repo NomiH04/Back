@@ -99,7 +99,7 @@ namespace LibreriaBoscoso.Views.Vendedor
                     return -1;
                 }
 
-                int userId = await _userService.GetUserIdByUsernameAsync(username);
+                int userId = await _userService.GetUserId(username);
 
                 if (userId == -1)
                 {
