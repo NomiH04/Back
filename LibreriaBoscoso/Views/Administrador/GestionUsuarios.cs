@@ -60,7 +60,7 @@ namespace LibreriaBoscoso.Views.Administrador
         private async void button2_Click_1(object sender, EventArgs e)
         {
             // Validar los datos antes de proceder
-            if (string.IsNullOrWhiteSpace(textBox2.Text) || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text))
+            if (string.IsNullOrWhiteSpace(txt_Nombre.Text) || string.IsNullOrWhiteSpace(txt_Email.Text) || string.IsNullOrWhiteSpace(txt_Contrasena.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.");
                 return;
@@ -68,9 +68,9 @@ namespace LibreriaBoscoso.Views.Administrador
 
             var newUser = new User
             {
-                Name = textBox2.Text,
-                Email = textBox4.Text,
-                Pass = textBox5.Text,
+                Name = txt_Nombre.Text,
+                Email = txt_Email.Text,
+                Pass = txt_Contrasena.Text,
                 Role = GetSelectedRole() // Asegúrate de que este método obtiene el rol correctamente
             };
 
@@ -111,7 +111,7 @@ namespace LibreriaBoscoso.Views.Administrador
         {
             try
             {
-                string searchQuery = textBox6.Text.Trim().ToLower();  // Convertimos el texto a minúsculas
+                string searchQuery = txt_Buscar.Text.Trim().ToLower();  // Convertimos el texto a minúsculas
 
                 // Si el campo de búsqueda está vacío, mostramos todos los usuarios
                 if (string.IsNullOrEmpty(searchQuery))
@@ -243,11 +243,11 @@ namespace LibreriaBoscoso.Views.Administrador
                     var selectedUser = (User)dataGridView1.Rows[e.RowIndex].DataBoundItem;
 
                     // Rellenamos los TextBox con los datos del usuario seleccionado
-                    textBox2.Text = selectedUser.Name;  // Nombre
-                    textBox4.Text = selectedUser.Email; // Correo
+                    txt_Nombre.Text = selectedUser.Name;  // Nombre
+                    txt_Email.Text = selectedUser.Email; // Correo
 
                     // Deja el campo de la contraseña vacío (no lo mostramos)
-                    textBox5.Text = "";  // No mostramos la contraseña
+                    txt_Contrasena.Text = "";  // No mostramos la contraseña
 
                     // Puedes seleccionar el rol, si tienes una forma de hacerlo en el formulario
                     Admin.Checked = selectedUser.Role == "Admin";

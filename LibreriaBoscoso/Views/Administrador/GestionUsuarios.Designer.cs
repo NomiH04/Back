@@ -53,13 +53,13 @@ namespace LibreriaBoscoso.Views.Administrador
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_Nombre = new System.Windows.Forms.TextBox();
+            this.txt_Email = new System.Windows.Forms.TextBox();
+            this.txt_Contrasena = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.txt_Buscar = new System.Windows.Forms.TextBox();
+            this.btn_Buscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Admin = new System.Windows.Forms.RadioButton();
             this.Seller = new System.Windows.Forms.RadioButton();
@@ -318,32 +318,32 @@ namespace LibreriaBoscoso.Views.Administrador
             this.label7.TabIndex = 28;
             this.label7.Text = "Email";
             // 
-            // textBox2
+            // txt_Nombre
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(114, 127);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 26);
-            this.textBox2.TabIndex = 30;
+            this.txt_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Nombre.Location = new System.Drawing.Point(114, 127);
+            this.txt_Nombre.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Nombre.Name = "txt_Nombre";
+            this.txt_Nombre.Size = new System.Drawing.Size(215, 26);
+            this.txt_Nombre.TabIndex = 30;
             // 
-            // textBox4
+            // txt_Email
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(114, 182);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(215, 26);
-            this.textBox4.TabIndex = 32;
+            this.txt_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Email.Location = new System.Drawing.Point(114, 182);
+            this.txt_Email.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(215, 26);
+            this.txt_Email.TabIndex = 32;
             // 
-            // textBox5
+            // txt_Contrasena
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(113, 234);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(215, 26);
-            this.textBox5.TabIndex = 33;
+            this.txt_Contrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Contrasena.Location = new System.Drawing.Point(113, 234);
+            this.txt_Contrasena.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Contrasena.Name = "txt_Contrasena";
+            this.txt_Contrasena.Size = new System.Drawing.Size(215, 26);
+            this.txt_Contrasena.TabIndex = 33;
             // 
             // button2
             // 
@@ -371,39 +371,34 @@ namespace LibreriaBoscoso.Views.Administrador
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox6
+            // txt_Buscar
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(419, 99);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(300, 29);
-            this.textBox6.TabIndex = 39;
-            this.textBox6.Text = "Buscar";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txt_Buscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscar.Location = new System.Drawing.Point(419, 99);
+            this.txt_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscar.Name = "txt_Buscar";
+            this.txt_Buscar.Size = new System.Drawing.Size(300, 29);
+            this.txt_Buscar.TabIndex = 39;
+            this.txt_Buscar.Text = "Buscar";
+            this.txt_Buscar.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
-            // button4
+            // btn_Buscar
             // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(721, 99);
-            this.button4.Margin = new System.Windows.Forms.Padding(1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(71, 29);
-            this.button4.TabIndex = 40;
-            this.button4.Text = "Buscar";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_Buscar.BackColor = System.Drawing.Color.Gray;
+            this.btn_Buscar.ForeColor = System.Drawing.Color.White;
+            this.btn_Buscar.Location = new System.Drawing.Point(721, 99);
+            this.btn_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(71, 29);
+            this.btn_Buscar.TabIndex = 40;
+            this.btn_Buscar.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
-            // Asegúrate de configurar el DataGridView solo con las columnas necesarias
-
-        
-            // Configurar el DataGridView
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(419, 140);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridView1.MultiSelect = false;
@@ -411,11 +406,11 @@ namespace LibreriaBoscoso.Views.Administrador
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 102;
             this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(442, 232);
             this.dataGridView1.TabIndex = 41;
-            this.dataGridView1.CellContentClick += new DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-        // 
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
             // Admin
             // 
             this.Admin.AutoSize = true;
@@ -474,13 +469,13 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Controls.Add(this.Supplier);
             this.Controls.Add(this.Manager);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.btn_Buscar);
+            this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txt_Contrasena);
+            this.Controls.Add(this.txt_Email);
+            this.Controls.Add(this.txt_Nombre);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -532,13 +527,13 @@ namespace LibreriaBoscoso.Views.Administrador
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_Nombre;
+        private System.Windows.Forms.TextBox txt_Email;
+        private System.Windows.Forms.TextBox txt_Contrasena;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txt_Buscar;
+        private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RadioButton Admin;
         private System.Windows.Forms.RadioButton Seller;
