@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using LibreriaBoscoso.Models;
 
 namespace LibreriaBoscoso.Services
@@ -22,20 +19,34 @@ namespace LibreriaBoscoso.Services
             _httpClient = new HttpClient();
         }
 
+        // Método para crear un usuario, ahora con el DTO necesario
         public async Task<bool> CreateUserAsync(User user)
         {
             try
             {
-                Console.WriteLine("Enviando usuario: " + JsonSerializer.Serialize(user));
+                // Creamos el DTO para la creación del usuario
+                var userCreateDto = new UserCreateDto
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    HashPassword = user.Pass,  // Usamos la contraseña proporcionada
+                    Role = user.Role
+                };
 
-                var response = await _httpClient.PostAsJsonAsync(BaseUrl, user);
+                // Para depurar, puedes imprimir el objeto userCreateDto
+                Console.WriteLine("Enviando usuario: " + JsonSerializer.Serialize(userCreateDto));
+
+                // Enviamos el DTO como JSON al servidor
+                var response = await _httpClient.PostAsJsonAsync(BaseUrl, userCreateDto);
 
                 if (response.IsSuccessStatusCode)
                 {
+                    // Si la respuesta es exitosa, retornamos true
                     return true;
                 }
                 else
                 {
+                    // Si la respuesta no es exitosa, mostramos el error
                     string errorResponse = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Error al crear el usuario: {response.StatusCode} - {errorResponse}");
                     return false;
@@ -43,24 +54,13 @@ namespace LibreriaBoscoso.Services
             }
             catch (Exception ex)
             {
+                // Capturamos cualquier excepción y la mostramos en el log
                 Console.WriteLine($"Error al crear usuario: {ex.Message}");
                 return false;
             }
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
-        {
-            try
-            {
-                return await _httpClient.GetFromJsonAsync<User>($"{BaseUrl}/{id}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al obtener usuario por ID: {ex.Message}");
-                return null;
-            }
-        }
-
+        // Método para obtener todos los usuarios
         public async Task<List<User>> GetUsersAsync()
         {
             try
@@ -122,6 +122,7 @@ namespace LibreriaBoscoso.Services
             [JsonPropertyName("users")]
             public List<User> Users { get; set; }
         }
+
         // Método para obtener el ID de un usuario por su nombre
         public async Task<int> GetUserId(string username)
         {
@@ -137,5 +138,13 @@ namespace LibreriaBoscoso.Services
             }
         }
 
+        // DTO para la creación de usuario, siguiendo el modelo de la API
+        public class UserCreateDto
+        {
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string HashPassword { get; set; }
+            public string Role { get; set; }
+        }
     }
 }
