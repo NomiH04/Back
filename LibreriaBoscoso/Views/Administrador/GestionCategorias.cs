@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Models;
@@ -18,6 +12,7 @@ namespace LibreriaBoscoso.Views.Administrador
     public partial class GestionCategorias : Form
     {
         private readonly CategoryService _categoryService;
+        private List<Category> _categoriasOriginales = new List<Category>();
 
         public GestionCategorias()
         {
@@ -27,147 +22,38 @@ namespace LibreriaBoscoso.Views.Administrador
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            // Llamamos al método para cargar las categorías al cargar el formulario
             await CargarCategorias();
         }
-
-        private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ReporteVentas reporteVentas = new ReporteVentas();
-            reporteVentas.Show();
-            this.Hide();
-        }
-
-        private void reportesInventarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ReporteInventarioGlobal reporteInventarioGlobal = new ReporteInventarioGlobal();
-            reporteInventarioGlobal.Show();
-            this.Hide();
-        }
-
-        private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GestionTiendas gestionTiendas = new GestionTiendas();
-            gestionTiendas.Show();
-            this.Hide();
-        }
-
-        private void gestionarCategoriasLibrosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GestionCategorias gestionCategorias = new GestionCategorias();
-            gestionCategorias.Show();
-            this.Hide();
-        }
-
-        private void consultarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GestionUsuarios gestionUsuarios = new GestionUsuarios();
-            gestionUsuarios.Show();
-            this.Hide();
-        }
-
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AdministradorPrincipal principal = new AdministradorPrincipal();
-            principal.Show();
-            this.Hide();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Verifica que el clic no sea en una celda de encabezado
-            if (e.RowIndex >= 0)
-            {
-                // Obtén el ID de la categoría que fue clickeada
-                var categoryId = (int)dataGridView1.Rows[e.RowIndex].Cells["CategoryId"].Value;
-
-                // Puedes realizar alguna acción con el ID, como mostrar detalles de la categoría
-                MessageBox.Show($"ID de la categoría seleccionada: {categoryId}");
-
-                // Desplazar el scroll hacia la fila seleccionada
-                dataGridView1.FirstDisplayedScrollingRowIndex = e.RowIndex;
-            }
-        }
-
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            // Obtener el nombre de la categoría desde el TextBox
-            string categoriaNombre = txt_Nombre_Categoria.Text.Trim();
-
-            // Verificar que el nombre no esté vacío
-            if (!string.IsNullOrEmpty(categoriaNombre))
-            {
-                // Crear el objeto de categoría para enviarlo al servicio
-                var nuevaCategoria = new Category { Name = categoriaNombre };
-
-                try
-                {
-                    // Llamar al servicio para agregar la nueva categoría
-                    await _categoryService.AddCategoryAsync(nuevaCategoria);
-
-                    // Limpiar el TextBox después de agregar la categoría
-                    txt_Nombre_Categoria.Clear();
-
-                    // Volver a cargar las categorías después de agregar
-                    await CargarCategorias();
-
-                    // Mostrar mensaje de éxito con un estilo más amigable
-                    MessageBox.Show("¡Categoría agregada correctamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    // Aquí es donde puedes verificar si el error se debe a que la categoría ya existe
-                    if (ex.Message.Contains("duplicate key") || ex.Message.Contains("ya existe"))
-                    {
-                        MessageBox.Show("Lo siento, ya existe una categoría con este nombre. Por favor, ingresa un nombre diferente.",
-                                        "Categoría Existente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        // En caso de otros errores, se muestra un mensaje general
-                        MessageBox.Show($"Hubo un error al agregar la categoría: {ex.Message}",
-                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                // Mensaje para cuando el campo está vacío
-                MessageBox.Show("Por favor, ingrese un nombre para la categoría.",
-                                "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
 
         private async Task CargarCategorias()
         {
             try
             {
-                // Obtener las categorías desde el servicio
+                dataGridView1.SuspendLayout();
+
                 var categorias = await _categoryService.GetCategoriesAsync();
-
-                // Verificar si 'categorias' tiene datos
-                if (categorias != null && categorias.Count > 0)
+                if (categorias != null && categorias.Any())
                 {
-                    // Limpiar cualquier dato anterior en el DataGridView
+                    _categoriasOriginales = categorias;
+
                     dataGridView1.DataSource = null;
+                    dataGridView1.AutoGenerateColumns = false;
+                    dataGridView1.Columns.Clear();
 
-                    // Asignar las categorías al DataGridView
-                    dataGridView1.DataSource = categorias;
+                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "CategoryId",
+                        HeaderText = "ID",
+                        Name = "CategoryId"
+                    });
+                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "Name",
+                        HeaderText = "Nombre",
+                        Name = "Name"
+                    });
 
-                    // Asegurarnos de que AutoGenerateColumns esté activado y configurado correctamente
-                    dataGridView1.AutoGenerateColumns = true;
-
-                    // Personalizar el encabezado de las columnas
-                    dataGridView1.Columns["CategoryId"].HeaderText = "ID";
-                    dataGridView1.Columns["Name"].HeaderText = "Nombre";
+                    dataGridView1.DataSource = _categoriasOriginales;
                 }
                 else
                 {
@@ -176,33 +62,59 @@ namespace LibreriaBoscoso.Views.Administrador
             }
             catch (Exception ex)
             {
-                // Mostrar mensaje de error si algo sale mal
                 MessageBox.Show($"Error al cargar las categorías: {ex.Message}");
             }
+            finally
+            {
+                dataGridView1.ResumeLayout();
+            }
         }
-
-        // Eliminar la lógica del evento TextChanged aquí
-
-        // Método que se ejecuta cuando se hace clic en el botón para agregar la categoría
-        private async void btnAgregarCategoria_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string categoriaNombre = txt_Nombre_Categoria.Text;
+            if (e.RowIndex >= 0)
+            {
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[e.RowIndex].Selected = true;
 
+                if (dataGridView1.Columns.Contains("CategoryId") &&
+                    dataGridView1.Rows[e.RowIndex].Cells["CategoryId"].Value != null)
+                {
+                    int categoryId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryId"].Value);
+                    MessageBox.Show($"ID de la categoría seleccionada: {categoryId}");
+
+                    dataGridView1.FirstDisplayedScrollingRowIndex = e.RowIndex;
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btn_Agregar_Click_1(object sender, EventArgs e)
+        {
+            string categoriaNombre = txt_Nombre_Categoria.Text.Trim();
             if (!string.IsNullOrEmpty(categoriaNombre))
             {
-                var newCategory = new Category
-                {
-                    Name = categoriaNombre // Asumiendo que la clase Category tiene una propiedad Name
-                };
-
+                var newCategory = new Category { Name = categoriaNombre };
                 try
                 {
-                    // Llamamos al servicio para agregar la nueva categoría
-                    await _categoryService.AddCategoryAsync(newCategory);
-                    MessageBox.Show("Categoría agregada correctamente.");
-
-                    // Volver a cargar las categorías después de agregar una nueva
-                    await CargarCategorias();
+                    bool isAdded = await _categoryService.AddCategoryAsync(newCategory);
+                    if (isAdded)
+                    {
+                        MessageBox.Show("Categoría agregada correctamente.");
+                        txt_Nombre_Categoria.Clear();
+                        await CargarCategorias();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo agregar la categoría. Puede que ya exista.");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -214,12 +126,173 @@ namespace LibreriaBoscoso.Views.Administrador
                 MessageBox.Show("Por favor ingresa un nombre para la categoría.");
             }
         }
-
-        private void txt_Nombre_Categoria_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btn_eliminar_Click_1(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una categoría para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int categoryId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryId"].Value);
+
+            var confirmResult = MessageBox.Show(
+                "¿Está seguro de que desea eliminar esta categoría?",
+                "Confirmar Eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmResult != DialogResult.Yes)
+                return;
+
+            try
+            {
+                await _categoryService.DeleteCategoryAsync(categoryId);
+                MessageBox.Show("Categoría eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await CargarCategorias();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar la categoría: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox6_TextChanged_1(object sender, EventArgs e)
+        {
+            string filtro = textBox6.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dataGridView1.DataSource = new List<Category>(_categoriasOriginales);
+            }
+            else
+            {
+                var categoriasFiltradas = _categoriasOriginales
+                    .Where(c => c.Name.ToLower().Contains(filtro))
+                    .ToList();
+
+                dataGridView1.DataSource = categoriasFiltradas;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestionUsuarios gestionUsuarios = new GestionUsuarios();
+            gestionUsuarios.Show();
+            this.Hide();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteVentas reporteVentas = new ReporteVentas();
+            reporteVentas.Show();
+            this.Hide();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void reportesInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteInventarioGlobal reporteInventarioGlobal = new ReporteInventarioGlobal();
+            reporteInventarioGlobal.Show();
+            this.Hide();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void consultarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestionUsuarios gestionUsuarios = new GestionUsuarios();
+            gestionUsuarios.Show();
+            this.Hide();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btn_actualizar_categoria_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una categoría para actualizar.");
+                return;
+            }
+
+            int categoryId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryId"].Value);
+            string nuevoNombre = txt_Nombre_Categoria.Text.Trim();
+
+            if (string.IsNullOrEmpty(nuevoNombre))
+            {
+                MessageBox.Show("Por favor, ingrese un nuevo nombre para la categoría.");
+                return;
+            }
+
+            var categoriaActualizada = new Category { CategoryId = categoryId, Name = nuevoNombre };
+
+            try
+            {
+                bool actualizado = await _categoryService.UpdateCategoryAsync(categoriaActualizada);
+                if (actualizado)
+                {
+                    MessageBox.Show("Categoría actualizada correctamente.");
+                    txt_Nombre_Categoria.Clear();
+                    await CargarCategorias();
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar la categoría.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al actualizar la categoría: {ex.Message}");
+            }
         }
 
+       
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sender"></param>
+/// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AdministradorPrincipal principal = new AdministradorPrincipal();
+            principal.Show();
+            this.Hide();
+        }
     }
 }
-
