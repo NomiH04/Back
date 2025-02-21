@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using LibreriaBoscoso.Models;
 
 namespace LibreriaBoscoso.Services
@@ -38,11 +39,12 @@ namespace LibreriaBoscoso.Services
                 // Imprimir JSON recibido para depuración
                 Console.WriteLine("JSON recibido desde la API:\n" + jsonString);
 
+
                 // Intentar deserializar como un objeto raíz que contiene la lista de libros
                 try
                 {
                     var bookResponse = JsonSerializer.Deserialize<JsonElement>(jsonString);
-                    var booksArray = bookResponse.GetProperty("book");
+                    var booksArray = bookResponse.GetProperty("books");
 
                     var books = JsonSerializer.Deserialize<List<Book>>(booksArray.ToString(), new JsonSerializerOptions
                     {
@@ -151,5 +153,35 @@ namespace LibreriaBoscoso.Services
                 return "Desconocido"; // En caso de error
             }
         }
+
+        public async Task<bool> DeleteBookByIdAsync(int bookId)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.DeleteAsync($"{BaseUrl}/{bookId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Libro con ID {bookId} eliminado correctamente.");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"Error al eliminar el libro con ID {bookId}. Código: {response.StatusCode}");
+                    return false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error en la solicitud HTTP: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado: {ex.Message}");
+                return false;
+            }
+        }
+
     }
 }

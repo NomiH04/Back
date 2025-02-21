@@ -9,6 +9,7 @@ namespace LibreriaBoscoso.Views.Gerente
 {
     public partial class ConsultarLibro : Form
     {
+        int idLibroSeleccionado = -1;
         private BookService _bookService; // se hace una instancia de la clase orden service para extraer los datos de la api
         public ConsultarLibro()
         {
@@ -150,8 +151,59 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            Limpiar();
+        }
+
+        public void Limpiar ()
+        {
             CargarDatos();
             txtBuscar.Text = "";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int idLibroSeleccionado = -1;
+
+            // Verificar si el usuario ingresó el ID en el TextBox
+            if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && int.TryParse(txtBuscar.Text, out int idDesdeTextbox))
+            {
+                idLibroSeleccionado = idDesdeTextbox;
+            }
+            else
+            {
+                // Si no se ingresó un ID válido en el TextBox, obtener el ID seleccionado en la tabla
+                idLibroSeleccionado = ObtenerIdSeleccionado();
+            }
+
+            if (idLibroSeleccionado == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un libro de la tabla o ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Abrir la ventana de confirmación con el ID obtenido
+            ModuloConfirmacion moduloConfirmacion = new ModuloConfirmacion(idLibroSeleccionado);
+            moduloConfirmacion.Show();
+        }
+
+        private void dataLibro_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verificar que no se haga clic en el encabezado
+            {
+                DataGridViewRow filaSeleccionada = dataLibro.Rows[e.RowIndex];
+
+                // Verificar que la celda no sea nula antes de convertirla a int
+                if (filaSeleccionada.Cells[0].Value != null)
+                {
+                    idLibroSeleccionado = int.Parse(filaSeleccionada.Cells[0].Value.ToString());
+                    MessageBox.Show("ID seleccionado: " + idLibroSeleccionado);
+                }
+            }
+        }
+
+        private int ObtenerIdSeleccionado()
+        {
+            return idLibroSeleccionado;
         }
     }
 

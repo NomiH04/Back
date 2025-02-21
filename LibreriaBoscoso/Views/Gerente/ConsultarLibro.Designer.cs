@@ -301,7 +301,6 @@
             // dataLibro
             // 
             this.dataLibro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataLibro.Enabled = false;
             this.dataLibro.Location = new System.Drawing.Point(25, 136);
             this.dataLibro.Margin = new System.Windows.Forms.Padding(1);
             this.dataLibro.Name = "dataLibro";
@@ -309,6 +308,7 @@
             this.dataLibro.RowTemplate.Height = 40;
             this.dataLibro.Size = new System.Drawing.Size(726, 185);
             this.dataLibro.TabIndex = 77;
+            this.dataLibro.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLibro_CellClick);
             // 
             // btnEliminar
             // 
@@ -319,6 +319,7 @@
             this.btnEliminar.TabIndex = 74;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
