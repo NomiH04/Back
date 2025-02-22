@@ -63,6 +63,7 @@ namespace LibreriaBoscoso.Views.Vendedor
                 MessageBox.Show($"Error al cargar los libros: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private HashSet<int> librosAgregados = new HashSet<int>(); // Para rastrear libros ya agregados
 
         private void btn_Agregar_Libro_Click(object sender, EventArgs e)
         {
@@ -88,6 +89,12 @@ namespace LibreriaBoscoso.Views.Vendedor
 
                     Book libroSeleccionado = allBooks[selectedIndex];
 
+                    if (librosAgregados.Contains(libroSeleccionado.BookId))
+                    {
+                        MessageBox.Show("Este libro ya ha sido agregado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (!int.TryParse(txt_Cantidad.Text, out int cantidad) || cantidad <= 0)
                     {
                         MessageBox.Show("Ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -102,6 +109,7 @@ namespace LibreriaBoscoso.Views.Vendedor
                     };
 
                     _realizarVenta.AgregarLibroAVenta(detalleVenta);
+                    librosAgregados.Add(libroSeleccionado.BookId); // Agregar el libro a la lista de agregados
 
                     DialogResult resultado = MessageBox.Show("¿Desea agregar otro libro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -119,6 +127,8 @@ namespace LibreriaBoscoso.Views.Vendedor
                 }
             }
         }
+
+
 
 
         private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)

@@ -24,12 +24,13 @@ namespace LibreriaBoscoso.Views.Vendedor
         public RealizarVenta()
         {
             InitializeComponent();
-            Inicializar();
+            
             _saleService = new SaleService();
             _storeService = new StoreService();
             _saleDetailService = new SaleDetailService();
             _userService = new UserService();
             _librosVenta = new List<SaleDetail>(); // Inicializa la lista vacía
+            Inicializar();
         }
 
         private void Inicializar()
