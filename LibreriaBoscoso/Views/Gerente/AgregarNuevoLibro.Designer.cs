@@ -45,19 +45,17 @@
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtPublishier = new System.Windows.Forms.TextBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.RichTextBox();
-            this.boxCategoria = new System.Windows.Forms.ComboBox();
-            this.txtStock = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -245,73 +243,24 @@
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(94, 78);
-            this.panel1.Margin = new System.Windows.Forms.Padding(1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(616, 307);
-            this.panel1.TabIndex = 59;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txtFecha);
-            this.panel2.Controls.Add(this.txtPublishier);
-            this.panel2.Controls.Add(this.btnCancelar);
-            this.panel2.Controls.Add(this.btnAgregar);
-            this.panel2.Controls.Add(this.txtDescripcion);
-            this.panel2.Controls.Add(this.boxCategoria);
-            this.panel2.Controls.Add(this.txtStock);
-            this.panel2.Controls.Add(this.txtPrecio);
-            this.panel2.Controls.Add(this.txtAutor);
-            this.panel2.Controls.Add(this.txtTitulo);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(21, 18);
-            this.panel2.Margin = new System.Windows.Forms.Padding(1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(571, 272);
-            this.panel2.TabIndex = 59;
-            // 
-            // txtFecha
-            // 
-            this.txtFecha.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFecha.Location = new System.Drawing.Point(227, 83);
-            this.txtFecha.Margin = new System.Windows.Forms.Padding(1);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(181, 25);
-            this.txtFecha.TabIndex = 12;
-            this.txtFecha.Text = "yyyy-mm-dd";
-            // 
-            // txtPublishier
-            // 
-            this.txtPublishier.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPublishier.Location = new System.Drawing.Point(227, 43);
-            this.txtPublishier.Margin = new System.Windows.Forms.Padding(1);
-            this.txtPublishier.Name = "txtPublishier";
-            this.txtPublishier.Size = new System.Drawing.Size(181, 25);
-            this.txtPublishier.TabIndex = 10;
-            this.txtPublishier.Text = "Publishier";
-            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(472, 206);
+            this.btnCancelar.Location = new System.Drawing.Point(320, 208);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 30);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.Location = new System.Drawing.Point(375, 206);
+            this.btnAgregar.Location = new System.Drawing.Point(234, 208);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(1);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(84, 30);
@@ -320,40 +269,78 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(138, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 21);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Agregar Libro";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(163, 75);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(471, 307);
+            this.panel1.TabIndex = 74;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.txtFecha);
+            this.panel2.Controls.Add(this.txtPublishier);
+            this.panel2.Controls.Add(this.btnAgregar);
+            this.panel2.Controls.Add(this.txtDescripcion);
+            this.panel2.Controls.Add(this.btnCancelar);
+            this.panel2.Controls.Add(this.txtPrecio);
+            this.panel2.Controls.Add(this.txtAutor);
+            this.panel2.Controls.Add(this.txtTitulo);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(21, 18);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(425, 272);
+            this.panel2.TabIndex = 59;
+            // 
+            // txtFecha
+            // 
+            this.txtFecha.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFecha.Location = new System.Drawing.Point(42, 171);
+            this.txtFecha.Margin = new System.Windows.Forms.Padding(1);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(172, 25);
+            this.txtFecha.TabIndex = 12;
+            this.txtFecha.Text = "yyyy-mm-dd";
+            // 
+            // txtPublishier
+            // 
+            this.txtPublishier.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPublishier.Location = new System.Drawing.Point(42, 127);
+            this.txtPublishier.Margin = new System.Windows.Forms.Padding(1);
+            this.txtPublishier.Name = "txtPublishier";
+            this.txtPublishier.Size = new System.Drawing.Size(172, 25);
+            this.txtPublishier.TabIndex = 10;
+            this.txtPublishier.Text = "Publishier";
+            // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(425, 43);
+            this.txtDescripcion.Location = new System.Drawing.Point(237, 46);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(1);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(131, 149);
+            this.txtDescripcion.Size = new System.Drawing.Size(167, 146);
             this.txtDescripcion.TabIndex = 7;
             this.txtDescripcion.Text = "Descripcion";
-            // 
-            // boxCategoria
-            // 
-            this.boxCategoria.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxCategoria.FormattingEnabled = true;
-            this.boxCategoria.Location = new System.Drawing.Point(227, 124);
-            this.boxCategoria.Margin = new System.Windows.Forms.Padding(1);
-            this.boxCategoria.Name = "boxCategoria";
-            this.boxCategoria.Size = new System.Drawing.Size(181, 25);
-            this.boxCategoria.TabIndex = 5;
-            this.boxCategoria.Text = "Categoria";
-            // 
-            // txtStock
-            // 
-            this.txtStock.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStock.Location = new System.Drawing.Point(42, 167);
-            this.txtStock.Margin = new System.Windows.Forms.Padding(1);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(172, 25);
-            this.txtStock.TabIndex = 4;
-            this.txtStock.Text = "Stock";
             // 
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(42, 124);
+            this.txtPrecio.Location = new System.Drawing.Point(42, 213);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(1);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(172, 25);
@@ -379,17 +366,6 @@
             this.txtTitulo.Size = new System.Drawing.Size(172, 25);
             this.txtTitulo.TabIndex = 1;
             this.txtTitulo.Text = "Titulo";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(223, 11);
-            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 21);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Agregar Libro";
             // 
             // AgregarNuevoLibro
             // 
@@ -440,18 +416,16 @@
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtPublishier;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.RichTextBox txtDescripcion;
-        private System.Windows.Forms.ComboBox boxCategoria;
-        private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.TextBox txtTitulo;
-        private System.Windows.Forms.Label label3;
     }
 }

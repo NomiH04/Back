@@ -60,7 +60,6 @@
             // dataPedidos
             // 
             this.dataPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataPedidos.Enabled = false;
             this.dataPedidos.Location = new System.Drawing.Point(38, 138);
             this.dataPedidos.Margin = new System.Windows.Forms.Padding(1);
             this.dataPedidos.Name = "dataPedidos";
@@ -68,6 +67,7 @@
             this.dataPedidos.RowTemplate.Height = 40;
             this.dataPedidos.Size = new System.Drawing.Size(696, 185);
             this.dataPedidos.TabIndex = 102;
+            this.dataPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataPedidos_CellClick);
             // 
             // btnVer
             // 

@@ -61,7 +61,7 @@ namespace LibreriaBoscoso.Views.Gerente
             var sale = await _saleService.GetSaleByIdAsync(id);
 
             lbNumVenta.Text = sale.SaleId.ToString();
-            lbFecha.Text = sale.SaleDate.ToString();
+            lbFecha.Text = sale.SaleDate?.ToString("dd/MM/yyyy");
             txtVendedor.Text = sale.UserId.ToString();
             txtTienda.Text = sale.StoreId.ToString();
             txtMonto.Text = sale.Total.ToString();

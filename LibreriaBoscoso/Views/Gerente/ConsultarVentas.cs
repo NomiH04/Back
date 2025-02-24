@@ -10,10 +10,11 @@ namespace LibreriaBoscoso.Views.Gerente
     public partial class ConsultarVentas : Form
     {
         private SaleService _saleService; // se hace una instancia de la clase orden service para extraer los datos de la api
+        int idVentaSeleccionado = -1;
         public ConsultarVentas()
         {
             InitializeComponent();
-            _saleService = new SaleService();  // Se asume que ya existe y está configurado
+            _saleService = new SaleService();  
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -58,28 +59,25 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private async void button7_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(txtBuscar.Text) || !int.TryParse(txtBuscar.Text, out int id))
+            if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && int.TryParse(txtBuscar.Text, out int idDesdeTextbox))
             {
-                //valida que el dato que se esta ingresando sea un int, ademas se asegura de que el campo no este vacio para realizar la accion
-                MessageBox.Show("El campo debe contener un ID valido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            //antes de que ingresar busca si el id que se esta ingresando en la base de datos o si esta esta vacia o no
-            var sale = await _saleService.GetSaleByIdAsync(id);
-
-            //verifica que el objeto creado para extraer los datos no sea null y que coincida con el id ingresado
-            if (sale != null && sale.SaleId == id)
-            {
-                VerVenta verVenta = new VerVenta(id);//se llama a la ventana ver ventas y se le ingresa por parametro el id a mostrar
-                verVenta.Show();
-                this.Hide();
+                idVentaSeleccionado = idDesdeTextbox;
             }
             else
             {
-                MessageBox.Show("No se encontró un pedido con el ID ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBuscar.Text = "";
+                // Si no se ingresó un ID válido en el TextBox, obtener el ID seleccionado en la tabla
+                idVentaSeleccionado = ObtenerIdSeleccionado();
             }
+
+            if (idVentaSeleccionado == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un libro de la tabla o ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
+            VerVenta verVenta = new VerVenta(idVentaSeleccionado);//se llama a la ventana ver ventas y se le ingresa por parametro el id a mostrar
+            verVenta.Show();
+            this.Hide();
         }
 
         private async void btnBuscar_Click(object sender, EventArgs e)//buscar
@@ -138,6 +136,24 @@ namespace LibreriaBoscoso.Views.Gerente
         {
             CargarDatos();
             txtBuscar.Text = "";
+        }
+
+        private void dataVenta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verificar que no se haga clic en el encabezado
+            {
+                DataGridViewRow filaSeleccionada = dataVenta.Rows[e.RowIndex];
+
+                // Verificar que la celda no sea nula antes de convertirla a int
+                if (filaSeleccionada.Cells[0].Value != null)
+                {
+                    idVentaSeleccionado = int.Parse(filaSeleccionada.Cells[0].Value.ToString());
+                }
+            }
+        }
+        private int ObtenerIdSeleccionado()
+        {
+            return idVentaSeleccionado;
         }
     }
 }

@@ -10,10 +10,10 @@ namespace LibreriaBoscoso.Views.Gerente
     {
         private readonly BookService _bookService = new BookService();
         private readonly CategoryService _categoryService = new CategoryService();
+        private bool isAddingUser = false;
         public AgregarNuevoLibro()
         {
             InitializeComponent();
-            CargarCategories();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -63,9 +63,7 @@ namespace LibreriaBoscoso.Views.Gerente
                 string.IsNullOrWhiteSpace(txtAutor.Text) ||
                 string.IsNullOrWhiteSpace(txtPrecio.Text) ||
                 string.IsNullOrWhiteSpace(txtPublishier.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
-                string.IsNullOrWhiteSpace (txtStock.Text) ||
-                string.IsNullOrWhiteSpace(txtFecha.Text))
+                string.IsNullOrWhiteSpace(txtDescripcion.Text) )
             {
                 MessageBox.Show("Todos los campos son obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -78,14 +76,23 @@ namespace LibreriaBoscoso.Views.Gerente
                 return;
             }
 
+            if (!DateTime.TryParse(txtFecha.Text, out DateTime publicationDate))
+            {
+                MessageBox.Show("Fecha de publicación inválida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Extrae solo la fecha sin la hora
+            publicationDate = publicationDate.Date;
+
             var book = new Book
             {
                 Title = txtTitulo.Text,
                 Author = txtAutor.Text,
                 Price = precio,
                 Description = txtDescripcion.Text,
-                PublicationDate = DateTime.Now,
-                Publisher = txtPublishier.Text // 
+                PublicationDate = publicationDate,
+                Publisher = txtPublishier.Text
             };
 
             bool resultado = await _bookService.CreateBookAsync(book);
@@ -98,41 +105,21 @@ namespace LibreriaBoscoso.Views.Gerente
                 txtTitulo.Text = "";
                 txtAutor.Text = "";
                 txtPrecio.Text = "";
-                txtStock.Text = "";
-                boxCategoria.SelectedIndex = -1;  // Desseleccionar el ComboBox
                 txtDescripcion.Text = "";
                 txtTitulo.Focus();  // Opcional: Enfocar el primer campo
             }
             else
             {
                 MessageBox.Show("Error al agregar el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            } 
         }
 
-        private async void CargarCategories()
+
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var categories = await _categoryService.GetCategoriesAsync();
-
-                if (categories == null )
-                {
-                    MessageBox.Show("No se encontraron categorías.");
-                    return;
-                }
-
-                boxCategoria.Items.Clear();
-                boxCategoria.DataSource = null;  // Limpiar cualquier dato anterior
-                boxCategoria.DataSource = categories;
-                boxCategoria.DisplayMember = "Name";
-
-
-                boxCategoria.Refresh(); // Forzar actualización visual
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar categorías: {ex.Message}");
-            }
+            ConsultarLibro consultar = new ConsultarLibro();
+            consultar.Show();
+            this.Close();
         }
     }
 }

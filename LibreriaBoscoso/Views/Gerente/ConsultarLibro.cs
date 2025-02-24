@@ -66,35 +66,48 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private void button6_Click(object sender, EventArgs e)
         {
-            EditarLibro editarLibro = new EditarLibro();
+            // Verificar si el usuario ingresó el ID en el TextBox
+            if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && int.TryParse(txtBuscar.Text, out int idDesdeTextbox))
+            {
+                idLibroSeleccionado = idDesdeTextbox;
+            }
+            else
+            {
+                // Si no se ingresó un ID válido en el TextBox, obtener el ID seleccionado en la tabla
+                idLibroSeleccionado = ObtenerIdSeleccionado();
+            }
+
+            if (idLibroSeleccionado == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un libro de la tabla o ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            EditarLibro editarLibro = new EditarLibro(idLibroSeleccionado);
             editarLibro.Show();
             this.Hide();
         }
 
         private async void button7_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(txtBuscar.Text) || !int.TryParse(txtBuscar.Text, out int id))
+            if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && int.TryParse(txtBuscar.Text, out int idDesdeTextbox))
             {
-                //valida que el dato que se esta ingresando sea un int, ademas se asegura de que el campo no este vacio para realizar la accion
-                MessageBox.Show("El campo debe contener un ID valido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            //antes de que ingresar busca si el id que se esta ingresando en la base de datos o si esta esta vacia o no
-            var book = await _bookService.GetBookByIdAsync(id);
-
-            //verifica que el objeto creado para extraer los datos no sea null y que coincida con el id ingresado
-            if (book != null && book.BookId == id)
-            {
-                VerLibro verLibro = new VerLibro(id);//se llama a la ventana pedidos y se le ingresa por parametro el id a mostrar
-                verLibro.Show();
-                this.Hide();
+                idLibroSeleccionado = idDesdeTextbox;
             }
             else
             {
-                MessageBox.Show("No se encontró un pedido con el ID ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBuscar.Text = "";
+                // Si no se ingresó un ID válido en el TextBox, obtener el ID seleccionado en la tabla
+                idLibroSeleccionado = ObtenerIdSeleccionado();
             }
+
+            if (idLibroSeleccionado == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un libro de la tabla o ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
+            VerLibro verLibro = new VerLibro(idLibroSeleccionado);//se llama a la ventana pedidos y se le ingresa por parametro el id a mostrar
+            verLibro.Show();
+            this.Hide();
         }
 
         private async void btnBuscar_Click(object sender, EventArgs e)//buscar
@@ -162,8 +175,6 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int idLibroSeleccionado = -1;
-
             // Verificar si el usuario ingresó el ID en el TextBox
             if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && int.TryParse(txtBuscar.Text, out int idDesdeTextbox))
             {
@@ -196,7 +207,6 @@ namespace LibreriaBoscoso.Views.Gerente
                 if (filaSeleccionada.Cells[0].Value != null)
                 {
                     idLibroSeleccionado = int.Parse(filaSeleccionada.Cells[0].Value.ToString());
-                    MessageBox.Show("ID seleccionado: " + idLibroSeleccionado);
                 }
             }
         }

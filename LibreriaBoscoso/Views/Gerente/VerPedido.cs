@@ -1,5 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Net.Http;
+using System.Text.Json;
 using System.Windows.Forms;
+using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
 
@@ -9,16 +13,19 @@ namespace LibreriaBoscoso.Views.Gerente
     {
         int id;
         private readonly OrderService _orderService = new OrderService();
+        private readonly UserService _userService = new UserService();
+        private readonly StoreService _storeService = new StoreService();
+        private readonly BookService _bookService = new BookService();
+        private readonly OrderDetailService _orderDetailService = new OrderDetailService();
         public VerPedido(int id)
         {
             InitializeComponent();
-            this.id = id;
-            this.CargarDatos();
+            this.id = id;  
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.CargarDatos();
         }
 
         private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,12 +66,14 @@ namespace LibreriaBoscoso.Views.Gerente
         private async void CargarDatos()
         {
             var order = await _orderService.GetOrderByIdAsync(id);
+            var user = await _userService.GetUserByIdAsync(order.UserId.Value);
+            var store = await _storeService.GetStoreByIdAsync(order.StoreId.Value);
 
             lbVenta.Text = id.ToString();
-            lbFecha.Text = order.OrderDate?.ToString("dd/MM/yyyy") ?? "Sin fecha";
-            txtVendedor.Text = order.UserId.ToString();
+            lbFecha.Text = order.OrderDate?.ToString("dd/MM/yyyy");
+            txtVendedor.Text = user.Name;
             txtStatus.Text = order.Status.ToString();
-
-        }
+            txtStore.Text = store.Name;
+        }//Fin Cargar Datos
     }
 }

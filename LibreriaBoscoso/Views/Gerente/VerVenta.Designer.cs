@@ -38,7 +38,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.txtTienda = new System.Windows.Forms.TextBox();
             this.txtVendedor = new System.Windows.Forms.TextBox();
@@ -87,7 +86,6 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.txtMonto);
             this.panel2.Controls.Add(this.txtTienda);
             this.panel2.Controls.Add(this.txtVendedor);
@@ -135,7 +133,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(38, 152);
+            this.label7.Location = new System.Drawing.Point(38, 182);
             this.label7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 21);
@@ -146,7 +144,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(38, 122);
+            this.label6.Location = new System.Drawing.Point(38, 134);
             this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 21);
@@ -188,21 +186,11 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(42, 183);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(294, 80);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "Descripcion";
-            // 
             // txtMonto
             // 
             this.txtMonto.Enabled = false;
             this.txtMonto.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.Location = new System.Drawing.Point(129, 153);
+            this.txtMonto.Location = new System.Drawing.Point(129, 183);
             this.txtMonto.Margin = new System.Windows.Forms.Padding(1);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(207, 25);
@@ -222,7 +210,7 @@
             // 
             this.txtVendedor.Enabled = false;
             this.txtVendedor.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVendedor.Location = new System.Drawing.Point(129, 124);
+            this.txtVendedor.Location = new System.Drawing.Point(129, 136);
             this.txtVendedor.Margin = new System.Windows.Forms.Padding(1);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.Size = new System.Drawing.Size(207, 25);
@@ -455,7 +443,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtTienda;
         private System.Windows.Forms.TextBox txtVendedor;

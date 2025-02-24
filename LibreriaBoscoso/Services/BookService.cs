@@ -80,7 +80,7 @@ namespace LibreriaBoscoso.Services
         // Clase para manejar respuestas con un objeto raíz
         public class BookResponse
         {
-            [JsonPropertyName("book")]
+            [JsonPropertyName("books")]
             public List<Book> Books { get; set; }
         }
         // Obtener un libro por ID
@@ -115,10 +115,25 @@ namespace LibreriaBoscoso.Services
 
 
 
-        /*public async Task<bool> CreateBookAsync(Book book)
+        public async Task<bool> CreateBookAsync(Book book)
         {
             try
             {
+                var bookDto = new
+                {
+                    bookDto = new BookDto
+                    {
+                        Title = book.Title,
+                        Author = book.Author,
+                        Price = book.Price,
+                        Description = book.Description,
+                        PublicationDate = book.PublicationDate, 
+                        Publisher = book.Publisher
+                    }
+                };
+
+                // Para depurar, puedes imprimir el objeto userCreateDto
+                Console.WriteLine("Enviando libro: " + JsonSerializer.Serialize(bookDto));
                 var response = await _httpClient.PostAsJsonAsync(BaseUrl, book);
 
                 if (!response.IsSuccessStatusCode)
@@ -133,14 +148,9 @@ namespace LibreriaBoscoso.Services
             {
                 throw new Exception("Error de conexión con la API.", ex);
             }
-        }*/
-
-        public async Task<bool> CreateBookAsync(Book book)
-        {
-            var response = await _httpClient.PostAsJsonAsync(BaseUrl, book);
-            return response.IsSuccessStatusCode;
         }
-        // 🔹 Obtener un libro por ID para extraer su título
+
+        
         public async Task<string> GetBookTitleByIdAsync(int bookId)
         {
             try
@@ -183,5 +193,56 @@ namespace LibreriaBoscoso.Services
             }
         }
 
+        public async Task<bool> QuizasSirva(Book book)
+        {
+            try
+            {
+                // Creamos el DTO para la creación del usuario
+                var bookDto = new BookDto
+                {
+                    Title = book.Title,
+                    Author = book.Author,
+                    Price = book.Price,
+                    Description = book.Description,
+                    PublicationDate = book.PublicationDate,
+                    Publisher = book.Publisher
+                };
+
+                // Para depurar, puedes imprimir el objeto userCreateDto
+                Console.WriteLine("Enviando usuario: " + JsonSerializer.Serialize(bookDto));
+
+                // Enviamos el DTO como JSON al servidor
+                var response = await _httpClient.PostAsJsonAsync(BaseUrl, bookDto);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Si la respuesta es exitosa, retornamos true
+                    return true;
+                }
+                else
+                {
+                    // Si la respuesta no es exitosa, mostramos el error
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al crear el usuario: {response.StatusCode} - {errorResponse}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Capturamos cualquier excepción y la mostramos en el log
+                Console.WriteLine($"Error al crear usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+        public class BookDto
+        {
+            public string Title { get; set; }
+            public string Author { get; set; }
+            public decimal Price { get; set; }
+            public string Description { get; set; }
+            public DateTime PublicationDate { get; set; }
+            public string Publisher { get; set; }
+        }
     }
 }

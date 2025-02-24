@@ -70,8 +70,10 @@ namespace LibreriaBoscoso.Views.Gerente
             txtTitulo.Text = book.Title;
             txtAutor.Text = book.Author;
             txtPrecio.Text = book.Price.ToString();
-            txtStock.Text = book.Publisher;
+            txtPublishier.Text = book.Publisher;
             txtDescripcion.Text = book.Description;
+            txtFecha.Text = book.PublicationDate.ToString("dd/MM/yyyy");
+
         }
     }
 }

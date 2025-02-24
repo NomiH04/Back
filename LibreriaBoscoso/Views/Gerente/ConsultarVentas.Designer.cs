@@ -60,7 +60,6 @@
             // dataVenta
             // 
             this.dataVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataVenta.Enabled = false;
             this.dataVenta.Location = new System.Drawing.Point(27, 134);
             this.dataVenta.Margin = new System.Windows.Forms.Padding(1);
             this.dataVenta.Name = "dataVenta";
@@ -68,6 +67,7 @@
             this.dataVenta.RowTemplate.Height = 40;
             this.dataVenta.Size = new System.Drawing.Size(590, 185);
             this.dataVenta.TabIndex = 91;
+            this.dataVenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataVenta_CellClick);
             // 
             // button4
             // 

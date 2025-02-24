@@ -146,5 +146,35 @@ namespace LibreriaBoscoso.Services
             public string HashPassword { get; set; }
             public string Role { get; set; }
         }
+
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            try
+            {
+                var user = await _httpClient.GetFromJsonAsync<User>($"{BaseUrl}/{userId}");
+
+                if (user != null)
+                {
+                    Console.WriteLine($"Usuario encontrado: ID={user.UserId}");
+                    return user;
+                }
+                else
+                {
+                    Console.WriteLine($"No se encontró el usuario con ID {userId}.");
+                    return null;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error en la solicitud HTTP: {ex.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado: {ex.Message}");
+                return null;
+            }
+        }
+
     }
 }

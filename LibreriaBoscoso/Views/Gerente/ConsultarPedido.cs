@@ -10,6 +10,7 @@ namespace LibreriaBoscoso.Views.Gerente
     public partial class ConsultarPedido : Form
     {
         private OrderService _orderService; // se hace una instancia de la clase orden service para extraer los datos de la api
+        int idPedidoSeleccionado = -1;
         public ConsultarPedido()
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CargarDatos(); //se creo un metodo que carga todos los datos a la tabla
+            CargarDatos(); //se creo un metodo que cargue todos los datos a la tabla
         }
 
         private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,27 +46,25 @@ namespace LibreriaBoscoso.Views.Gerente
         //con el boton ver damos accion para pasar a la ventana Ver Pedido
         private async void button7_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtBuscar.Text) || !int.TryParse(txtBuscar.Text, out int id))
+            if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && int.TryParse(txtBuscar.Text, out int idDesdeTextbox))
             {
-                //valida que el dato que se esta ingresando sea un int, ademas se asegura de que el campo no este vacio para realizar la accion
-                MessageBox.Show("El campo debe contener un ID valido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            //antes de que ingresar busca si el id que se esta ingresando en la base de datos o si esta esta vacia o no
-            var order = await _orderService.GetOrderByIdAsync(id);
-
-            //verifica que el objeto creado para extraer los datos no sea null y que coincida con el id ingresado
-            if (order != null && order.OrderId == id)
-            {
-                VerPedido verPedido = new VerPedido(id);//se llama a la ventana pedidos y se le ingresa por parametro el id a mostrar
-                verPedido.Show();
-                this.Hide();
+                idPedidoSeleccionado = idDesdeTextbox;
             }
             else
             {
-                MessageBox.Show("No se encontró un pedido con el ID ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBuscar.Text = "";
+                // Si no se ingresó un ID válido en el TextBox, obtener el ID seleccionado en la tabla
+                idPedidoSeleccionado = ObtenerIdSeleccionado();
             }
+
+            if (idPedidoSeleccionado == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un libro de la tabla o ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            VerPedido verPedido = new VerPedido(idPedidoSeleccionado);//se llama a la ventana pedidos y se le ingresa por parametro el id a mostrar
+            verPedido.Show();
+            this.Hide();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -121,7 +120,7 @@ namespace LibreriaBoscoso.Views.Gerente
             try
             {
                 // Instanciar la clase que contiene el método GetOrdersAsync
-                var service = new OrderService(); // 
+                var service = new OrderService(); 
 
                 // Obtener la lista de órdenes
                 var orders = await service.GetOrdersAsync();
@@ -139,6 +138,25 @@ namespace LibreriaBoscoso.Views.Gerente
         {
             CargarDatos();
             txtBuscar.Text = "";
+        }
+
+        private void dataPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verificar que no se haga clic en el encabezado
+            {
+                DataGridViewRow filaSeleccionada = dataPedidos.Rows[e.RowIndex];
+
+                // Verificar que la celda no sea nula antes de convertirla a int
+                if (filaSeleccionada.Cells[0].Value != null)
+                {
+                    idPedidoSeleccionado = int.Parse(filaSeleccionada.Cells[0].Value.ToString());
+                }
+            }
+        }
+
+        private int ObtenerIdSeleccionado()
+        {
+            return idPedidoSeleccionado;
         }
     }
 }
