@@ -15,12 +15,17 @@ namespace LibreriaBoscoso.Views.Vendedor
         private BookService _bookService;
         private List<Book> allBooks;
         private RealizarVenta _realizarVenta;
+        private HashSet<int> librosAgregados; // Para rastrear libros ya agregados
 
-        public AgregarLibroFactura(RealizarVenta realizarVenta)
+        private int idVenta;
+
+        public AgregarLibroFactura(RealizarVenta realizarVenta, int idVenta)
         {
             InitializeComponent();
             _bookService = new BookService();
             _realizarVenta = realizarVenta;
+            this.idVenta = idVenta;
+            librosAgregados = new HashSet<int>();
         }
 
         private async void AgregarLibroFactura_Load(object sender, EventArgs e)
@@ -43,7 +48,7 @@ namespace LibreriaBoscoso.Views.Vendedor
                     { "Title", "Título" },
                     { "Author", "Autor" },
                     { "Price", "Precio" },
-          
+
                 };
 
                 // 🔹 Iterar por cada columna y asignar el encabezado si está en el diccionario
@@ -63,7 +68,7 @@ namespace LibreriaBoscoso.Views.Vendedor
                 MessageBox.Show($"Error al cargar los libros: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private HashSet<int> librosAgregados = new HashSet<int>(); // Para rastrear libros ya agregados
+
 
         private void btn_Agregar_Libro_Click(object sender, EventArgs e)
         {
@@ -79,21 +84,8 @@ namespace LibreriaBoscoso.Views.Vendedor
                         return;
                     }
 
-                    int selectedIndex = dgv_Libros_Disponibles.SelectedRows[0].Index;
-
-                    if (selectedIndex < 0 || selectedIndex >= allBooks.Count)
-                    {
-                        MessageBox.Show("Error al seleccionar el libro. Inténtelo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    Book libroSeleccionado = allBooks[selectedIndex];
-
-                    if (librosAgregados.Contains(libroSeleccionado.BookId))
-                    {
-                        MessageBox.Show("Este libro ya ha sido agregado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                    // Obtener el libro seleccionado directamente del DataBoundItem
+                    Book libroSeleccionado = (Book)dgv_Libros_Disponibles.SelectedRows[0].DataBoundItem;
 
                     if (!int.TryParse(txt_Cantidad.Text, out int cantidad) || cantidad <= 0)
                     {
@@ -103,21 +95,17 @@ namespace LibreriaBoscoso.Views.Vendedor
 
                     SaleDetail detalleVenta = new SaleDetail
                     {
+                        SaleId = idVenta,
                         BookId = libroSeleccionado.BookId,
                         Quantity = cantidad,
                         UnitPrice = libroSeleccionado.Price
                     };
 
                     _realizarVenta.AgregarLibroAVenta(detalleVenta);
-                    librosAgregados.Add(libroSeleccionado.BookId); // Agregar el libro a la lista de agregados
+                    librosAgregados.Add(libroSeleccionado.BookId); // Agregar el libro a la lista de libros ya agregados
 
-                    DialogResult resultado = MessageBox.Show("¿Desea agregar otro libro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (resultado == DialogResult.No)
-                    {
-                        continuar = false; // Salir del bucle
-                        this.Close(); // Cerrar la ventana inmediatamente
-                    }
+                    // Se puede terminar el ciclo una vez agregado el libro exitosamente
+                    continuar = false;
                 }
                 catch (Exception ex)
                 {
@@ -126,10 +114,9 @@ namespace LibreriaBoscoso.Views.Vendedor
                     continuar = false;
                 }
             }
+            this.Close();
+
         }
-
-
-
 
         private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -235,6 +222,7 @@ namespace LibreriaBoscoso.Views.Vendedor
         {
             this.Close();
         }
-        
+
     }
 }
+

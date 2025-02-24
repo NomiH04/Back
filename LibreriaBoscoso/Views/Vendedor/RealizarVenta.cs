@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibreriaBoscoso.Models;
@@ -19,101 +16,131 @@ namespace LibreriaBoscoso.Views.Vendedor
         private SaleDetailService _saleDetailService;
         private List<SaleDetail> _librosVenta; // Lista de libros que se van a vender
         private UserService _userService;
-        private StoreService _storeService;
+        private int idVenta = 0;
 
         public RealizarVenta()
         {
             InitializeComponent();
-            
+
             _saleService = new SaleService();
-            _storeService = new StoreService();
             _saleDetailService = new SaleDetailService();
             _userService = new UserService();
             _librosVenta = new List<SaleDetail>(); // Inicializa la lista vacía
-            Inicializar();
-        }
-
-        private void Inicializar()
-        {
-            ObtenerIdVentaAsync();
         }
 
         private void btn_Agregar_Libro_Click(object sender, EventArgs e)
         {
-            AgregarLibroFactura agregarLibroFactura = new AgregarLibroFactura(this);
+            AgregarLibroFactura agregarLibroFactura = new AgregarLibroFactura(this, idVenta);
             agregarLibroFactura.Show();
         }
 
         private async void Realizar_Venta_Load(object sender, EventArgs e)
         {
-            await CargarDetallesVentas();
+            ActualizarTabla();
+            await ObtenerIdVentaAsync();
 
         }
 
         public void AgregarLibroAVenta(SaleDetail libro)
         {
-            label_Total.Text = CalcularTotalVenta().ToString();
             _librosVenta.Add(libro); // Agregar el libro a la lista temporal
+            label_Total.Text = CalcularTotalVenta().ToString();
             ActualizarTabla(); // Refrescar la tabla de libros a vender
         }
+
         private void ActualizarTabla()
         {
             dgv_Libros.DataSource = null;
-            dgv_Libros.DataSource = _librosVenta;
+            if (_librosVenta != null)
+            {
+                dgv_Libros.DataSource = _librosVenta;
+            }
         }
+
         private async Task<int> ObtenerIdVentaAsync()
         {
             int numeroVenta = 0;
             try
             {
-                List<Sale> ventas = await _saleService.GetSalesAsync();
+                numeroVenta = await _saleService.GetTotalItemsAsync();
+                numeroVenta++;
+                idVenta = numeroVenta;
+                label_Num_Venta.Text = numeroVenta.ToString();
 
-                if (ventas != null && ventas.Count > 0)
-                {
-                    int maxSaleId = ventas.Max(v => v.SaleId);
-                    numeroVenta = maxSaleId + 1; // Retorna el ID de venta más alto
-                }
-                else
-                {
-                    numeroVenta = 0; // Si no hay ventas, retorna 0
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al obtener el ID de la venta más alto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
-            label_Num_Venta.Text = numeroVenta.ToString();
             return numeroVenta;
+
         }
 
-        private async Task<int> ObtenerIdUsuarioAsync()
+        private async void btn_Finalizar_Venta_Click_1(object sender, EventArgs e)
         {
-            try
+            if (_librosVenta.Count == 0)
             {
-                string username = label_Usuario.Text.Trim(); // Obtener el nombre de usuario del Label
-
-                if (string.IsNullOrEmpty(username))
-                {
-                    MessageBox.Show("El nombre de usuario no está disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return -1;
-                }
-
-                int userId = await _userService.GetUserId(username);
-
-                if (userId == -1)
-                {
-                    MessageBox.Show("No se encontró el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                return userId;
+                MessageBox.Show("No hay libros en la venta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
+
+            // Verificar que idVenta esté inicializado. Si es 0, intentar obtenerlo nuevamente.
+            if (idVenta == 0)
             {
-                MessageBox.Show($"Error inesperado al obtener el ID del usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
+                idVenta = await ObtenerIdVentaAsync();
+                if (idVenta == 0)
+                {
+                    MessageBox.Show("Error: el ID de venta no pudo asignarse correctamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
+
+            Sale nuevaVenta = new Sale
+            {
+                UserId = 3,
+                StoreId = 1,
+                SaleDate = DateTime.UtcNow,
+                Total = CalcularTotalVenta()
+            };
+
+            bool ventaExitosa = await _saleService.RegistrarVentaAsync(nuevaVenta);
+            if (!ventaExitosa)
+            {
+                MessageBox.Show("Error al registrar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Usamos el SaleId asignado en nuevaVenta, si está disponible, o idVenta en caso contrario.
+            int saleIdForDetails = idVenta;
+
+            bool detallesGuardados = true;
+            foreach (var detalle in _librosVenta)
+            {
+                // Asignar el ID de la venta a cada detalle.
+                detalle.SaleId = saleIdForDetails;
+                Console.WriteLine($"{detalle.BookId}+{detalle.Quantity}");
+
+                bool resultado = await _saleDetailService.RegistrarDetalleVentaAsync(detalle);
+                if (!resultado)
+                {
+                    detallesGuardados = false;
+                    Console.WriteLine($"Error al registrar el libro con ID {detalle.BookId}");
+                }
+            }
+
+            if (detallesGuardados)
+            {
+                MessageBox.Show("Venta realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("La venta se realizó, pero hubo errores al registrar algunos detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Limpiar la lista y actualizar la tabla para reflejar la finalización de la venta.
+            _librosVenta.Clear();
+            ActualizarTabla();
         }
 
 
@@ -127,48 +154,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             }
 
             return total;
-        }
-
-        private async void btn_Finalizar_Venta_Click(object sender, EventArgs e)
-        {
-            if (_librosVenta.Count == 0)
-            {
-                MessageBox.Show("No hay libros en la venta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int userId = await ObtenerIdUsuarioAsync();
-            if (userId != -1)
-            {
-                Sale nuevaVenta = new Sale
-                {
-                    UserId = userId,
-                    StoreId = 1,
-                    SaleDate = DateTime.UtcNow,
-                    Total = CalcularTotalVenta()
-                };
-
-                bool ventaExitosa = await _saleService.RegistrarVentaAsync(nuevaVenta);
-
-                if (ventaExitosa)
-                {
-                    MessageBox.Show("Venta realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _librosVenta.Clear(); // Vaciar la lista después de la venta
-                    ActualizarTabla(); // Refrescar la tabla
-
-                    await GuardarDetalleVentaAsync(_librosVenta);
-                }
-                else
-                {
-                    MessageBox.Show("Error al registrar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error al obtener el ususario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
         }
 
         private async Task<bool> GuardarDetalleVentaAsync(List<SaleDetail> librosVenta)
@@ -195,49 +180,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             }
 
             return exitoso;
-        }
-
-
-        private async Task CargarDetallesVentas()
-        {
-            try
-            {
-                // Obtener todos los detalles de venta
-                _librosVenta = await _saleDetailService.GetSaleDetailsAsync();  // Guardamos los detalles de venta
-
-                // Asignar los detalles de venta al DataGridView
-                dgv_Libros.DataSource = _librosVenta;
-
-                // Configurar las columnas del DataGridView
-                dgv_Libros.AutoGenerateColumns = true;
-
-                // Configurar los encabezados de las columnas
-                if (dgv_Libros.Columns["SaleId"] != null)
-                    dgv_Libros.Columns["SaleId"].HeaderText = "ID de Venta";
-                if (dgv_Libros.Columns["Title"] != null)
-                    dgv_Libros.Columns["Title"].HeaderText = "Título";
-                if (dgv_Libros.Columns["Author"] != null)
-                    dgv_Libros.Columns["Author"].HeaderText = "Autor";
-                if (dgv_Libros.Columns["Price"] != null)
-                    dgv_Libros.Columns["Price"].HeaderText = "Precio";
-
-                // Ajustar el ancho de las columnas
-                foreach (DataGridViewColumn column in dgv_Libros.Columns)
-                {
-                    if (column.Frozen)
-                    {
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    }
-                    else
-                    {
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar los detalles de las ventas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -345,8 +287,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Hide();
         }
 
-
-
         private void dgv_Libros_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificamos que se haya seleccionado una fila válida
@@ -369,5 +309,14 @@ namespace LibreriaBoscoso.Views.Vendedor
             }
         }
 
+        private void label_Total_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_Usuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
