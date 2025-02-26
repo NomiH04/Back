@@ -65,8 +65,6 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Seller = new System.Windows.Forms.RadioButton();
             this.Supplier = new System.Windows.Forms.RadioButton();
             this.Manager = new System.Windows.Forms.RadioButton();
-            this.btn_Modificar = new System.Windows.Forms.Button();
-            this.btn_Eliminar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -461,39 +459,11 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Manager.Text = "Gerente";
             this.Manager.UseVisualStyleBackColor = true;
             // 
-            // btn_Modificar
-            // 
-            this.btn_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_Modificar.ForeColor = System.Drawing.Color.White;
-            this.btn_Modificar.Location = new System.Drawing.Point(204, 339);
-            this.btn_Modificar.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_Modificar.Name = "btn_Modificar";
-            this.btn_Modificar.Size = new System.Drawing.Size(71, 33);
-            this.btn_Modificar.TabIndex = 47;
-            this.btn_Modificar.Text = "Modificar";
-            this.btn_Modificar.UseVisualStyleBackColor = false;
-            this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
-            // 
-            // btn_Eliminar
-            // 
-            this.btn_Eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_Eliminar.ForeColor = System.Drawing.Color.White;
-            this.btn_Eliminar.Location = new System.Drawing.Point(297, 339);
-            this.btn_Eliminar.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(71, 33);
-            this.btn_Eliminar.TabIndex = 48;
-            this.btn_Eliminar.Text = "Eliminar";
-            this.btn_Eliminar.UseVisualStyleBackColor = false;
-            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
-            // 
             // GestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 460);
-            this.Controls.Add(this.btn_Eliminar);
-            this.Controls.Add(this.btn_Modificar);
             this.Controls.Add(this.Admin);
             this.Controls.Add(this.Seller);
             this.Controls.Add(this.Supplier);
@@ -569,8 +539,6 @@ namespace LibreriaBoscoso.Views.Administrador
         private System.Windows.Forms.RadioButton Seller;
         private System.Windows.Forms.RadioButton Supplier;
         private System.Windows.Forms.RadioButton Manager;
-        private Button btn_Modificar;
-        private Button btn_Eliminar;
     }
 
 }
