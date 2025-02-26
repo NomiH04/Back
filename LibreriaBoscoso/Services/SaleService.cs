@@ -100,6 +100,38 @@ namespace LibreriaBoscoso.Services
             }
         }
 
+        public async Task<int> GetTotalItemsAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync(BaseUrl);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                using (JsonDocument document = JsonDocument.Parse(jsonString))
+                {
+                    if (document.RootElement.TryGetProperty("totalItems", out JsonElement totalItemsElement))
+                    {
+                        return totalItemsElement.GetInt32();
+                    }
+                    else
+                    {
+                        throw new Exception("La propiedad 'totalItems' no se encontró en la respuesta.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener totalItems: {ex.Message}");
+                return -1;
+            }
+        }
+
+
         // Clase para manejar respuestas con un objeto raíz
         public class SaleResponse
         {
