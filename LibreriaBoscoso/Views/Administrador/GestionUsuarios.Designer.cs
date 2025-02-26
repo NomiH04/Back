@@ -59,7 +59,6 @@ namespace LibreriaBoscoso.Views.Administrador
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
-            this.btn_Buscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Admin = new System.Windows.Forms.RadioButton();
             this.Seller = new System.Windows.Forms.RadioButton();
@@ -98,7 +97,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(748, 1);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(766, 0);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
@@ -348,50 +347,41 @@ namespace LibreriaBoscoso.Views.Administrador
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(111, 339);
+            this.button2.Location = new System.Drawing.Point(80, 329);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 33);
+            this.button2.Size = new System.Drawing.Size(105, 43);
             this.button2.TabIndex = 37;
-            this.button2.Text = "Confirmar";
+            this.button2.Text = "Agregar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button3.BackColor = System.Drawing.Color.Green;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(632, 5);
+            this.button3.Location = new System.Drawing.Point(210, 329);
             this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(71, 33);
+            this.button3.Size = new System.Drawing.Size(118, 43);
             this.button3.TabIndex = 38;
-            this.button3.Text = "Salir";
+            this.button3.Text = "Regresar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txt_Buscar
             // 
             this.txt_Buscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Buscar.Location = new System.Drawing.Point(419, 99);
+            this.txt_Buscar.Location = new System.Drawing.Point(419, 97);
             this.txt_Buscar.Margin = new System.Windows.Forms.Padding(1);
             this.txt_Buscar.Name = "txt_Buscar";
-            this.txt_Buscar.Size = new System.Drawing.Size(300, 29);
+            this.txt_Buscar.Size = new System.Drawing.Size(442, 29);
             this.txt_Buscar.TabIndex = 39;
             this.txt_Buscar.Text = "Buscar";
             this.txt_Buscar.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
-            // 
-            // btn_Buscar
-            // 
-            this.btn_Buscar.BackColor = System.Drawing.Color.Gray;
-            this.btn_Buscar.ForeColor = System.Drawing.Color.White;
-            this.btn_Buscar.Location = new System.Drawing.Point(721, 99);
-            this.btn_Buscar.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(71, 29);
-            this.btn_Buscar.TabIndex = 40;
-            this.btn_Buscar.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -469,7 +459,6 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Controls.Add(this.Supplier);
             this.Controls.Add(this.Manager);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -533,7 +522,6 @@ namespace LibreriaBoscoso.Views.Administrador
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txt_Buscar;
-        private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RadioButton Admin;
         private System.Windows.Forms.RadioButton Seller;

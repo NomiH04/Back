@@ -42,12 +42,10 @@
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Ubicacion = new System.Windows.Forms.TextBox();
+            this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,8 +56,9 @@
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.btn_actualizar_tienda = new System.Windows.Forms.Button();
+            this.btn_eliminar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip2.SuspendLayout();
@@ -93,7 +92,7 @@
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(766, 0);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
@@ -123,7 +122,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(898, 38);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -211,37 +210,26 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
-            this.Column1});
-            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(425, 158);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(1);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 102;
             this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(364, 183);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(394, 183);
             this.dataGridView1.TabIndex = 49;
-            // 
-            // Nombre
-            // 
-            this.Nombre.Frozen = true;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 12;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 250;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Descripcion";
-            this.Column1.Name = "Column1";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Gray;
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(718, 113);
+            this.button4.Location = new System.Drawing.Point(748, 111);
             this.button4.Margin = new System.Windows.Forms.Padding(1);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(71, 29);
@@ -253,30 +241,30 @@
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(425, 113);
+            this.textBox6.Location = new System.Drawing.Point(425, 111);
             this.textBox6.Margin = new System.Windows.Forms.Padding(1);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(291, 29);
             this.textBox6.TabIndex = 47;
             this.textBox6.Text = "Buscar";
             // 
-            // textBox3
+            // txt_Ubicacion
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(124, 196);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(215, 26);
-            this.textBox3.TabIndex = 46;
+            this.txt_Ubicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Ubicacion.Location = new System.Drawing.Point(124, 196);
+            this.txt_Ubicacion.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Ubicacion.Name = "txt_Ubicacion";
+            this.txt_Ubicacion.Size = new System.Drawing.Size(215, 26);
+            this.txt_Ubicacion.TabIndex = 46;
             // 
-            // textBox2
+            // txt_Nombre
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(124, 158);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 26);
-            this.textBox2.TabIndex = 45;
+            this.txt_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Nombre.Location = new System.Drawing.Point(124, 158);
+            this.txt_Nombre.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Nombre.Name = "txt_Nombre";
+            this.txt_Nombre.Size = new System.Drawing.Size(215, 26);
+            this.txt_Nombre.TabIndex = 45;
             // 
             // label8
             // 
@@ -313,27 +301,29 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button3.BackColor = System.Drawing.Color.Green;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(266, 232);
             this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(71, 33);
+            this.button3.Size = new System.Drawing.Size(100, 56);
             this.button3.TabIndex = 51;
-            this.button3.Text = "Salir";
+            this.button3.Text = "Regresar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(124, 232);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 33);
+            this.button2.Size = new System.Drawing.Size(108, 56);
             this.button2.TabIndex = 50;
-            this.button2.Text = "Confirmar";
+            this.button2.Text = "Agregar Tienda";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -347,10 +337,10 @@
             this.facebookToolStripMenuItem,
             this.twitterToolStripMenuItem,
             this.instagramToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 373);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 430);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(800, 46);
+            this.menuStrip2.Size = new System.Drawing.Size(898, 46);
             this.menuStrip2.TabIndex = 52;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -383,25 +373,12 @@
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(722, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 24);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Accesibilidad";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(702, 385);
+            this.button5.Location = new System.Drawing.Point(783, 442);
             this.button5.Margin = new System.Windows.Forms.Padding(1);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(90, 24);
@@ -409,21 +386,48 @@
             this.button5.Text = "Accesibilidad";
             this.button5.UseVisualStyleBackColor = false;
             // 
+            // btn_actualizar_tienda
+            // 
+            this.btn_actualizar_tienda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_actualizar_tienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_actualizar_tienda.ForeColor = System.Drawing.Color.White;
+            this.btn_actualizar_tienda.Location = new System.Drawing.Point(650, 352);
+            this.btn_actualizar_tienda.Name = "btn_actualizar_tienda";
+            this.btn_actualizar_tienda.Size = new System.Drawing.Size(87, 48);
+            this.btn_actualizar_tienda.TabIndex = 73;
+            this.btn_actualizar_tienda.Text = "Actualizar";
+            this.btn_actualizar_tienda.UseVisualStyleBackColor = false;
+            this.btn_actualizar_tienda.Click += new System.EventHandler(this.btn_actualizar_tienda_Click_1);
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar.ForeColor = System.Drawing.Color.White;
+            this.btn_eliminar.Location = new System.Drawing.Point(741, 352);
+            this.btn_eliminar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(71, 48);
+            this.btn_eliminar.TabIndex = 72;
+            this.btn_eliminar.Text = "Borrar";
+            this.btn_eliminar.UseVisualStyleBackColor = false;
+            // 
             // GestionTiendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 419);
+            this.ClientSize = new System.Drawing.Size(898, 476);
+            this.Controls.Add(this.btn_actualizar_tienda);
+            this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txt_Ubicacion);
+            this.Controls.Add(this.txt_Nombre);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -436,7 +440,7 @@
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "GestionTiendas";
             this.Text = "GestionTiendas";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form1_LoadAsync);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -465,8 +469,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_Ubicacion;
+        private System.Windows.Forms.TextBox txt_Nombre;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -477,9 +481,8 @@
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_actualizar_tienda;
+        private System.Windows.Forms.Button btn_eliminar;
     }
 }
