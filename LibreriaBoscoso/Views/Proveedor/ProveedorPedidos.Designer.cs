@@ -30,8 +30,6 @@ namespace LibreriaBoscoso.Views.Proveedor
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -50,35 +48,22 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.RechazarBtn = new System.Windows.Forms.Button();
+            this.Aceptarbtn = new System.Windows.Forms.Button();
             this.dataGridViewPedidos = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OrdenId = new System.Windows.Forms.Label();
+            this.Estado = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPedidos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(761, 52);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Rol";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(696, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Usuario";
             // 
             // btnCerrarSesion
             // 
@@ -276,25 +261,27 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.label3.TabIndex = 78;
             this.label3.Text = "Pedidos Pendientes";
             // 
-            // button2
+            // RechazarBtn
             // 
-            this.button2.Location = new System.Drawing.Point(449, 102);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 34);
-            this.button2.TabIndex = 86;
-            this.button2.Text = "Rechazar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.RechazarBtn.Location = new System.Drawing.Point(449, 102);
+            this.RechazarBtn.Margin = new System.Windows.Forms.Padding(1);
+            this.RechazarBtn.Name = "RechazarBtn";
+            this.RechazarBtn.Size = new System.Drawing.Size(67, 34);
+            this.RechazarBtn.TabIndex = 86;
+            this.RechazarBtn.Text = "Rechazar";
+            this.RechazarBtn.UseVisualStyleBackColor = true;
+            this.RechazarBtn.Click += new System.EventHandler(this.RechazarBtn_Click);
             // 
-            // button3
+            // Aceptarbtn
             // 
-            this.button3.Location = new System.Drawing.Point(368, 102);
-            this.button3.Margin = new System.Windows.Forms.Padding(1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 34);
-            this.button3.TabIndex = 87;
-            this.button3.Text = "Aceptar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Aceptarbtn.Location = new System.Drawing.Point(368, 102);
+            this.Aceptarbtn.Margin = new System.Windows.Forms.Padding(1);
+            this.Aceptarbtn.Name = "Aceptarbtn";
+            this.Aceptarbtn.Size = new System.Drawing.Size(67, 34);
+            this.Aceptarbtn.TabIndex = 87;
+            this.Aceptarbtn.Text = "Aceptar";
+            this.Aceptarbtn.UseVisualStyleBackColor = true;
+            this.Aceptarbtn.Click += new System.EventHandler(this.Aceptarbtn_Click);
             // 
             // dataGridViewPedidos
             // 
@@ -303,23 +290,100 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.dataGridViewPedidos.Name = "dataGridViewPedidos";
             this.dataGridViewPedidos.Size = new System.Drawing.Size(754, 195);
             this.dataGridViewPedidos.TabIndex = 88;
+            this.dataGridViewPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPedidos_CellContentClick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 8);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(101, 13);
+            this.label4.TabIndex = 89;
+            this.label4.Text = "OrdenSeleccionada";
+            // 
+            // OrdenId
+            // 
+            this.OrdenId.AutoSize = true;
+            this.OrdenId.Location = new System.Drawing.Point(138, 35);
+            this.OrdenId.Name = "OrdenId";
+            this.OrdenId.Size = new System.Drawing.Size(0, 13);
+            this.OrdenId.TabIndex = 90;
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSize = true;
+            this.Estado.Location = new System.Drawing.Point(111, 63);
+            this.Estado.Name = "Estado";
+            this.Estado.Size = new System.Drawing.Size(0, 13);
+            this.Estado.TabIndex = 91;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.Estado);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.OrdenId);
+            this.panel1.Location = new System.Drawing.Point(570, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 92;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(83, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 13);
+            this.label6.TabIndex = 95;
+            this.label6.Text = "--->";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(105, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.TabIndex = 94;
+            this.label5.Text = "--->";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(39, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 93;
+            this.label2.Text = "Estado";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 92;
+            this.label1.Text = "Identificador";
             // 
             // ProveedorPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 461);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewPedidos);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Aceptarbtn);
+            this.Controls.Add(this.RechazarBtn);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -334,15 +398,14 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPedidos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -359,10 +422,18 @@ namespace LibreriaBoscoso.Views.Proveedor
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button RechazarBtn;
+        private System.Windows.Forms.Button Aceptarbtn;
         private System.Windows.Forms.ToolStripMenuItem librosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem catalogoToolStripMenuItem;
         private DataGridView dataGridViewPedidos;
+        private Label label4;
+        private Label OrdenId;
+        private Label Estado;
+        private Panel panel1;
+        private Label label6;
+        private Label label5;
+        private Label label2;
+        private Label label1;
     }
 }

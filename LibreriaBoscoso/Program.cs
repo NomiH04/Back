@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using LibreriaBoscoso.Views.Administrador;
 using LibreriaBoscoso.Views.Gerente;
+using LibreriaBoscoso.Views.Proveedor;
 using LibreriaBoscoso.Views.Vendedor;
 
 namespace LibreriaBoscoso
@@ -16,7 +17,7 @@ namespace LibreriaBoscoso
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdministradorPrincipal());
+            Application.Run(new ProveedorPrincipal());
         }
     }
 }

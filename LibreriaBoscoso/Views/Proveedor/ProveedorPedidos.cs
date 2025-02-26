@@ -171,6 +171,58 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Hide();
         }
 
+        private Order pedidoSeleccionado; // Variable para almacenar el pedido seleccionado
 
+        private void dataGridViewPedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verifica que no sea el encabezado
+            {
+                pedidoSeleccionado = null;
+                pedidoSeleccionado = (Order)dataGridViewPedidos.Rows[e.RowIndex].DataBoundItem;
+                OrdenId.Text = pedidoSeleccionado.OrderId.ToString();
+                Estado.Text=pedidoSeleccionado.Status.ToString(); 
+            }
+        }
+
+        private async void Aceptarbtn_Click(object sender, EventArgs e)
+        {
+            await CambiarEstadoPedido("Received");
+        }
+
+        private async void RechazarBtn_Click(object sender, EventArgs e)
+        {
+            await CambiarEstadoPedido("Shipped");
+        }
+
+        private async Task CambiarEstadoPedido(string nuevoEstado)
+        {
+            if (pedidoSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, selecciona un pedido primero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Llamar al servicio para actualizar el estado del pedido
+                bool success = await _orderService.UpdateOrderStatusAsync(pedidoSeleccionado.OrderId, nuevoEstado);
+
+                if (success)
+                {
+                    MessageBox.Show($"Pedido {pedidoSeleccionado.OrderId} actualizado a {nuevoEstado}.",
+                                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    await CargarPedidosPendientes(); // Recargar la lista de pedidos
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el pedido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al actualizar el pedido: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

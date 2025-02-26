@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -148,5 +149,33 @@ namespace LibreriaBoscoso.Services
                 return -1;
             }
         }
+        public async Task<bool> UpdateOrderStatusAsync(int orderId, string newStatus)
+        {
+            var url = $"{BaseUrl}/{orderId}/status";
+
+            // Enviar solo el string en el body, sin JSON
+            var content = new StringContent($"\"{newStatus}\"", Encoding.UTF8, "application/json");
+
+            var request = new HttpRequestMessage(new HttpMethod("PATCH"), url)
+            {
+                Content = content
+            };
+
+            var response = await _httpClient.SendAsync(request);
+
+            // Imprimir respuesta para depuración
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Código de estado: {response.StatusCode}");
+            Console.WriteLine($"Respuesta de la API: {responseContent}");
+
+            return response.IsSuccessStatusCode;
+        }
+
+
+
+
+
+
+
     }
 }
