@@ -14,6 +14,9 @@ namespace LibreriaBoscoso.Views.Administrador
         private bool isAddingUser = false; // Flag para indicar cuando estamos agregando un usuario
         private List<User> allUsers;
 
+        // Aquí declaras la variable para el ID seleccionado
+        private int selectedUserId = -1;
+
         public GestionUsuarios()
         {
             InitializeComponent();
@@ -259,6 +262,115 @@ namespace LibreriaBoscoso.Views.Administrador
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al seleccionar el usuario: {ex.Message}");
+            }
+        }
+
+        private async void btn_Modificar_Click(object sender, EventArgs e)
+        {
+
+            // Validar los datos antes de proceder
+            // (Solo nombre y correo, ya que no actualizamos contraseña)
+            if (string.IsNullOrWhiteSpace(txt_Nombre.Text) || string.IsNullOrWhiteSpace(txt_Email.Text))
+            {
+                MessageBox.Show("Por favor, complete los campos de Nombre y Email.");
+                return;
+            }
+
+            // Construimos el objeto User con los datos editados
+            var updatedUser = new User
+            {
+                UserId = selectedUserId,     // Se usa para PATCH /api/User/{id}
+                Name = txt_Nombre.Text,
+                Email = txt_Email.Text,
+                // Pass no se modifica en PATCH, por eso no lo incluimos
+                Role = GetSelectedRole()     // "Admin", "Manager", "Seller", etc.
+            };
+
+            try
+            {
+                // Llamamos al servicio para actualizar el usuario
+                bool isSuccess = await _userService.UpdateUserAsync(updatedUser);
+
+                if (isSuccess)
+                {
+                    MessageBox.Show("Usuario actualizado correctamente.");
+
+                    // Recargamos la lista de usuarios en el DataGridView
+                    var users = await _userService.GetUsersAsync();
+                    allUsers = users;
+                    dataGridView1.DataSource = users;
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al actualizar el usuario.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al actualizar el usuario: {ex.Message}");
+            }
+            finally
+            {
+                // Aquí no necesitas un flag como 'isAddingUser', 
+                // pero podrías hacer acciones finales si lo deseas.
+            }
+        }
+
+        private async void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            // Verificar que haya un usuario seleccionado
+            if (selectedUserId == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un usuario de la tabla para eliminar.");
+                return;
+            }
+
+            // Confirmar la eliminación con el usuario
+            var confirmResult = MessageBox.Show(
+                "¿Está seguro de que desea eliminar este usuario?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    // Llamamos al servicio para eliminar el usuario
+                    bool isSuccess = await _userService.DeleteUserAsync(selectedUserId);
+
+                    if (isSuccess)
+                    {
+                        MessageBox.Show("Usuario eliminado correctamente.");
+
+                        // Recargamos la lista de usuarios en el DataGridView
+                        var users = await _userService.GetUsersAsync();
+                        allUsers = users;
+                        dataGridView1.DataSource = users;
+
+                        // Opcional: limpiar los campos del formulario después de eliminar
+                        txt_Nombre.Text = "";
+                        txt_Email.Text = "";
+                        txt_Contrasena.Text = "";
+                        Admin.Checked = false;
+                        Manager.Checked = false;
+                        Supplier.Checked = false;
+                        Seller.Checked = false;
+
+                        // Volvemos a dejar selectedUserId en -1, por si el usuario quiere
+                        // crear o modificar algo nuevo
+                        selectedUserId = -1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al eliminar el usuario.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al eliminar el usuario: {ex.Message}");
+                }
             }
         }
     }

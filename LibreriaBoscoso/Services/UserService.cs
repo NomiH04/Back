@@ -176,5 +176,77 @@ namespace LibreriaBoscoso.Services
             }
         }
 
+        public async Task<bool> DeleteUserAsync(int userId)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"{BaseUrl}/{userId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al eliminar el usuario: {response.StatusCode} - {errorResponse}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción al eliminar usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        //Metodo para editar Usuario
+        public async Task<bool> UpdateUserAsync(User user)
+        {
+            try
+            {
+                // El objeto que enviaremos en el PATCH.
+                // Incluimos userId porque tu Swagger muestra que está en UserDto,
+                // aunque no se modifique. El backend lo usará para ubicar al usuario.
+                var userPatchDto = new
+                {
+                    userId = user.UserId, // se envía, pero el servidor no lo "cambia"
+                    name = user.Name,
+                    email = user.Email,
+                    role = user.Role
+                };
+
+                // Creamos un objeto HttpMethod para "PATCH"
+                var patchMethod = new HttpMethod("PATCH");
+
+                // Construimos la URL como un Uri (en lugar de string)
+                var requestUri = new Uri($"{BaseUrl}/{user.UserId}");
+
+                // Creamos la solicitud
+                var request = new HttpRequestMessage(patchMethod, requestUri)
+                {
+                    Content = JsonContent.Create(userPatchDto)
+                };
+
+                var response = await _httpClient.SendAsync(request);
+
+                // Si es 2xx (por ejemplo, 204 No Content), se considera éxito
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al actualizar el usuario: {response.StatusCode} - {errorResponse}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción al actualizar usuario: {ex.Message}");
+                return false;
+            }
+        }
     }
 }
