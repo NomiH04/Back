@@ -183,18 +183,28 @@ namespace LibreriaBoscoso.Services
                 var response = await _httpClient.DeleteAsync($"{BaseUrl}/{id}");
 
                 if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Tienda con ID {id} eliminada correctamente.");
                     return true;
-
-                string errorResponse = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Error al eliminar la tienda: {response.StatusCode} - {errorResponse}");
+                }
+                else
+                {
+                    Console.WriteLine($"Error al eliminar la tienda. Código de estado: {response.StatusCode}");
+                    return false;
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                Console.WriteLine($"Error HTTP al eliminar la tienda: {httpEx.Message}");
                 return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al eliminar la tienda: {ex.Message}");
+                Console.WriteLine($"Error inesperado al eliminar la tienda: {ex.Message}");
                 return false;
             }
         }
+
 
         // DTO para la creación de la tienda
         public class StoreCreateDto

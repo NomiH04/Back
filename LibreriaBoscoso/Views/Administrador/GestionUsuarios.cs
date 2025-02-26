@@ -261,5 +261,153 @@ namespace LibreriaBoscoso.Views.Administrador
                 MessageBox.Show($"Error al seleccionar el usuario: {ex.Message}");
             }
         }
+
+
+
+
+        private async void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un usuario antes de eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int userId;
+            try
+            {
+                // 🔹 Método 1: Obtenerlo por nombre de columna
+                object value = dataGridView1.SelectedRows[0].Cells["UserId"].Value;
+                Console.WriteLine($"Valor de UserId obtenido: {value}");
+
+                // 🔹 Método 2: Si el nombre de la columna no funciona, probar con índice 0
+                if (value == null)
+                {
+                    value = dataGridView1.SelectedRows[0].Cells[0].Value;
+                    Console.WriteLine($"Valor de UserId obtenido por índice: {value}");
+                }
+
+                // 🔹 Convertir a int
+                userId = Convert.ToInt32(value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener el ID del usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var confirmResult = MessageBox.Show(
+                $"¿Está seguro de que desea eliminar este usuario con ID {userId}?",
+                "Confirmar Eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmResult != DialogResult.Yes)
+                return;
+
+            try
+            {
+                bool eliminado = await _userService.DeleteUserAsync(userId);
+
+                if (eliminado)
+                {
+                    MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recargar la lista de usuarios en el DataGridView
+                    var users = await _userService.GetUsersAsync();
+                    dataGridView1.DataSource = users;
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private async void btn_eliminar_Click1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un usuario antes de eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int userId = -1;
+            try
+            {
+                // 🔹 Depurar: Mostrar todas las columnas disponibles
+                Console.WriteLine("Columnas en DataGridView:");
+                foreach (DataGridViewColumn col in dataGridView1.Columns)
+                {
+                    Console.WriteLine($"Nombre: {col.Name}");
+                }
+
+                // 🔹 Intentar obtener el UserId por nombre de columna
+                object value = dataGridView1.SelectedRows[0].Cells["UserId"].Value;
+                Console.WriteLine($"Valor de UserId obtenido: {value}");
+
+                // 🔹 Si no se obtiene, probar por índice 0
+                if (value == null || string.IsNullOrEmpty(value.ToString()))
+                {
+                    value = dataGridView1.SelectedRows[0].Cells[0].Value;
+                    Console.WriteLine($"Valor de UserId obtenido por índice: {value}");
+                }
+
+                // 🔹 Intentar convertir a int
+                userId = Convert.ToInt32(value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener el ID del usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (userId <= 0)
+            {
+                MessageBox.Show("El ID del usuario no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Confirmar eliminación
+            var confirmResult = MessageBox.Show(
+                $"¿Está seguro de que desea eliminar este usuario con ID {userId}?",
+                "Confirmar Eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmResult != DialogResult.Yes)
+                return;
+
+            try
+            {
+                bool eliminado = await _userService.DeleteUserAsync(userId);
+
+                if (eliminado)
+                {
+                    MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recargar la lista de usuarios en el DataGridView
+                    var users = await _userService.GetUsersAsync();
+                    dataGridView1.DataSource = users;
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

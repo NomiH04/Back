@@ -276,5 +276,10 @@ namespace LibreriaBoscoso.Views.Administrador
                 MessageBox.Show($"Error al actualizar la tienda: {ex.Message}");
             }
         }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -64,6 +64,8 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Seller = new System.Windows.Forms.RadioButton();
             this.Supplier = new System.Windows.Forms.RadioButton();
             this.Manager = new System.Windows.Forms.RadioButton();
+            this.btn_actualizar_tienda = new System.Windows.Forms.Button();
+            this.btn_eliminar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -117,7 +119,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(892, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(895, 38);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -208,7 +210,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(51)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(722, 426);
+            this.button1.Location = new System.Drawing.Point(783, 489);
             this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 24);
@@ -226,10 +228,10 @@ namespace LibreriaBoscoso.Views.Administrador
             this.facebookToolStripMenuItem,
             this.twitterToolStripMenuItem,
             this.instagramToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 414);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 477);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(892, 46);
+            this.menuStrip2.Size = new System.Drawing.Size(895, 46);
             this.menuStrip2.TabIndex = 21;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -449,11 +451,40 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Manager.Text = "Gerente";
             this.Manager.UseVisualStyleBackColor = true;
             // 
+            // btn_actualizar_tienda
+            // 
+            this.btn_actualizar_tienda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_actualizar_tienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_actualizar_tienda.ForeColor = System.Drawing.Color.White;
+            this.btn_actualizar_tienda.Location = new System.Drawing.Point(669, 393);
+            this.btn_actualizar_tienda.Name = "btn_actualizar_tienda";
+            this.btn_actualizar_tienda.Size = new System.Drawing.Size(87, 48);
+            this.btn_actualizar_tienda.TabIndex = 75;
+            this.btn_actualizar_tienda.Text = "Actualizar";
+            this.btn_actualizar_tienda.UseVisualStyleBackColor = false;
+           
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar.ForeColor = System.Drawing.Color.White;
+            this.btn_eliminar.Location = new System.Drawing.Point(760, 393);
+            this.btn_eliminar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(71, 48);
+            this.btn_eliminar.TabIndex = 74;
+            this.btn_eliminar.Text = "Borrar";
+            this.btn_eliminar.UseVisualStyleBackColor = false;
+          
+            // 
             // GestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 460);
+            this.ClientSize = new System.Drawing.Size(895, 523);
+            this.Controls.Add(this.btn_actualizar_tienda);
+            this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.Admin);
             this.Controls.Add(this.Seller);
             this.Controls.Add(this.Supplier);
@@ -527,6 +558,8 @@ namespace LibreriaBoscoso.Views.Administrador
         private System.Windows.Forms.RadioButton Seller;
         private System.Windows.Forms.RadioButton Supplier;
         private System.Windows.Forms.RadioButton Manager;
+        private Button btn_actualizar_tienda;
+        private Button btn_eliminar;
     }
 
 }

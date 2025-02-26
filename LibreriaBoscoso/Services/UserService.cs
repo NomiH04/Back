@@ -176,5 +176,86 @@ namespace LibreriaBoscoso.Services
             }
         }
 
+        public async Task<bool> DeleteUserAsync(int userId)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"{BaseUrl}/{userId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Usuario con ID {userId} eliminado correctamente.");
+                    return true;
+                }
+                else
+                {
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al eliminar el usuario: {response.StatusCode} - {errorResponse}");
+                    return false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error de conexión al eliminar usuario: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado al eliminar usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        //Metodo para editar Usuario
+        public async Task<bool> UpdateUserAsync(User user)
+        {
+            try
+            {
+                var userPatchDto = new
+                {
+                    userId = user.UserId,
+                    name = user.Name,
+                    email = user.Email,
+                    role = user.Role
+                };
+
+                // Definir el método PATCH manualmente
+                var patchMethod = new HttpMethod("PATCH");
+
+                // Construir la solicitud con PATCH
+                var request = new HttpRequestMessage(patchMethod, $"{BaseUrl}/{user.UserId}")
+                {
+                    Content = JsonContent.Create(userPatchDto)
+                };
+
+                // Enviar la solicitud HTTP
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Usuario con ID {user.UserId} actualizado correctamente.");
+                    return true;
+                }
+                else
+                {
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al actualizar el usuario: {response.StatusCode} - {errorResponse}");
+                    return false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error de conexión al actualizar usuario: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error inesperado al actualizar usuario: {ex.Message}");
+                return false;
+            }
+        }
+
+
     }
 }
