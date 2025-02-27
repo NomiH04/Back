@@ -33,7 +33,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,23 +80,13 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(678, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 13;
             this.btnCerrarSesion.Text = "Cerrar Sesion";
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(516, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 25);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.Text = "Buscar";
             // 
             // menuStrip1
             // 
@@ -109,7 +98,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(802, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(804, 38);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -171,7 +160,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(699, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 24);
             this.button1.TabIndex = 55;
@@ -188,10 +177,10 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.facebookToolStripMenuItem,
             this.twitterToolStripMenuItem,
             this.instagramToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 413);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 415);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(802, 46);
+            this.menuStrip2.Size = new System.Drawing.Size(804, 46);
             this.menuStrip2.TabIndex = 54;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -228,7 +217,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             // 
             this.pictureBox1.Image = global::LibreriaBoscoso.Properties.Resources.LogoG1;
             this.pictureBox1.Location = new System.Drawing.Point(295, 126);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(210, 197);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,18 +230,15 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(804, 461);
-            this.StartPosition = FormStartPosition.CenterScreen;
-
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCerrarSesion);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "ProveedorPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProveedorPrincipal";
@@ -272,7 +258,6 @@ namespace LibreriaBoscoso.Views.Proveedor
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCerrarSesion;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarVentasToolStripMenuItem;
