@@ -279,7 +279,7 @@ namespace LibreriaBoscoso.Views.Administrador
         }
 
 
-        private async void btn_actualizar_Usuario_Click(object sender, EventArgs e)
+        private async void btn_actualizar_Usuario_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -347,6 +347,9 @@ namespace LibreriaBoscoso.Views.Administrador
                 Console.WriteLine($"❌ Excepción al actualizar usuario: {ex}");
             }
         }
+
+
+
 
         private async void btn_eliminar_Click_1(object sender, EventArgs e)
         {
@@ -416,9 +419,6 @@ namespace LibreriaBoscoso.Views.Administrador
             }
         }
 
-
-
-
-
+      
     }
 }

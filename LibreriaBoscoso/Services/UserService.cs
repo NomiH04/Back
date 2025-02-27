@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -208,26 +209,38 @@ namespace LibreriaBoscoso.Services
         {
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{id}", user);
+                Console.WriteLine($"Intentando actualizar usuario en: {BaseUrl}/{id}");
+                Console.WriteLine($"Datos enviados: {JsonSerializer.Serialize(user)}");
+
+                // Crear el contenido de la solicitud PATCH
+                var jsonContent = new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), $"{BaseUrl}/{id}")
+                {
+                    Content = jsonContent
+                };
+
+                // Enviar la solicitud
+                var response = await _httpClient.SendAsync(request);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"Usuario con ID {id} actualizado correctamente.");
+                    Console.WriteLine($"✅ Usuario con ID {id} actualizado correctamente.");
                     return true;
                 }
                 else
                 {
                     string errorResponse = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error al actualizar el usuario: {response.StatusCode} - {errorResponse}");
+                    Console.WriteLine($"❌ Error al actualizar el usuario: {response.StatusCode} - {errorResponse}");
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar el usuario: {ex.Message}");
+                Console.WriteLine($"⚠️ Error en UpdateUserAsync: {ex.Message}");
                 return false;
             }
         }
+
 
 
 

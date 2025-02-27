@@ -462,6 +462,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.btn_actualizar_Usuario.TabIndex = 75;
             this.btn_actualizar_Usuario.Text = "Actualizar";
             this.btn_actualizar_Usuario.UseVisualStyleBackColor = false;
+            this.btn_actualizar_Usuario.Click += new System.EventHandler(this.btn_actualizar_Usuario_Click_1);
             // 
             // btn_eliminar
             // 
