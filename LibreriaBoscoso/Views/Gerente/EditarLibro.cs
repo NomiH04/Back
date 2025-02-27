@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using LibreriaBoscoso.Services;
 using LibreriaBoscoso.Views.InicioLogin;
@@ -70,9 +71,27 @@ namespace LibreriaBoscoso.Views.Gerente
             txtFecha.Text = book.PublicationDate.ToString("dd/MM/yyyy");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            //no se modifica en la API
+            // Obtener el nuevo precio y descripción del libro desde los controles de la interfaz de usuario
+            string nuevaDescripcion = txtDescripcion.Text;
+            decimal nuevoPrecio = Convert.ToDecimal(txtPrecio.Text);
+
+            bool editado = await _bookService.EditBookAsync(id, nuevaDescripcion, nuevoPrecio);
+
+            if (editado)
+            {
+                MessageBox.Show("Libro actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Actualizar la tabla o la interfaz de usuario con los nuevos datos
+                var formularioPrincipal = Application.OpenForms.OfType<ConsultarLibro>().FirstOrDefault();
+                formularioPrincipal?.Limpiar();
+                formularioPrincipal?.CargarDatos();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo actualizar el libro. Verifique e intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

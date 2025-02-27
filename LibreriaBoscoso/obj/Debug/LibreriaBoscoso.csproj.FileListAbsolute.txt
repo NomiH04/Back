@@ -843,3 +843,8 @@ C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Newtonsoft.Json.xml
 C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.xml
 C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
 >>>>>>> 73d4f3d (un arreglo a ver venta)
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\BouncyCastle.Cryptography.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\itextsharp.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\BouncyCastle.Cryptography.xml
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\itextsharp.xml
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.Views.Proveedor.Details.resources

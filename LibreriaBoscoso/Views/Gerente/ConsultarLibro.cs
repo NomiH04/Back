@@ -162,6 +162,7 @@ namespace LibreriaBoscoso.Views.Gerente
 
                 // Asignar la lista de órdenes al DataGridView
                 dataLibro.DataSource = books;
+              
             }
             catch (Exception ex)
             {
@@ -225,6 +226,7 @@ namespace LibreriaBoscoso.Views.Gerente
             //obtiene el id del libro seleccionado y lo envia a donde se requiera
             return idLibroSeleccionado;
         }
+
     }
 
 }

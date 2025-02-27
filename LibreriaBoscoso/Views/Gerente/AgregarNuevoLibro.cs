@@ -94,10 +94,12 @@ namespace LibreriaBoscoso.Views.Gerente
                 MessageBox.Show("Libro agregado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // **LIMPIAR LOS CAMPOS DESPUÉS DE ENVIAR LOS DATOS**
-                txtTitulo.Text = "";
-                txtAutor.Text = "";
-                txtPrecio.Text = "";
-                txtDescripcion.Text = "";
+                txtTitulo.Text = "Titulo";
+                txtAutor.Text = "Autor";
+                txtPrecio.Text = "Precio";
+                txtDescripcion.Text = "Descripcion";
+                txtFecha.Text = "Fecha";
+                txtPublishier.Text = "Publisher";
             }
             else
             {//en caso de no agregar el libro tambien se envia un mensaje para informar
