@@ -45,20 +45,20 @@ namespace LibreriaBoscoso.Views.Vendedor
                 Dictionary<string, string> headers = new Dictionary<string, string>
                 {
                     { "BookId", "ID" },
-                    { "Title", "Título" },
+                    { "Title", "Título" },
                     { "Author", "Autor" },
                     { "Price", "Precio" },
 
                 };
 
-                // 🔹 Iterar por cada columna y asignar el encabezado si está en el diccionario
+                // 🔹 Iterar por cada columna y asignar el encabezado si está en el diccionario
                 foreach (DataGridViewColumn column in dgv_Libros_Disponibles.Columns)
                 {
                     if (headers.ContainsKey(column.Name))
                     {
                         column.HeaderText = headers[column.Name];
                     }
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Ajustar tamaño
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Ajustar tamaño
                 }
 
                 dgv_Libros_Disponibles.ScrollBars = ScrollBars.Both; // Habilitar scroll si es necesario
@@ -89,7 +89,7 @@ namespace LibreriaBoscoso.Views.Vendedor
 
                     if (!int.TryParse(txt_Cantidad.Text, out int cantidad) || cantidad <= 0)
                     {
-                        MessageBox.Show("Ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -109,7 +109,7 @@ namespace LibreriaBoscoso.Views.Vendedor
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Console.WriteLine($"Error en btn_Agregar_Libro_Click: {ex.Message}");
                     continuar = false;
                 }
@@ -177,7 +177,7 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btn_Cerrar_Sesion_Click(object sender, EventArgs e)
         {
-            var confirmacion = MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirmacion = MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
             {
@@ -189,12 +189,12 @@ namespace LibreriaBoscoso.Views.Vendedor
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            // Obtener el valor del campo de búsqueda
-            string searchValue = txt_Buscador.Text.Trim().ToLower(); // Convertimos a minúsculas para búsqueda insensible a mayúsculas
+            // Obtener el valor del campo de búsqueda
+            string searchValue = txt_Buscador.Text.Trim().ToLower(); // Convertimos a minúsculas para búsqueda insensible a mayúsculas
 
             if (!string.IsNullOrEmpty(searchValue))
             {
-                // Filtrar los datos en base a Título, Autor o Publisher
+                // Filtrar los datos en base a Título, Autor o Publisher
                 var filteredData = allBooks.Where(x =>
                     x.Title.ToLower().Contains(searchValue)
                 ).ToList();
@@ -208,12 +208,12 @@ namespace LibreriaBoscoso.Views.Vendedor
                 {
                     // Mostrar mensaje cuando no se encuentren resultados
                     MessageBox.Show("No se encontraron libros con ese criterio.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgv_Libros_Disponibles.DataSource = allBooks;  // Volver a mostrar todos los datos si no se encontró nada
+                    dgv_Libros_Disponibles.DataSource = allBooks;  // Volver a mostrar todos los datos si no se encontró nada
                 }
             }
             else
             {
-                // Si no hay valor de búsqueda, recargar todos los libros
+                // Si no hay valor de búsqueda, recargar todos los libros
                 dgv_Libros_Disponibles.DataSource = allBooks;
             }
         }
@@ -223,6 +223,19 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Close();
         }
 
+        private void txt_Buscador_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txt_Buscador.Text.Trim().ToLower();
+
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                var categoriasFiltradas = allBooks
+                    .Where(c => c.Title.ToLower().Contains(filtro))
+                    .ToList();
+
+                dgv_Libros_Disponibles.DataSource = categoriasFiltradas;
+            }
+
+        }
     }
 }
-

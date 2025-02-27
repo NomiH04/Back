@@ -46,8 +46,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label_Num_Venta = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgv_Libros = new System.Windows.Forms.DataGridView();
             this.btn_Agregar_Libro = new System.Windows.Forms.Button();
@@ -236,28 +234,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 98);
-            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 25);
-            this.label3.TabIndex = 58;
-            this.label3.Text = "Num de Venta:";
-            // 
-            // label_Num_Venta
-            // 
-            this.label_Num_Venta.AutoSize = true;
-            this.label_Num_Venta.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Num_Venta.Location = new System.Drawing.Point(182, 98);
-            this.label_Num_Venta.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Num_Venta.Name = "label_Num_Venta";
-            this.label_Num_Venta.Size = new System.Drawing.Size(56, 25);
-            this.label_Num_Venta.TabIndex = 59;
-            this.label_Num_Venta.Text = "####";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -383,8 +359,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Controls.Add(this.btn_Agregar_Libro);
             this.Controls.Add(this.dgv_Libros);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label_Num_Venta);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label_Rol);
@@ -426,8 +400,6 @@ namespace LibreriaBoscoso.Views.Vendedor
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label_Num_Venta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgv_Libros;
         private System.Windows.Forms.Button btn_Agregar_Libro;
