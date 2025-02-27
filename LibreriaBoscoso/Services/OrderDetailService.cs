@@ -120,5 +120,30 @@ namespace LibreriaBoscoso.Services
                 return false;
             }
         }
+        public async Task<List<OrderDetail>> GetOrderDetailsByOrderIdAsync(int orderId)
+        {
+            try
+            {
+                string url = $"{BaseUrl}/{orderId}"; // Endpoint correcto
+                var response = await _httpClient.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error en la solicitud HTTP: {response.StatusCode}");
+                }
+
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var orderDetails = JsonSerializer.Deserialize<List<OrderDetail>>(jsonString, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                return orderDetails ?? new List<OrderDetail>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los detalles del pedido: " + ex.Message);
+            }
+        }
     }
 }

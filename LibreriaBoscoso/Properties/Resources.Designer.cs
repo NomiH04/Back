@@ -103,6 +103,16 @@ namespace LibreriaBoscoso.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boton_de_quitar_cuadrado__1_ {
+            get {
+                object obj = ResourceManager.GetObject("boton-de-quitar-cuadrado (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo1 {
             get {
                 object obj = ResourceManager.GetObject("logo1", resourceCulture);

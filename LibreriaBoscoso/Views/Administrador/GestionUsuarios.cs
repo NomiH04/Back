@@ -59,49 +59,86 @@ namespace LibreriaBoscoso.Views.Administrador
         // Método para crear un nuevo usuario
         private async void button2_Click_1(object sender, EventArgs e)
         {
-            // Validar los datos antes de proceder
-            if (string.IsNullOrWhiteSpace(txt_Nombre.Text) || string.IsNullOrWhiteSpace(txt_Email.Text) || string.IsNullOrWhiteSpace(txt_Contrasena.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return;
-            }
-
-            var newUser = new User
-            {
-                Name = txt_Nombre.Text,
-                Email = txt_Email.Text,
-                Pass = txt_Contrasena.Text,
-                Role = GetSelectedRole() // Asegúrate de que este método obtiene el rol correctamente
-            };
-
             try
             {
-                // Indicamos que estamos agregando un usuario
+                // 🔹 Validar que los campos no estén vacíos
+                if (string.IsNullOrWhiteSpace(txt_Nombre.Text) ||
+                    string.IsNullOrWhiteSpace(txt_Email.Text) ||
+                    string.IsNullOrWhiteSpace(txt_Contrasena.Text))
+                {
+                    MessageBox.Show("❌ Por favor, complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Validar que la contraseña tenga al menos 6 caracteres
+                if (txt_Contrasena.Text.Length < 6)
+                {
+                    MessageBox.Show("❌ La contraseña debe tener al menos 6 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Validar que el campo de email sea valido
+                if (txt_Email.Text.Length < 6)
+                {
+                    MessageBox.Show("❌ La contraseña debe tener al menos 6 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Validar que el email contenga un '@'
+                if (!txt_Email.Text.Contains("@"))
+                {
+                    MessageBox.Show("❌ El correo electrónico debe contener un '@'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Obtener el rol seleccionado
+                string role = GetSelectedRole();
+                if (string.IsNullOrWhiteSpace(role))
+                {
+                    MessageBox.Show("❌ Seleccione un rol válido para el usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Crear el usuario con los datos del formulario
+                var newUser = new User
+                {
+                    Name = txt_Nombre.Text.Trim(),
+                    Email = txt_Email.Text.Trim(),
+                    Pass = txt_Contrasena.Text.Trim(),
+                    Role = role
+                };
+
+                // 🔹 Mostrar en consola los datos que se están enviando
+                Console.WriteLine($"📤 Enviando usuario: {newUser.Name}, {newUser.Email}, {newUser.Pass}, {newUser.Role}");
+
+                // 🔹 Marcar que se está agregando un usuario
                 isAddingUser = true;
 
-                // Llamamos al servicio para crear el nuevo usuario
+                // 🔹 Intentar crear el usuario
                 bool isSuccess = await _userService.CreateUserAsync(newUser);
 
                 if (isSuccess)
                 {
-                    MessageBox.Show("Usuario creado correctamente.");
-                    // Recargamos los usuarios en el DataGridView
+                    MessageBox.Show("✅ Usuario creado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // 🔹 Recargar la lista de usuarios en el DataGridView
                     var users = await _userService.GetUsersAsync();
                     allUsers = users; // Guardamos los usuarios nuevamente
                     dataGridView1.DataSource = users;
                 }
                 else
                 {
-                    MessageBox.Show("Hubo un error al crear el usuario.");
+                    MessageBox.Show("❌ No se pudo crear el usuario. Verifique los datos e intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al crear el usuario: {ex.Message}");
+                MessageBox.Show($"❌ Error inesperado al crear el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"❌ Excepción: {ex}");
             }
             finally
             {
-                // Restablecemos el flag después de la adición
+                // 🔹 Restablecer la variable después de la adición
                 isAddingUser = false;
             }
         }
@@ -263,9 +300,79 @@ namespace LibreriaBoscoso.Views.Administrador
         }
 
 
+        private async void btn_actualizar_Usuario_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione un usuario antes de actualizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Obtener el ID del usuario seleccionado en la DataGridView
+                object value = null;
+                if (dataGridView1.Columns.Contains("UserId"))
+                {
+                    value = dataGridView1.SelectedRows[0].Cells["UserId"].Value;
+                }
+                else
+                {
+                    // Si "UserId" no existe, intenta con la primera columna
+                    value = dataGridView1.SelectedRows[0].Cells[0].Value;
+                }
+
+                if (value == null || value == DBNull.Value)
+                {
+                    MessageBox.Show("No se pudo obtener el ID del usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int userId = Convert.ToInt32(value);
+                Console.WriteLine($"🔹 Actualizando usuario con ID: {userId}");
+
+                // 🔹 Validar los datos antes de enviar
+                if (string.IsNullOrWhiteSpace(txt_Nombre.Text) || string.IsNullOrWhiteSpace(txt_Email.Text))
+                {
+                    MessageBox.Show("Por favor, complete los campos obligatorios (Nombre y Email).", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var updatedUser = new User
+                {
+                    UserId = userId,
+                    Name = txt_Nombre.Text.Trim(),
+                    Email = txt_Email.Text.Trim(),
+                    Pass = string.IsNullOrEmpty(txt_Contrasena.Text) ? null : txt_Contrasena.Text.Trim(),
+                    Role = GetSelectedRole()
+                };
+
+                bool actualizado = await _userService.UpdateUserAsync(userId, updatedUser);
+
+                if (actualizado)
+                {
+                    MessageBox.Show("✅ Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // 🔹 Recargar usuarios en el DataGridView
+                    var users = await _userService.GetUsersAsync();
+                    dataGridView1.DataSource = users;
+                }
+                else
+                {
+                    MessageBox.Show("❌ No se pudo actualizar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"❌ Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"❌ Excepción al actualizar usuario: {ex}");
+            }
+        }
 
 
-        private async void btn_eliminar_Click(object sender, EventArgs e)
+
+
+        private async void btn_eliminar_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
@@ -276,18 +383,22 @@ namespace LibreriaBoscoso.Views.Administrador
             int userId;
             try
             {
-                // 🔹 Método 1: Obtenerlo por nombre de columna
-                object value = dataGridView1.SelectedRows[0].Cells["UserId"].Value;
-                Console.WriteLine($"Valor de UserId obtenido: {value}");
-
-                // 🔹 Método 2: Si el nombre de la columna no funciona, probar con índice 0
-                if (value == null)
+                // Verificar si "UserId" existe en las columnas
+                string columnName = "UserId";
+                if (!dataGridView1.Columns.Contains(columnName))
                 {
-                    value = dataGridView1.SelectedRows[0].Cells[0].Value;
-                    Console.WriteLine($"Valor de UserId obtenido por índice: {value}");
+                    // Intentar con la primera columna si "UserId" no existe
+                    columnName = dataGridView1.Columns[0].Name;
                 }
 
-                // 🔹 Convertir a int
+                object value = dataGridView1.SelectedRows[0].Cells[columnName].Value;
+
+                if (value == null || value == DBNull.Value)
+                {
+                    MessageBox.Show("No se pudo obtener el ID del usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 userId = Convert.ToInt32(value);
             }
             catch (Exception ex)
@@ -329,85 +440,6 @@ namespace LibreriaBoscoso.Views.Administrador
             }
         }
 
-
-
-        private async void btn_eliminar_Click1(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione un usuario antes de eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int userId = -1;
-            try
-            {
-                // 🔹 Depurar: Mostrar todas las columnas disponibles
-                Console.WriteLine("Columnas en DataGridView:");
-                foreach (DataGridViewColumn col in dataGridView1.Columns)
-                {
-                    Console.WriteLine($"Nombre: {col.Name}");
-                }
-
-                // 🔹 Intentar obtener el UserId por nombre de columna
-                object value = dataGridView1.SelectedRows[0].Cells["UserId"].Value;
-                Console.WriteLine($"Valor de UserId obtenido: {value}");
-
-                // 🔹 Si no se obtiene, probar por índice 0
-                if (value == null || string.IsNullOrEmpty(value.ToString()))
-                {
-                    value = dataGridView1.SelectedRows[0].Cells[0].Value;
-                    Console.WriteLine($"Valor de UserId obtenido por índice: {value}");
-                }
-
-                // 🔹 Intentar convertir a int
-                userId = Convert.ToInt32(value);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al obtener el ID del usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (userId <= 0)
-            {
-                MessageBox.Show("El ID del usuario no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Confirmar eliminación
-            var confirmResult = MessageBox.Show(
-                $"¿Está seguro de que desea eliminar este usuario con ID {userId}?",
-                "Confirmar Eliminación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (confirmResult != DialogResult.Yes)
-                return;
-
-            try
-            {
-                bool eliminado = await _userService.DeleteUserAsync(userId);
-
-                if (eliminado)
-                {
-                    MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Recargar la lista de usuarios en el DataGridView
-                    var users = await _userService.GetUsersAsync();
-                    dataGridView1.DataSource = users;
-                }
-                else
-                {
-                    MessageBox.Show("Error al eliminar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al eliminar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+      
     }
 }

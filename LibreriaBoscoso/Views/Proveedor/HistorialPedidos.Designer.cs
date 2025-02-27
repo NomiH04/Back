@@ -30,14 +30,9 @@ namespace LibreriaBoscoso.Views.Proveedor
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
@@ -54,32 +49,22 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.librosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Estado = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OrdenId = new System.Windows.Forms.Label();
+            this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(761, 52);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Rol";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(696, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Usuario";
             // 
             // button1
             // 
@@ -119,27 +104,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 44);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
-            // 
-            // facebookToolStripMenuItem
-            // 
-            this.facebookToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.facebookToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5305154_fb_facebook_facebook_logo_icon;
-            this.facebookToolStripMenuItem.Name = "facebookToolStripMenuItem";
-            this.facebookToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
-            // 
-            // twitterToolStripMenuItem
-            // 
-            this.twitterToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.twitterToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._104501_twitter_bird_icon;
-            this.twitterToolStripMenuItem.Name = "twitterToolStripMenuItem";
-            this.twitterToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
-            // 
-            // instagramToolStripMenuItem
-            // 
-            this.instagramToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.instagramToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5279112_camera_instagram_social_media_instagram_logo_icon;
-            this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
-            this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
             // btnSalir
             // 
@@ -197,6 +161,7 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.button3.TabIndex = 89;
             this.button3.Text = "Ver";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnCerrarSesion
             // 
@@ -311,12 +276,112 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.Size = new System.Drawing.Size(754, 225);
             this.dataGridViewOrders.TabIndex = 93;
+            this.dataGridViewOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrders_CellContentClick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.Estado);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.OrdenId);
+            this.panel1.Location = new System.Drawing.Point(570, 41);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 94;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(83, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 13);
+            this.label6.TabIndex = 95;
+            this.label6.Text = "--->";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(105, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.TabIndex = 94;
+            this.label5.Text = "--->";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(39, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 93;
+            this.label2.Text = "Estado";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 92;
+            this.label1.Text = "Identificador";
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSize = true;
+            this.Estado.Location = new System.Drawing.Point(111, 63);
+            this.Estado.Name = "Estado";
+            this.Estado.Size = new System.Drawing.Size(0, 13);
+            this.Estado.TabIndex = 91;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 8);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(101, 13);
+            this.label4.TabIndex = 89;
+            this.label4.Text = "OrdenSeleccionada";
+            // 
+            // OrdenId
+            // 
+            this.OrdenId.AutoSize = true;
+            this.OrdenId.Location = new System.Drawing.Point(138, 35);
+            this.OrdenId.Name = "OrdenId";
+            this.OrdenId.Size = new System.Drawing.Size(0, 13);
+            this.OrdenId.TabIndex = 90;
+            // 
+            // facebookToolStripMenuItem
+            // 
+            this.facebookToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.facebookToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5305154_fb_facebook_facebook_logo_icon;
+            this.facebookToolStripMenuItem.Name = "facebookToolStripMenuItem";
+            this.facebookToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
+            // 
+            // twitterToolStripMenuItem
+            // 
+            this.twitterToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.twitterToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._104501_twitter_bird_icon;
+            this.twitterToolStripMenuItem.Name = "twitterToolStripMenuItem";
+            this.twitterToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
+            // 
+            // instagramToolStripMenuItem
+            // 
+            this.instagramToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.instagramToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5279112_camera_instagram_social_media_instagram_logo_icon;
+            this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
+            this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
             // HistorialPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 461);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.textBox1);
@@ -328,8 +393,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "HistorialPedidos";
@@ -341,15 +404,14 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
@@ -372,5 +434,13 @@ namespace LibreriaBoscoso.Views.Proveedor
         private System.Windows.Forms.ToolStripMenuItem librosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem catalogoToolStripMenuItem1;
         private DataGridView dataGridViewOrders;
+        private Panel panel1;
+        private Label label6;
+        private Label label5;
+        private Label label2;
+        private Label label1;
+        private Label Estado;
+        private Label label4;
+        private Label OrdenId;
     }
 }

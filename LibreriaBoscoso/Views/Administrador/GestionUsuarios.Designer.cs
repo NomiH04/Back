@@ -64,7 +64,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Seller = new System.Windows.Forms.RadioButton();
             this.Supplier = new System.Windows.Forms.RadioButton();
             this.Manager = new System.Windows.Forms.RadioButton();
-            this.btn_actualizar_tienda = new System.Windows.Forms.Button();
+            this.btn_actualizar_Usuario = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -451,18 +451,18 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Manager.Text = "Gerente";
             this.Manager.UseVisualStyleBackColor = true;
             // 
-            // btn_actualizar_tienda
+            // btn_actualizar_Usuario
             // 
-            this.btn_actualizar_tienda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_actualizar_tienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_actualizar_tienda.ForeColor = System.Drawing.Color.White;
-            this.btn_actualizar_tienda.Location = new System.Drawing.Point(669, 393);
-            this.btn_actualizar_tienda.Name = "btn_actualizar_tienda";
-            this.btn_actualizar_tienda.Size = new System.Drawing.Size(87, 48);
-            this.btn_actualizar_tienda.TabIndex = 75;
-            this.btn_actualizar_tienda.Text = "Actualizar";
-            this.btn_actualizar_tienda.UseVisualStyleBackColor = false;
-           
+            this.btn_actualizar_Usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_actualizar_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_actualizar_Usuario.ForeColor = System.Drawing.Color.White;
+            this.btn_actualizar_Usuario.Location = new System.Drawing.Point(669, 393);
+            this.btn_actualizar_Usuario.Name = "btn_actualizar_Usuario";
+            this.btn_actualizar_Usuario.Size = new System.Drawing.Size(87, 48);
+            this.btn_actualizar_Usuario.TabIndex = 75;
+            this.btn_actualizar_Usuario.Text = "Actualizar";
+            this.btn_actualizar_Usuario.UseVisualStyleBackColor = false;
+            this.btn_actualizar_Usuario.Click += new System.EventHandler(this.btn_actualizar_Usuario_Click_1);
             // 
             // btn_eliminar
             // 
@@ -476,14 +476,14 @@ namespace LibreriaBoscoso.Views.Administrador
             this.btn_eliminar.TabIndex = 74;
             this.btn_eliminar.Text = "Borrar";
             this.btn_eliminar.UseVisualStyleBackColor = false;
-          
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click_1);
             // 
             // GestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 523);
-            this.Controls.Add(this.btn_actualizar_tienda);
+            this.Controls.Add(this.btn_actualizar_Usuario);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.Admin);
             this.Controls.Add(this.Seller);
@@ -558,7 +558,7 @@ namespace LibreriaBoscoso.Views.Administrador
         private System.Windows.Forms.RadioButton Seller;
         private System.Windows.Forms.RadioButton Supplier;
         private System.Windows.Forms.RadioButton Manager;
-        private Button btn_actualizar_tienda;
+        private Button btn_actualizar_Usuario;
         private Button btn_eliminar;
     }
 

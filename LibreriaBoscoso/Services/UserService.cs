@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -175,16 +176,15 @@ namespace LibreriaBoscoso.Services
                 return null;
             }
         }
-
-        public async Task<bool> DeleteUserAsync(int userId)
+        public async Task<bool> DeleteUserAsync(int id)
         {
             try
             {
-                var response = await _httpClient.DeleteAsync($"{BaseUrl}/{userId}");
+                var response = await _httpClient.DeleteAsync($"{BaseUrl}/{id}");
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"Usuario con ID {userId} eliminado correctamente.");
+                    Console.WriteLine($"Usuario con ID {id} eliminado correctamente.");
                     return true;
                 }
                 else
@@ -194,67 +194,54 @@ namespace LibreriaBoscoso.Services
                     return false;
                 }
             }
-            catch (HttpRequestException ex)
+            catch (HttpRequestException httpEx)
             {
-                Console.WriteLine($"Error de conexión al eliminar usuario: {ex.Message}");
+                Console.WriteLine($"Error HTTP al eliminar el usuario: {httpEx.Message}");
                 return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error inesperado al eliminar usuario: {ex.Message}");
+                Console.WriteLine($"Error inesperado al eliminar el usuario: {ex.Message}");
                 return false;
             }
         }
-
-
-        //Metodo para editar Usuario
-        public async Task<bool> UpdateUserAsync(User user)
+        public async Task<bool> UpdateUserAsync(int id, User user)
         {
             try
             {
-                var userPatchDto = new
+                Console.WriteLine($"Intentando actualizar usuario en: {BaseUrl}/{id}");
+                Console.WriteLine($"Datos enviados: {JsonSerializer.Serialize(user)}");
+
+                // Crear el contenido de la solicitud PATCH
+                var jsonContent = new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), $"{BaseUrl}/{id}")
                 {
-                    userId = user.UserId,
-                    name = user.Name,
-                    email = user.Email,
-                    role = user.Role
+                    Content = jsonContent
                 };
 
-                // Definir el método PATCH manualmente
-                var patchMethod = new HttpMethod("PATCH");
-
-                // Construir la solicitud con PATCH
-                var request = new HttpRequestMessage(patchMethod, $"{BaseUrl}/{user.UserId}")
-                {
-                    Content = JsonContent.Create(userPatchDto)
-                };
-
-                // Enviar la solicitud HTTP
+                // Enviar la solicitud
                 var response = await _httpClient.SendAsync(request);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"Usuario con ID {user.UserId} actualizado correctamente.");
+                    Console.WriteLine($"✅ Usuario con ID {id} actualizado correctamente.");
                     return true;
                 }
                 else
                 {
                     string errorResponse = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error al actualizar el usuario: {response.StatusCode} - {errorResponse}");
+                    Console.WriteLine($"❌ Error al actualizar el usuario: {response.StatusCode} - {errorResponse}");
                     return false;
                 }
             }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Error de conexión al actualizar usuario: {ex.Message}");
-                return false;
-            }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error inesperado al actualizar usuario: {ex.Message}");
+                Console.WriteLine($"⚠️ Error en UpdateUserAsync: {ex.Message}");
                 return false;
             }
         }
+
+
 
 
     }
