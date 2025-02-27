@@ -23,6 +23,7 @@ namespace LibreriaBoscoso.Views.Administrador
         // Método para cargar los usuarios en el DataGridView al iniciar el formulario
         private async void Form1_Load(object sender, EventArgs e)
         {
+           
             try
             {
                 var users = await _userService.GetUsersAsync();
@@ -440,6 +441,8 @@ namespace LibreriaBoscoso.Views.Administrador
             }
         }
 
-      
+
+  
+
     }
 }

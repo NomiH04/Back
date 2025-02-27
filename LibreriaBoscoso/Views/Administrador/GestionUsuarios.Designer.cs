@@ -119,7 +119,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(895, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(916, 38);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -231,7 +231,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.menuStrip2.Location = new System.Drawing.Point(0, 477);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(895, 46);
+            this.menuStrip2.Size = new System.Drawing.Size(916, 46);
             this.menuStrip2.TabIndex = 21;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -482,7 +482,7 @@ namespace LibreriaBoscoso.Views.Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 523);
+            this.ClientSize = new System.Drawing.Size(916, 523);
             this.Controls.Add(this.btn_actualizar_Usuario);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.Admin);
