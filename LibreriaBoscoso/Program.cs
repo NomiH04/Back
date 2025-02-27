@@ -17,7 +17,7 @@ namespace LibreriaBoscoso
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProveedorPrincipal());
+            Application.Run(new AdministradorPrincipal());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,11 +17,14 @@ namespace LibreriaBoscoso.Views.Administrador
         private readonly StoreService _storeService;
         private bool isAddingStore = false; // Flag para indicar cuando estamos agregando una tienda
         private List<Store> allStores;
+        private List<Store> _StoreOriginales; // Verifica que este sea el tipo correcto
+
 
         public GestionTiendas()
         {
             InitializeComponent();
             _storeService = new StoreService();  // Inicializamos el servicio
+           
         }
 
         private async void Form1_LoadAsync(object sender, EventArgs e)
@@ -280,6 +284,23 @@ namespace LibreriaBoscoso.Views.Administrador
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = textBox6.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dataGridView1.DataSource = new List<Store>(_StoreOriginales);
+            }
+            else
+            {
+                var categoriasFiltradas = _StoreOriginales
+                    .Where(c => c.Name.ToLower().Contains(filtro))
+                    .ToList();
+
+                dataGridView1.DataSource = categoriasFiltradas;
+            }
         }
     }
 }

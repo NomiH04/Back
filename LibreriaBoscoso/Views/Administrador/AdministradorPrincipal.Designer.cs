@@ -37,7 +37,6 @@
             this.gestionarCategoriasLibrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.Rolelb = new System.Windows.Forms.Label();
@@ -151,16 +150,6 @@
             this.consultarPedidosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.consultarPedidosToolStripMenuItem.Text = "Gestionar Usuarios";
             this.consultarPedidosToolStripMenuItem.Click += new System.EventHandler(this.consultarPedidosToolStripMenuItem_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(518, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 25);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "Buscar";
             // 
             // btnCerrarSesion
             // 
@@ -298,7 +287,6 @@
             this.Controls.Add(this.Userlb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCerrarSesion);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pB_Logo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -326,7 +314,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPedidosToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label Rolelb;

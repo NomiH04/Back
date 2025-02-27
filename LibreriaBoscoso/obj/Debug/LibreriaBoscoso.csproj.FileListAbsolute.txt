@@ -799,3 +799,4 @@ C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\obj\Debug\LibreriaBosc
 C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\obj\Debug\Libreria.5C38F31A.Up2Date
 C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.exe
 C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.pdb
+C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.Views.Proveedor.Details.resources

@@ -48,7 +48,6 @@
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_Agregar = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.txt_Nombre_Categoria = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -279,18 +278,6 @@
             this.btn_Agregar.UseVisualStyleBackColor = false;
             this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click_1);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(712, 82);
-            this.button4.Margin = new System.Windows.Forms.Padding(1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 29);
-            this.button4.TabIndex = 62;
-            this.button4.Text = "Buscar";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -336,25 +323,20 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-
-            // Habilitar el DataGridView
-            this.dataGridView1.Enabled = true;
-
             this.dataGridView1.Location = new System.Drawing.Point(365, 135);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(1);
-            this.dataGridView1.MultiSelect = false; // Selección de una fila a la vez
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true; // Solo lectura (no permite edición)
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 102;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(345, 206);
             this.dataGridView1.TabIndex = 63;
-
-            // Manejar el evento de clic
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-
+            // 
             // btn_actualizar_categoria
             // 
             this.btn_actualizar_categoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -390,7 +372,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Agregar);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.txt_Nombre_Categoria);
             this.Controls.Add(this.label4);
@@ -438,7 +419,6 @@
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Agregar;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox txt_Nombre_Categoria;
         private System.Windows.Forms.Label label4;
