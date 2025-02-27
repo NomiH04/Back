@@ -16,6 +16,9 @@ namespace LibreriaBoscoso.Views.Gerente
 
         }
 
+        /*Los siguientes metodos hacen referencia a los eventos del menu que esta presente
+         en la ventana de gerente estos dirigen hacia las ventanas de consultar libros,
+        venta y pedidos*/ 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Login login = new Login();
@@ -33,6 +36,8 @@ namespace LibreriaBoscoso.Views.Gerente
         private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsultarVentas consultarVentas = new ConsultarVentas();
+            consultarVentas.Show();
+            this.Hide();
         }
 
         private void consultarPedidosToolStripMenuItem_Click(object sender, EventArgs e)

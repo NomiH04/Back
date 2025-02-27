@@ -18,7 +18,7 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CargarDatos();
+            CargarDatos();//se llama al metodo que mostrara los detalles del libro al momento de abrir la ventana
         }
 
         private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,17 +56,18 @@ namespace LibreriaBoscoso.Views.Gerente
             this.Hide();
         }
 
+
         private async void CargarDatos()
         {
+            //se llama al metodo que obtiene el libro por medio del ID
             var book = await _bookService.GetBookByIdAsync(id);
-
+            //luego se extrae los atributos para se mostrados en los textsbox
             txtTitulo.Text = book.Title;
             txtAutor.Text = book.Author;
             txtPrecio.Text = book.Price.ToString();
             txtPublishier.Text = book.Publisher;
             txtDescripcion.Text = book.Description;
             txtFecha.Text = book.PublicationDate.ToString("dd/MM/yyyy");
-
         }
 
         private void button2_Click(object sender, EventArgs e)

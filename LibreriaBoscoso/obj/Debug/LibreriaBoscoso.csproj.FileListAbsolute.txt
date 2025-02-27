@@ -729,6 +729,7 @@ C:\Users\Josue\source\repos\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
 C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\Libreria.5C38F31A.Up2Date
 C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.exe
 C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.pdb
+<<<<<<< HEAD
 C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\bin\Debug\LibreriaBoscoso.exe.config
 C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\bin\Debug\LibreriaBoscoso.exe
 C:\Users\ANTONY SALAZAR\Desktop\Proyecto3\LibreriaBoscoso\bin\Debug\LibreriaBoscoso.pdb
@@ -830,3 +831,15 @@ C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Newtons
 C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.xml
 C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
 C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.Views.Proveedor.Details.resources
+=======
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.Core.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.OpenId.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Newtonsoft.Json.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Mono.Math.dll
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.Core.xml
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.OpenId.xml
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Newtonsoft.Json.xml
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.xml
+C:\U\Lenguajes\Proyecto Final\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
+>>>>>>> 73d4f3d (un arreglo a ver venta)

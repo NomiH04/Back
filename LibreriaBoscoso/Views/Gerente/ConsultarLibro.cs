@@ -112,12 +112,14 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private async void btnBuscar_Click(object sender, EventArgs e)//buscar
         {
+            //se valida que el campo de buscar por id no este vacio, lo hace que la accion 
+            //de buscar no se ejecute hasta que se ingrese el ID
             if (string.IsNullOrWhiteSpace(txtBuscar.Text))
             {
                 MessageBox.Show("Ingrese el ID del pedido para buscar en la base de datos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            //tambien verifica que sea un nuemro valido 
             if (!int.TryParse(txtBuscar.Text, out int id))
             {
                 MessageBox.Show("El ID debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,17 +128,22 @@ namespace LibreriaBoscoso.Views.Gerente
 
             try
             {
+                //llama al metodo para buscar el id del libro
                 var book = await _bookService.GetBookByIdAsync(id);
-
+                //verifica que exista el libro
                 if (book != null)
                 {
+                    //se envia el libro a la tabla
                     dataLibro.DataSource = new List<Book> { book };
+                    Limpiar();//limpia el text box para la proxima consulta
                 }
                 else
                 {
+                    //mensaje por si no se encuentra el libro
                     MessageBox.Show("No se encontró un pedido con el ID ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            //captura el error y envia un mensaje evitando que la palicacion se cierre
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al obtener el pedido: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,6 +165,7 @@ namespace LibreriaBoscoso.Views.Gerente
             }
             catch (Exception ex)
             {
+                //captura algun error evitando que la aplicacion finalice forzadamente
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -188,13 +196,14 @@ namespace LibreriaBoscoso.Views.Gerente
 
             if (idLibroSeleccionado == -1)
             {
+                //verifica que el usuario ingreso un id o selecciono una fila para eliminar el libro de no ser asi envia el mensaje 
                 MessageBox.Show("Por favor, seleccione un libro de la tabla o ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Abrir la ventana de confirmación con el ID obtenido
+            // Abrir la ventana de confirmación con el ID obtenido y enviar el id por parametro
             ModuloConfirmacion moduloConfirmacion = new ModuloConfirmacion(idLibroSeleccionado);
-            moduloConfirmacion.Show();
+            moduloConfirmacion.Show();//mostrar la ventana de confirmacion
         }
 
         private void dataLibro_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -213,6 +222,7 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private int ObtenerIdSeleccionado()
         {
+            //obtiene el id del libro seleccionado y lo envia a donde se requiera
             return idLibroSeleccionado;
         }
     }

@@ -65,10 +65,12 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private async void CargarDatos()
         {
-            var order = await _orderService.GetOrderByIdAsync(id);
-            var user = await _userService.GetUserByIdAsync(order.UserId.Value);
-            var store = await _storeService.GetStoreByIdAsync(order.StoreId.Value);
+            //se llaman a los datos necesarios para obtener la informacion detallada del pedido
+            var order = await _orderService.GetOrderByIdAsync(id); //al ser el principal se necesita para obtener mas informacion del pedido
+            var user = await _userService.GetUserByIdAsync(order.UserId.Value);//se utiliza para extraer el nombre del vendedor por medio del ID proporcionado en el pedido
+            var store = await _storeService.GetStoreByIdAsync(order.StoreId.Value);//tambien se utiliza el ID de la orden para obtener el nombre de la tienda
 
+            //se cargan los datos en sus respectivos campos
             lbVenta.Text = id.ToString();
             lbFecha.Text = order.OrderDate?.ToString("dd/MM/yyyy");
             txtVendedor.Text = user.Name;

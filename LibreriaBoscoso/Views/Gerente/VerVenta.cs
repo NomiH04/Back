@@ -8,17 +8,23 @@ namespace LibreriaBoscoso.Views.Gerente
     public partial class VerVenta : Form
     {
         int id;
-        private readonly SaleService _saleService = new SaleService();
+        private readonly SaleService _saleService;
+        private readonly UserService _userService;
+        private readonly StoreService _storeService;
         public VerVenta(int id)
         {
             InitializeComponent();
             this.id = id;
-            this.CargarDatos();
+            
+            _saleService = new SaleService();
+            _userService = new UserService();
+            _storeService = new StoreService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            CargarDatos();
         }
 
         private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,12 +64,16 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private async void CargarDatos()
         {
-            var sale = await _saleService.GetSaleByIdAsync(id);
+            //se llaman a los datos necesarios para obtener la informacion detallada del pedido
+            var sale = await _saleService.GetSaleByIdAsync(id);//al ser el principal se necesita para obtener mas informacion del pedido
+            var user = await _userService.GetUserByIdAsync(sale.UserId.Value);//se utiliza para extraer el nombre del vendedor por medio del ID proporcionado en el pedido
+            var store = await _storeService.GetStoreByIdAsync(sale.StoreId.Value);//tambien se utiliza el ID de la orden para obtener el nombre de la tienda
 
+            //se cargan los datos en sus respectivos campos
             lbNumVenta.Text = sale.SaleId.ToString();
             lbFecha.Text = sale.SaleDate?.ToString("dd/MM/yyyy");
-            txtVendedor.Text = sale.UserId.ToString();
-            txtTienda.Text = sale.StoreId.ToString();
+            txtVendedor.Text = user.Name;
+            txtTienda.Text = store.Name;
             txtMonto.Text = sale.Total.ToString();
         }
     }

@@ -8,12 +8,12 @@ namespace LibreriaBoscoso.Views.Gerente
 {
     public partial class AgregarNuevoLibro : Form
     {
-        private readonly BookService _bookService = new BookService();
-        private readonly CategoryService _categoryService = new CategoryService();
+        private readonly BookService _bookService;
         private bool isAddingUser = false;
         public AgregarNuevoLibro()
         {
             InitializeComponent();
+            _bookService = new BookService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -75,29 +75,21 @@ namespace LibreriaBoscoso.Views.Gerente
                 MessageBox.Show("Ingrese un precio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            if (!DateTime.TryParse(txtFecha.Text, out DateTime publicationDate))
-            {
-                MessageBox.Show("Fecha de publicación inválida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Extrae solo la fecha sin la hora
-            publicationDate = publicationDate.Date;
-
+            //se crea un objeto para enviar por parametro al metodo de crear libro
             var book = new Book
             {
                 Title = txtTitulo.Text,
                 Author = txtAutor.Text,
                 Price = precio,
                 Description = txtDescripcion.Text,
-                PublicationDate = publicationDate,
+                PublicationDate = DateTime.Parse(txtFecha.Text),
                 Publisher = txtPublishier.Text
             };
 
+            //se llama al metodo de crear libro y si este envia una confirmacion
             bool resultado = await _bookService.CreateBookAsync(book);
 
-            if (resultado)
+            if (resultado)// si el resultado es true se agrega el libro se envia un mensaje de confirmacion
             {
                 MessageBox.Show("Libro agregado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -106,10 +98,9 @@ namespace LibreriaBoscoso.Views.Gerente
                 txtAutor.Text = "";
                 txtPrecio.Text = "";
                 txtDescripcion.Text = "";
-                txtTitulo.Focus();  // Opcional: Enfocar el primer campo
             }
             else
-            {
+            {//en caso de no agregar el libro tambien se envia un mensaje para informar
                 MessageBox.Show("Error al agregar el libro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
         }
