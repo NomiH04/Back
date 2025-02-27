@@ -47,20 +47,15 @@
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Comprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Libro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_Buscar = new System.Windows.Forms.Button();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
+            this.btn_Reporte = new System.Windows.Forms.Button();
+            this.btn_Salir = new System.Windows.Forms.Button();
+            this.dgv_Ventas = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Ventas)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -92,7 +87,7 @@
             this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(654, 0);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(1);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(122, 37);
             this.btnCerrarSesion.TabIndex = 33;
@@ -104,7 +99,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(494, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(149, 25);
             this.textBox1.TabIndex = 32;
@@ -144,7 +139,7 @@
             this.consultarLibrosToolStripMenuItem.Name = "consultarLibrosToolStripMenuItem";
             this.consultarLibrosToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.consultarLibrosToolStripMenuItem.Text = "Reportes Ventas";
-            this.consultarLibrosToolStripMenuItem.Click += new System.EventHandler(this.consultarLibrosToolStripMenuItem_Click);
+            this.consultarLibrosToolStripMenuItem.Click += new System.EventHandler(this.reportesVentasToolStripMenuItem_Click);
             // 
             // reportesInventarioToolStripMenuItem
             // 
@@ -175,7 +170,7 @@
             this.consultarVentasToolStripMenuItem.Name = "consultarVentasToolStripMenuItem";
             this.consultarVentasToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
             this.consultarVentasToolStripMenuItem.Text = "Gestionar Tiendas";
-            this.consultarVentasToolStripMenuItem.Click += new System.EventHandler(this.consultarVentasToolStripMenuItem_Click);
+            this.consultarVentasToolStripMenuItem.Click += new System.EventHandler(this.GestionTiendasToolStripMenuItem_Click);
             // 
             // gestionarCategoriasLibrosToolStripMenuItem
             // 
@@ -205,7 +200,7 @@
             this.consultarPedidosToolStripMenuItem.Name = "consultarPedidosToolStripMenuItem";
             this.consultarPedidosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.consultarPedidosToolStripMenuItem.Text = "Gestionar Usuarios";
-            this.consultarPedidosToolStripMenuItem.Click += new System.EventHandler(this.consultarPedidosToolStripMenuItem_Click);
+            this.consultarPedidosToolStripMenuItem.Click += new System.EventHandler(this.GestionUsuariosToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -213,7 +208,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(678, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 24);
             this.button1.TabIndex = 57;
@@ -266,46 +261,6 @@
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Comprador,
-            this.Libro,
-            this.Vendedor});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 155);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 102;
-            this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(754, 188);
-            this.dataGridView1.TabIndex = 58;
-            // 
-            // Comprador
-            // 
-            this.Comprador.Frozen = true;
-            this.Comprador.HeaderText = "Comprador";
-            this.Comprador.MinimumWidth = 12;
-            this.Comprador.Name = "Comprador";
-            this.Comprador.Width = 250;
-            // 
-            // Libro
-            // 
-            this.Libro.Frozen = true;
-            this.Libro.HeaderText = "Libro";
-            this.Libro.MinimumWidth = 12;
-            this.Libro.Name = "Libro";
-            this.Libro.Width = 250;
-            // 
-            // Vendedor
-            // 
-            this.Vendedor.Frozen = true;
-            this.Vendedor.HeaderText = "Vendedor";
-            this.Vendedor.MinimumWidth = 12;
-            this.Vendedor.Name = "Vendedor";
-            this.Vendedor.Width = 250;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -317,84 +272,74 @@
             this.label3.TabIndex = 59;
             this.label3.Text = "Reporte Ventas";
             // 
-            // button4
+            // btn_Buscar
             // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(304, 110);
-            this.button4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 29);
-            this.button4.TabIndex = 64;
-            this.button4.Text = "Buscar";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_Buscar.BackColor = System.Drawing.Color.Gray;
+            this.btn_Buscar.ForeColor = System.Drawing.Color.White;
+            this.btn_Buscar.Location = new System.Drawing.Point(304, 110);
+            this.btn_Buscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(87, 29);
+            this.btn_Buscar.TabIndex = 64;
+            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.UseVisualStyleBackColor = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
-            // textBox6
+            // txt_Buscador
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(21, 110);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(281, 29);
-            this.textBox6.TabIndex = 63;
-            this.textBox6.Text = "Buscar";
+            this.txt_Buscador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscador.Location = new System.Drawing.Point(21, 110);
+            this.txt_Buscador.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(281, 29);
+            this.txt_Buscador.TabIndex = 63;
+            this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
-            // button2
+            // btn_Reporte
             // 
-            this.button2.Location = new System.Drawing.Point(408, 110);
-            this.button2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 29);
-            this.button2.TabIndex = 65;
-            this.button2.Text = "Reportes Diarios";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Reporte.Location = new System.Drawing.Point(393, 110);
+            this.btn_Reporte.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Reporte.Name = "btn_Reporte";
+            this.btn_Reporte.Size = new System.Drawing.Size(85, 29);
+            this.btn_Reporte.TabIndex = 65;
+            this.btn_Reporte.Text = "Reporte";
+            this.btn_Reporte.UseVisualStyleBackColor = true;
+            this.btn_Reporte.Click += new System.EventHandler(this.btn_Reporte_Click);
             // 
-            // button3
+            // btn_Salir
             // 
-            this.button3.Location = new System.Drawing.Point(535, 110);
-            this.button3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 29);
-            this.button3.TabIndex = 66;
-            this.button3.Text = "Reportes Semanales";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_Salir.ForeColor = System.Drawing.Color.White;
+            this.btn_Salir.Location = new System.Drawing.Point(690, 362);
+            this.btn_Salir.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Salir.Name = "btn_Salir";
+            this.btn_Salir.Size = new System.Drawing.Size(86, 34);
+            this.btn_Salir.TabIndex = 68;
+            this.btn_Salir.Text = "Salir.";
+            this.btn_Salir.UseVisualStyleBackColor = false;
+            this.btn_Salir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // button5
+            // dgv_Ventas
             // 
-            this.button5.Location = new System.Drawing.Point(660, 110);
-            this.button5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 29);
-            this.button5.TabIndex = 67;
-            this.button5.Text = "Reportes Mensuales";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(690, 362);
-            this.button6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(86, 34);
-            this.button6.TabIndex = 68;
-            this.button6.Text = "Salir.";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.dgv_Ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Ventas.Location = new System.Drawing.Point(21, 143);
+            this.dgv_Ventas.Name = "dgv_Ventas";
+            this.dgv_Ventas.Size = new System.Drawing.Size(747, 215);
+            this.dgv_Ventas.TabIndex = 69;
             // 
             // ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 460);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.dgv_Ventas);
+            this.Controls.Add(this.btn_Salir);
+            this.Controls.Add(this.btn_Reporte);
+            this.Controls.Add(this.btn_Buscar);
+            this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label2);
@@ -403,15 +348,15 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "ReporteVentas";
             this.Text = "ReporteVentas";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.ReporteVentas_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Ventas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,16 +383,11 @@
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comprador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Libro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vendedor;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_Buscar;
+        private System.Windows.Forms.TextBox txt_Buscador;
+        private System.Windows.Forms.Button btn_Reporte;
+        private System.Windows.Forms.Button btn_Salir;
+        private System.Windows.Forms.DataGridView dgv_Ventas;
     }
 }
