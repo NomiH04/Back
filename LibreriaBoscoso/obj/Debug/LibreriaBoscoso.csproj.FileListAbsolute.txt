@@ -815,3 +815,18 @@ C:\Users\Lynx\Desktop\Proyecto\Back\LibreriaBoscoso\bin\Debug\Newtonsoft.Json.xm
 C:\Users\Lynx\Desktop\Proyecto\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.xml
 C:\Users\Lynx\Desktop\Proyecto\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
 C:\Users\Lynx\Desktop\Proyecto\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.Views.Proveedor.Details.resources
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.Core.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.OpenId.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\itextsharp.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Mono.Math.dll
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.Core.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\DotNetOpenAuth.OpenId.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\itextsharp.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Org.Mentalis.Security.Cryptography.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
+C:\Users\Admin\Desktop\Proyecto Lenguajes\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.Views.Proveedor.Details.resources

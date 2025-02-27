@@ -283,7 +283,7 @@ namespace LibreriaBoscoso.Views.Administrador
 
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
+        private void txt_Buscador_TextChanged(object sender, EventArgs e)
         {
             if (_StoreOriginales == null || _StoreOriginales.Count == 0)
             {
@@ -291,7 +291,7 @@ namespace LibreriaBoscoso.Views.Administrador
                 return;
             }
 
-            string filtro = textBox6.Text.Trim().ToLower();
+            string filtro = txt_Buscador.Text.Trim().ToLower();
 
             if (string.IsNullOrEmpty(filtro))
             {
@@ -307,6 +307,23 @@ namespace LibreriaBoscoso.Views.Administrador
             }
         }
 
-      
+        // Limpia el TextBox cuando entra (si tiene el valor por defecto)
+        private void txt_Buscador_Enter(object sender, EventArgs e)
+        {
+            if (txt_Buscador.Text == "Buscar")
+            {
+                txt_Buscador.Clear(); // Limpiar el texto por defecto
+            }
+        }
+
+        // Vuelve a poner el texto "Buscar" cuando se sale del TextBox y está vacío
+        private void txt_Buscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Buscador.Text))
+            {
+                txt_Buscador.Text = "Buscar"; // Volver a poner "Buscar" si está vacío
+            }
+        }
+
     }
 }

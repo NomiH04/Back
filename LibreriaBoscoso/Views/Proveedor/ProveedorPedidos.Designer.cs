@@ -249,6 +249,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.txt_Buscador.Size = new System.Drawing.Size(247, 29);
             this.txt_Buscador.TabIndex = 80;
             this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
             // label3
             // 

@@ -145,11 +145,11 @@ namespace LibreriaBoscoso.Views.Administrador
         }
 
         // Método para filtrar la búsqueda por nombre de usuario o correo electrónico
-        private void textBox6_TextChanged(object sender, EventArgs e)
+        private void txt_Buscador_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                string searchQuery = txt_Buscar.Text.Trim().ToLower();  // Convertimos el texto a minúsculas
+                string searchQuery = txt_Buscador.Text.Trim().ToLower();  // Convertimos el texto a minúsculas
 
                 // Si el campo de búsqueda está vacío, mostramos todos los usuarios
                 if (string.IsNullOrEmpty(searchQuery))
@@ -441,8 +441,23 @@ namespace LibreriaBoscoso.Views.Administrador
             }
         }
 
+        // Limpia el TextBox cuando entra (si tiene el valor por defecto)
+        private void txt_Buscador_Enter(object sender, EventArgs e)
+        {
+            if (txt_Buscador.Text == "Buscar")
+            {
+                txt_Buscador.Clear(); // Limpiar el texto por defecto
+            }
+        }
 
-  
+        // Vuelve a poner el texto "Buscar" cuando se sale del TextBox y está vacío
+        private void txt_Buscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Buscador.Text))
+            {
+                txt_Buscador.Text = "Buscar"; // Volver a poner "Buscar" si está vacío
+            }
+        }
 
     }
 }

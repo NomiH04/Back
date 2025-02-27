@@ -33,6 +33,9 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
@@ -57,9 +60,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Estado = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.OrdenId = new System.Windows.Forms.Label();
-            this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
@@ -105,6 +105,27 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 44);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
+            // facebookToolStripMenuItem
+            // 
+            this.facebookToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.facebookToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5305154_fb_facebook_facebook_logo_icon;
+            this.facebookToolStripMenuItem.Name = "facebookToolStripMenuItem";
+            this.facebookToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
+            // 
+            // twitterToolStripMenuItem
+            // 
+            this.twitterToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.twitterToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._104501_twitter_bird_icon;
+            this.twitterToolStripMenuItem.Name = "twitterToolStripMenuItem";
+            this.twitterToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
+            // 
+            // instagramToolStripMenuItem
+            // 
+            this.instagramToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.instagramToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5279112_camera_instagram_social_media_instagram_logo_icon;
+            this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
+            this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
+            // 
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -140,6 +161,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.txt_Buscador.Size = new System.Drawing.Size(247, 29);
             this.txt_Buscador.TabIndex = 80;
             this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
             // label3
             // 
@@ -354,27 +377,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.OrdenId.Name = "OrdenId";
             this.OrdenId.Size = new System.Drawing.Size(0, 13);
             this.OrdenId.TabIndex = 90;
-            // 
-            // facebookToolStripMenuItem
-            // 
-            this.facebookToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.facebookToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5305154_fb_facebook_facebook_logo_icon;
-            this.facebookToolStripMenuItem.Name = "facebookToolStripMenuItem";
-            this.facebookToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
-            // 
-            // twitterToolStripMenuItem
-            // 
-            this.twitterToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.twitterToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._104501_twitter_bird_icon;
-            this.twitterToolStripMenuItem.Name = "twitterToolStripMenuItem";
-            this.twitterToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
-            // 
-            // instagramToolStripMenuItem
-            // 
-            this.instagramToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.instagramToolStripMenuItem.Image = global::LibreriaBoscoso.Properties.Resources._5279112_camera_instagram_social_media_instagram_logo_icon;
-            this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
-            this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
             // HistorialPedidos
             // 

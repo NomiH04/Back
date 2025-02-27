@@ -124,6 +124,8 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.txt_Buscador.Size = new System.Drawing.Size(190, 25);
             this.txt_Buscador.TabIndex = 112;
             this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
             // menuStrip1
             // 

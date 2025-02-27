@@ -58,7 +58,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.txt_Contrasena = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.txt_Buscar = new System.Windows.Forms.TextBox();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Admin = new System.Windows.Forms.RadioButton();
             this.Seller = new System.Windows.Forms.RadioButton();
@@ -374,16 +374,18 @@ namespace LibreriaBoscoso.Views.Administrador
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // txt_Buscar
+            // txt_Buscador
             // 
-            this.txt_Buscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Buscar.Location = new System.Drawing.Point(419, 97);
-            this.txt_Buscar.Margin = new System.Windows.Forms.Padding(1);
-            this.txt_Buscar.Name = "txt_Buscar";
-            this.txt_Buscar.Size = new System.Drawing.Size(442, 29);
-            this.txt_Buscar.TabIndex = 39;
-            this.txt_Buscar.Text = "Buscar";
-            this.txt_Buscar.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txt_Buscador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscador.Location = new System.Drawing.Point(419, 97);
+            this.txt_Buscador.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(442, 29);
+            this.txt_Buscador.TabIndex = 39;
+            this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.TextChanged += new System.EventHandler(this.txt_Buscador_TextChanged);
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
             // dataGridView1
             // 
@@ -490,7 +492,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Controls.Add(this.Supplier);
             this.Controls.Add(this.Manager);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txt_Buscar);
+            this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txt_Contrasena);
@@ -552,7 +554,7 @@ namespace LibreriaBoscoso.Views.Administrador
         private System.Windows.Forms.TextBox txt_Contrasena;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txt_Buscar;
+        private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RadioButton Admin;
         private System.Windows.Forms.RadioButton Seller;

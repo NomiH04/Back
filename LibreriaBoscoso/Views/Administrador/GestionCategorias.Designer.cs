@@ -48,7 +48,7 @@
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_Agregar = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.txt_Nombre_Categoria = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -278,16 +278,18 @@
             this.btn_Agregar.UseVisualStyleBackColor = false;
             this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click_1);
             // 
-            // textBox6
+            // txt_Buscador
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(365, 81);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(345, 29);
-            this.textBox6.TabIndex = 61;
-            this.textBox6.Text = "Buscar";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged_1);
+            this.txt_Buscador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscador.Location = new System.Drawing.Point(365, 81);
+            this.txt_Buscador.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(345, 29);
+            this.txt_Buscador.TabIndex = 61;
+            this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.TextChanged += new System.EventHandler(this.txt_Buscador_TextChanged);
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
             // txt_Nombre_Categoria
             // 
@@ -372,7 +374,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Agregar);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.txt_Nombre_Categoria);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -419,7 +421,7 @@
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Agregar;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.TextBox txt_Nombre_Categoria;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

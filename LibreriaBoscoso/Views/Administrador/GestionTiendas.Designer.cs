@@ -41,7 +41,7 @@
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.txt_Ubicacion = new System.Windows.Forms.TextBox();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -213,16 +213,18 @@
             this.dataGridView1.TabIndex = 49;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // textBox6
+            // txt_Buscador
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(425, 111);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(394, 29);
-            this.textBox6.TabIndex = 47;
-            this.textBox6.Text = "Buscar";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txt_Buscador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Buscador.Location = new System.Drawing.Point(425, 111);
+            this.txt_Buscador.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_Buscador.Name = "txt_Buscador";
+            this.txt_Buscador.Size = new System.Drawing.Size(394, 29);
+            this.txt_Buscador.TabIndex = 47;
+            this.txt_Buscador.Text = "Buscar";
+            this.txt_Buscador.TextChanged += new System.EventHandler(this.txt_Buscador_TextChanged);
+            this.txt_Buscador.Enter += new System.EventHandler(this.txt_Buscador_Enter);
+            this.txt_Buscador.Leave += new System.EventHandler(this.txt_Buscador_Leave);
             // 
             // txt_Ubicacion
             // 
@@ -401,7 +403,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.txt_Ubicacion);
             this.Controls.Add(this.txt_Nombre);
             this.Controls.Add(this.label8);
@@ -441,7 +443,7 @@
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPedidosToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.TextBox txt_Ubicacion;
         private System.Windows.Forms.TextBox txt_Nombre;
         private System.Windows.Forms.Label label8;

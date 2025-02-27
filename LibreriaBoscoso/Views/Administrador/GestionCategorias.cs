@@ -167,9 +167,9 @@ namespace LibreriaBoscoso.Views.Administrador
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox6_TextChanged_1(object sender, EventArgs e)
+        private void txt_Buscador_TextChanged(object sender, EventArgs e)
         {
-            string filtro = textBox6.Text.Trim().ToLower();
+            string filtro = txt_Buscador.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(filtro))
             {
                 dataGridView1.DataSource = new List<Category>(_categoriasOriginales);
@@ -181,6 +181,24 @@ namespace LibreriaBoscoso.Views.Administrador
                     .ToList();
 
                 dataGridView1.DataSource = categoriasFiltradas;
+            }
+        }
+
+        // Limpia el TextBox cuando entra (si tiene el valor por defecto)
+        private void txt_Buscador_Enter(object sender, EventArgs e)
+        {
+            if (txt_Buscador.Text == "Buscar")
+            {
+                txt_Buscador.Clear(); // Limpiar el texto por defecto
+            }
+        }
+
+        // Vuelve a poner el texto "Buscar" cuando se sale del TextBox y está vacío
+        private void txt_Buscador_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Buscador.Text))
+            {
+                txt_Buscador.Text = "Buscar"; // Volver a poner "Buscar" si está vacío
             }
         }
         /// <summary>
