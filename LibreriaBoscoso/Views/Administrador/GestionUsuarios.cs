@@ -70,6 +70,27 @@ namespace LibreriaBoscoso.Views.Administrador
                     return;
                 }
 
+                // 🔹 Validar que la contraseña tenga al menos 6 caracteres
+                if (txt_Contrasena.Text.Length < 6)
+                {
+                    MessageBox.Show("❌ La contraseña debe tener al menos 6 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Validar que el campo de email sea valido
+                if (txt_Email.Text.Length < 6)
+                {
+                    MessageBox.Show("❌ La contraseña debe tener al menos 6 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Validar que el email contenga un '@'
+                if (!txt_Email.Text.Contains("@"))
+                {
+                    MessageBox.Show("❌ El correo electrónico debe contener un '@'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 // 🔹 Obtener el rol seleccionado
                 string role = GetSelectedRole();
                 if (string.IsNullOrWhiteSpace(role))
