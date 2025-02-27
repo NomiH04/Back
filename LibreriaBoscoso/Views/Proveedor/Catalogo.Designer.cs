@@ -31,8 +31,6 @@ namespace LibreriaBoscoso.Views.Proveedor
         private void InitializeComponent()
         {
             this.btn_Buscar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
@@ -67,28 +65,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = false;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(684, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 107;
-            this.label1.Text = "Usuario";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(749, 54);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 108;
-            this.label2.Text = "Rol";
             // 
             // label3
             // 
@@ -287,8 +263,6 @@ namespace LibreriaBoscoso.Views.Proveedor
             this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "Catalogo";
@@ -307,8 +281,6 @@ namespace LibreriaBoscoso.Views.Proveedor
 
         #endregion
         private System.Windows.Forms.Button btn_Buscar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.TextBox txt_Buscador;

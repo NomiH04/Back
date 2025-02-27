@@ -416,6 +416,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "GestionTiendas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionTiendas";
             this.Load += new System.EventHandler(this.Form1_LoadAsync);
             this.menuStrip1.ResumeLayout(false);

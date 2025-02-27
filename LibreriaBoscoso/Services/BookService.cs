@@ -203,18 +203,21 @@ namespace LibreriaBoscoso.Services
             public string Publisher { get; set; }
         }
 
-        public async Task<bool> EditBookAsync(int bookId, string newDescription, decimal newPrice)
+        public async Task<bool> EditBookAsync(int bookId, string title, string author, decimal price, string description, DateTime publicationDate, string publisher)
         {
             try
             {
-                // Crear el objeto con los nuevos valores que se van a actualizar
                 var bookToUpdate = new
                 {
-                    Description = newDescription,
-                    Price = newPrice
+                    BookId = bookId,
+                    Title = title,
+                    Author = author,
+                    Price = price,
+                    Description = description,
+                    PublicationDate = publicationDate,
+                    Publisher = publisher
                 };
 
-                
                 HttpResponseMessage response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{bookId}", bookToUpdate);
 
                 if (response.IsSuccessStatusCode)
@@ -224,7 +227,8 @@ namespace LibreriaBoscoso.Services
                 }
                 else
                 {
-                    Console.WriteLine($"Error al actualizar el libro con ID {bookId}. Código: {response.StatusCode}");
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al actualizar el libro. Código: {response.StatusCode}, Mensaje: {errorMessage}");
                     return false;
                 }
             }

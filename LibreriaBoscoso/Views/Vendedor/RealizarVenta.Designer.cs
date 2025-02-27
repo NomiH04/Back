@@ -30,8 +30,6 @@ namespace LibreriaBoscoso.Views.Vendedor
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_Rol = new System.Windows.Forms.Label();
-            this.label_Usuario = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -59,28 +57,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Libros)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label_Rol
-            // 
-            this.label_Rol.AutoSize = true;
-            this.label_Rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Rol.Location = new System.Drawing.Point(749, 54);
-            this.label_Rol.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Rol.Name = "label_Rol";
-            this.label_Rol.Size = new System.Drawing.Size(29, 15);
-            this.label_Rol.TabIndex = 11;
-            this.label_Rol.Text = "Rol";
-            // 
-            // label_Usuario
-            // 
-            this.label_Usuario.AutoSize = true;
-            this.label_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Usuario.Location = new System.Drawing.Point(684, 54);
-            this.label_Usuario.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Usuario.Name = "label_Usuario";
-            this.label_Usuario.Size = new System.Drawing.Size(57, 15);
-            this.label_Usuario.TabIndex = 10;
-            this.label_Usuario.Text = "Usuario";
             // 
             // btnCerrarSesion
             // 
@@ -361,8 +337,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.label_Rol);
-            this.Controls.Add(this.label_Usuario);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.menuStrip1);
@@ -383,9 +357,6 @@ namespace LibreriaBoscoso.Views.Vendedor
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label_Rol;
-        private System.Windows.Forms.Label label_Usuario;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.TextBox txt_Buscar;
         private System.Windows.Forms.MenuStrip menuStrip1;

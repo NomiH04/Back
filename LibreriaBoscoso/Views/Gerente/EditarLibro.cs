@@ -73,17 +73,20 @@ namespace LibreriaBoscoso.Views.Gerente
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            // Obtener el nuevo precio y descripción del libro desde los controles de la interfaz de usuario
-            string nuevaDescripcion = txtDescripcion.Text;
-            decimal nuevoPrecio = Convert.ToDecimal(txtPrecio.Text);
+            string titulo = txtTitulo.Text;
+            string autor = txtAutor.Text;
+            decimal precio = Convert.ToDecimal(txtPrecio.Text);
+            string descripcion = txtDescripcion.Text;
+            DateTime fechaPublicacion = DateTime.Parse(txtFecha.Text);
+            string publisher = txtPublishier.Text;
 
-            bool editado = await _bookService.EditBookAsync(id, nuevaDescripcion, nuevoPrecio);
+            bool editado = await _bookService.EditBookAsync(id, titulo, autor, precio, descripcion, fechaPublicacion, publisher);
 
             if (editado)
             {
                 MessageBox.Show("Libro actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Actualizar la tabla o la interfaz de usuario con los nuevos datos
+                // Actualizar la tabla
                 var formularioPrincipal = Application.OpenForms.OfType<ConsultarLibro>().FirstOrDefault();
                 formularioPrincipal?.Limpiar();
                 formularioPrincipal?.CargarDatos();

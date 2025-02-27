@@ -38,8 +38,6 @@ namespace LibreriaBoscoso.Views
             this.realizar_Pedido_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.btn_Cerrar_Sesion = new System.Windows.Forms.Button();
-            this.label_Usuario = new System.Windows.Forms.Label();
-            this.label_Rol = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -145,28 +143,6 @@ namespace LibreriaBoscoso.Views
             this.btn_Cerrar_Sesion.UseVisualStyleBackColor = false;
             this.btn_Cerrar_Sesion.Click += new System.EventHandler(this.btn_Cerrar_Sesion_Click);
             // 
-            // label_Usuario
-            // 
-            this.label_Usuario.AutoSize = true;
-            this.label_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Usuario.Location = new System.Drawing.Point(684, 54);
-            this.label_Usuario.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Usuario.Name = "label_Usuario";
-            this.label_Usuario.Size = new System.Drawing.Size(57, 15);
-            this.label_Usuario.TabIndex = 5;
-            this.label_Usuario.Text = "Usuario";
-            // 
-            // label_Rol
-            // 
-            this.label_Rol.AutoSize = true;
-            this.label_Rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Rol.Location = new System.Drawing.Point(749, 54);
-            this.label_Rol.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Rol.Name = "label_Rol";
-            this.label_Rol.Size = new System.Drawing.Size(29, 15);
-            this.label_Rol.TabIndex = 6;
-            this.label_Rol.Text = "Rol";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibreriaBoscoso.Properties.Resources.LogoG1;
@@ -244,12 +220,9 @@ namespace LibreriaBoscoso.Views
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(805, 463);
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label_Rol);
-            this.Controls.Add(this.label_Usuario);
             this.Controls.Add(this.btn_Cerrar_Sesion);
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.menuStrip1);
@@ -280,8 +253,6 @@ namespace LibreriaBoscoso.Views
         private System.Windows.Forms.ToolStripMenuItem realizar_Pedido_ToolStripMenuItem;
         private System.Windows.Forms.TextBox txt_Buscar;
         private System.Windows.Forms.Button btn_Cerrar_Sesion;
-        private System.Windows.Forms.Label label_Usuario;
-        private System.Windows.Forms.Label label_Rol;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip2;

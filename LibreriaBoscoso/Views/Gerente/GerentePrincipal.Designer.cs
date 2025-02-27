@@ -36,8 +36,6 @@
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -140,28 +138,6 @@
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(761, 52);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Rol";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(696, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Usuario";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibreriaBoscoso.Properties.Resources.LogoG1;
@@ -240,8 +216,6 @@
             this.ClientSize = new System.Drawing.Size(803, 461);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.menuStrip1);
@@ -271,8 +245,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarVentasToolStripMenuItem;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPedidosToolStripMenuItem;
         private System.Windows.Forms.Button button1;

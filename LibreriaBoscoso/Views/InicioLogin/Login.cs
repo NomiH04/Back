@@ -12,7 +12,6 @@ namespace LibreriaBoscoso.Views.InicioLogin
     public partial class Login : Form
     {
         private readonly HttpClient _httpClient;
-
         public Login()
         {
             InitializeComponent();
@@ -86,6 +85,7 @@ namespace LibreriaBoscoso.Views.InicioLogin
                 if (response.IsSuccessStatusCode)
                 {
                     var user = await response.Content.ReadFromJsonAsync<User>();
+
 
                     MessageBox.Show($"Bienvenido {user.Name}", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

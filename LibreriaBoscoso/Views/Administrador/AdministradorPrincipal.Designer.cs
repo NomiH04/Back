@@ -39,8 +39,6 @@
             this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.Rolelb = new System.Windows.Forms.Label();
-            this.Userlb = new System.Windows.Forms.Label();
             this.pB_Logo = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -179,31 +177,6 @@
             this.button1.Text = "Accesibilidad";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // Rolelb
-            // 
-            this.Rolelb.AutoSize = true;
-            this.Rolelb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rolelb.Location = new System.Drawing.Point(763, 51);
-            this.Rolelb.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.Rolelb.Name = "Rolelb";
-            this.Rolelb.Size = new System.Drawing.Size(29, 15);
-            this.Rolelb.TabIndex = 15;
-            this.Rolelb.Text = "Rol";
-            this.Rolelb.Click += new System.EventHandler(this.Rolelb_Click);
-            // 
-            // Userlb
-            // 
-            this.Userlb.AutoSize = true;
-            this.Userlb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Userlb.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Userlb.Location = new System.Drawing.Point(699, 51);
-            this.Userlb.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.Userlb.Name = "Userlb";
-            this.Userlb.Size = new System.Drawing.Size(57, 15);
-            this.Userlb.TabIndex = 14;
-            this.Userlb.Text = "Usuario";
-            this.Userlb.Click += new System.EventHandler(this.label1_Click);
-            // 
             // pB_Logo
             // 
             this.pB_Logo.Image = global::LibreriaBoscoso.Properties.Resources.LogoG1;
@@ -283,8 +256,6 @@
             this.ClientSize = new System.Drawing.Size(803, 455);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.Rolelb);
-            this.Controls.Add(this.Userlb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.menuStrip1);
@@ -316,8 +287,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarPedidosToolStripMenuItem;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label Rolelb;
-        private System.Windows.Forms.Label Userlb;
         private System.Windows.Forms.ToolStripMenuItem reportesInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarCategoriasLibrosToolStripMenuItem;
         private System.Windows.Forms.Button button2;

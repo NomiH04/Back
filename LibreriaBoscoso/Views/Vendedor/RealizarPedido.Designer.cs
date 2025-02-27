@@ -56,7 +56,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instagramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmb_Proveedor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Libros)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -123,6 +122,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.button2.TabIndex = 78;
             this.button2.Text = "Agregar Libro";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dgv_Libros
             // 
@@ -151,7 +151,7 @@ namespace LibreriaBoscoso.Views.Vendedor
             // 
             this.label_Num_de_Pedido.AutoSize = true;
             this.label_Num_de_Pedido.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Num_de_Pedido.Location = new System.Drawing.Point(187, 68);
+            this.label_Num_de_Pedido.Location = new System.Drawing.Point(199, 68);
             this.label_Num_de_Pedido.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label_Num_de_Pedido.Name = "label_Num_de_Pedido";
             this.label_Num_de_Pedido.Size = new System.Drawing.Size(56, 25);
@@ -342,23 +342,11 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.instagramToolStripMenuItem.Name = "instagramToolStripMenuItem";
             this.instagramToolStripMenuItem.Size = new System.Drawing.Size(52, 44);
             // 
-            // cmb_Proveedor
-            // 
-            this.cmb_Proveedor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_Proveedor.FormattingEnabled = true;
-            this.cmb_Proveedor.Location = new System.Drawing.Point(46, 102);
-            this.cmb_Proveedor.Margin = new System.Windows.Forms.Padding(1);
-            this.cmb_Proveedor.Name = "cmb_Proveedor";
-            this.cmb_Proveedor.Size = new System.Drawing.Size(141, 29);
-            this.cmb_Proveedor.TabIndex = 89;
-            this.cmb_Proveedor.Text = "Proveedor";
-            // 
             // RealizarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 462);
-            this.Controls.Add(this.cmb_Proveedor);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.btn_Buscar);
@@ -417,7 +405,6 @@ namespace LibreriaBoscoso.Views.Vendedor
         private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem instagramToolStripMenuItem;
-        private System.Windows.Forms.ComboBox cmb_Proveedor;
         private System.Windows.Forms.ToolStripMenuItem realizar_Pedido_ToolStripMenuItem;
         private readonly EventHandler btn_FinalizarPedido_Click;
     }

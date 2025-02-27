@@ -40,8 +40,6 @@
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.txt_Buscador = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -185,28 +183,6 @@
             this.label3.TabIndex = 76;
             this.label3.Text = "Reporte Inventario";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(739, 47);
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 75;
-            this.label2.Text = "Rol";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(675, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 74;
-            this.label1.Text = "Usuario";
-            // 
             // btnCerrarSesion
             // 
             this.btnCerrarSesion.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -340,8 +316,6 @@
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.txt_Buscador);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -350,6 +324,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "ReporteInventarioGlobal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReporteInventarioGlobal";
             this.Load += new System.EventHandler(this.ReporteInventarioGlobal_Load);
             this.menuStrip2.ResumeLayout(false);
@@ -375,8 +350,6 @@
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.TextBox txt_Buscador;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;

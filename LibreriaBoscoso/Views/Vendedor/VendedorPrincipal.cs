@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using LibreriaBoscoso.Models;
 using LibreriaBoscoso.Views.InicioLogin;
 using LibreriaBoscoso.Views.Vendedor;
 
@@ -7,6 +8,7 @@ namespace LibreriaBoscoso.Views
 {
     public partial class VendedorPrincipal : Form
     {
+        Login newlogin = new Login();
         public VendedorPrincipal()
         {
             InitializeComponent();
@@ -14,7 +16,6 @@ namespace LibreriaBoscoso.Views
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = label_Usuario;
         }
 
         private void consultar_Stock_ToolStripMenuItem_Click(object sender, EventArgs e)

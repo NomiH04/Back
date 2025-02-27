@@ -14,14 +14,15 @@ namespace LibreriaBoscoso.Views.Gerente
         public ConsultarVentas()
         {
             InitializeComponent();
-            _saleService = new SaleService();  
+            _saleService = new SaleService();
+            CargarDatos();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             CargarDatos();
         }
-
+        
         private void consultarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsultarLibro bucarLibro = new ConsultarLibro();
@@ -164,5 +165,6 @@ namespace LibreriaBoscoso.Views.Gerente
             //obtiene el ID de la fila selccionada para poder usarse
             return idVentaSeleccionado;
         }
+
     }
 }

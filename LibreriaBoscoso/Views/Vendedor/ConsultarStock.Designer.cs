@@ -39,8 +39,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.label_Rol = new System.Windows.Forms.Label();
-            this.label_Usuario = new System.Windows.Forms.Label();
             this.btn_Cerrar_Sesion = new System.Windows.Forms.Button();
             this.txt_Buscar = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -156,28 +154,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.label3.Size = new System.Drawing.Size(249, 25);
             this.label3.TabIndex = 95;
             this.label3.Text = "Stock de Libros Disponible";
-            // 
-            // label_Rol
-            // 
-            this.label_Rol.AutoSize = true;
-            this.label_Rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Rol.Location = new System.Drawing.Point(749, 54);
-            this.label_Rol.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Rol.Name = "label_Rol";
-            this.label_Rol.Size = new System.Drawing.Size(29, 15);
-            this.label_Rol.TabIndex = 94;
-            this.label_Rol.Text = "Rol";
-            // 
-            // label_Usuario
-            // 
-            this.label_Usuario.AutoSize = true;
-            this.label_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Usuario.Location = new System.Drawing.Point(684, 54);
-            this.label_Usuario.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label_Usuario.Name = "label_Usuario";
-            this.label_Usuario.Size = new System.Drawing.Size(57, 15);
-            this.label_Usuario.TabIndex = 93;
-            this.label_Usuario.Text = "Usuario";
             // 
             // btn_Cerrar_Sesion
             // 
@@ -343,8 +319,6 @@ namespace LibreriaBoscoso.Views.Vendedor
             this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.dgv_Stock_Libros);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label_Rol);
-            this.Controls.Add(this.label_Usuario);
             this.Controls.Add(this.btn_Cerrar_Sesion);
             this.Controls.Add(this.txt_Buscar);
             this.Controls.Add(this.menuStrip1);
@@ -374,8 +348,6 @@ namespace LibreriaBoscoso.Views.Vendedor
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label_Rol;
-        private System.Windows.Forms.Label label_Usuario;
         private System.Windows.Forms.Button btn_Cerrar_Sesion;
         private System.Windows.Forms.TextBox txt_Buscar;
         private System.Windows.Forms.MenuStrip menuStrip1;
