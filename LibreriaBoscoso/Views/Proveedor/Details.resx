@@ -117,41 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="104501_twitter_bird_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\104501_twitter_bird_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Boscoso2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\Boscoso2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoHumanito" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\logoHumanito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LogoG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\LogoG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="5279112_camera_instagram_social media_instagram logo_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\5279112_camera_instagram_social media_instagram logo_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logolibros" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\logolibros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\logo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo1.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\logo1.2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="5305154_fb_facebook_facebook logo_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\5305154_fb_facebook_facebook logo_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoventana2B" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\logoventana2B.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoH1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\logoH1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="boton-de-quitar-cuadrado (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\boton-de-quitar-cuadrado (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

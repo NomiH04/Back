@@ -729,3 +729,4 @@ C:\Users\Josue\source\repos\Back\LibreriaBoscoso\bin\Debug\Mono.Math.xml
 C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\Libreria.5C38F31A.Up2Date
 C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.exe
 C:\Users\Josue\source\repos\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.pdb
+C:\Users\Jeremi\Desktop\clone\Back\LibreriaBoscoso\obj\Debug\LibreriaBoscoso.Views.Proveedor.Details.resources

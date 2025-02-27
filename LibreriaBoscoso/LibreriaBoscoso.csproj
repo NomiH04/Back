@@ -233,6 +233,12 @@
     <Compile Include="Views\Proveedor\Catalogo.Designer.cs">
       <DependentUpon>Catalogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Proveedor\Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Proveedor\Details.Designer.cs">
+      <DependentUpon>Details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Proveedor\HistorialPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,6 +360,9 @@
     <EmbeddedResource Include="Views\Proveedor\Catalogo.resx">
       <DependentUpon>Catalogo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Proveedor\Details.resx">
+      <DependentUpon>Details.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Proveedor\HistorialPedidos.resx">
       <DependentUpon>HistorialPedidos.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,6 +436,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\5279112_camera_instagram_social media_instagram logo_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\boton-de-quitar-cuadrado %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

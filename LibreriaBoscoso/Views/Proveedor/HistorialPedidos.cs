@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -169,6 +170,50 @@ namespace LibreriaBoscoso.Views.Proveedor
             if (string.IsNullOrWhiteSpace(txt_Buscador.Text))
             {
                 txt_Buscador.Text = "Buscar"; // Volver a poner "Buscar" si está vacío
+            }
+        }
+
+        private Order pedidoSeleccionado; // Variable para almacenar el pedido seleccionado
+
+        private void dataGridViewOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0) // Verifica que no sea el encabezado
+            {
+                pedidoSeleccionado = null;
+                pedidoSeleccionado = (Order)dataGridViewOrders.Rows[e.RowIndex].DataBoundItem;
+                OrdenId.Text = pedidoSeleccionado.OrderId.ToString();
+                Estado.Text = pedidoSeleccionado.Status.ToString();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (pedidoSeleccionado != null && pedidoSeleccionado.OrderId != 0)
+            {
+                Details detailsForm = new Details(pedidoSeleccionado.OrderId);
+                detailsForm.StartPosition = FormStartPosition.Manual; // Permitir posicionamiento manual
+
+                // Calcular la posición a la derecha
+                int nuevaX = this.Location.X + this.Width;
+                int nuevaY = this.Location.Y;
+
+                // Obtener el ancho total de la pantalla
+                int anchoPantalla = Screen.PrimaryScreen.Bounds.Width;
+
+                // Verificar si hay espacio suficiente a la derecha
+                if (nuevaX + detailsForm.Width > anchoPantalla)
+                {
+                    // Si no hay espacio a la derecha, colocarlo a la izquierda
+                    nuevaX = this.Location.X - detailsForm.Width;
+                }
+
+                detailsForm.Location = new Point(nuevaX, nuevaY);
+                detailsForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un pedido antes de ver detalles.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
