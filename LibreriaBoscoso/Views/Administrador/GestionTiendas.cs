@@ -102,10 +102,7 @@ namespace LibreriaBoscoso.Views.Administrador
             this.Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         // Método para crear un nuevo tienda
         private async void button2_Click(object sender, EventArgs e)
@@ -288,19 +285,28 @@ namespace LibreriaBoscoso.Views.Administrador
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+            if (_StoreOriginales == null || _StoreOriginales.Count == 0)
+            {
+                dataGridView1.DataSource = null;  // Evita asignar una lista nula
+                return;
+            }
+
             string filtro = textBox6.Text.Trim().ToLower();
+
             if (string.IsNullOrEmpty(filtro))
             {
-                dataGridView1.DataSource = new List<Store>(_StoreOriginales);
+                dataGridView1.DataSource = _StoreOriginales; // Muestra todos los elementos si no hay filtro
             }
             else
             {
                 var categoriasFiltradas = _StoreOriginales
-                    .Where(c => c.Name.ToLower().Contains(filtro))
+                    .Where(s => s.Name != null && s.Name.IndexOf(filtro, StringComparison.OrdinalIgnoreCase) >= 0)
                     .ToList();
 
                 dataGridView1.DataSource = categoriasFiltradas;
             }
         }
+
+      
     }
 }
